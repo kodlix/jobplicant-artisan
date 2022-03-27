@@ -56,7 +56,7 @@ const InstantHires = () => {
                 <div className="content-container">
                     <div className="p-grid">
                         <div className="p-col-12 p-md-9">
-                            <div className="card card-size-list">
+                            <div className="card card-size-list" style={{ borderRadius: "0.5rem" }}>
                                 <div className="card-body">
                                     <InstantHeader
                                         title="All created instant hires"

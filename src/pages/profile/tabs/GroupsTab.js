@@ -30,7 +30,7 @@ const groups = [
 
 const GroupsTab = () => (
   <>
-    <div className="p-card p-4 mt-1">
+    <div className="p-card p-4 mt-1" style={{ borderRadius: "0.5rem" }}>
       <h3>Groups</h3>
     </div>
     <div className="mt-1">

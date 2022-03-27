@@ -42,7 +42,7 @@ const RecentInstantJobs = () => {
     return (
         <>
             <div className="p-col-12 p-md-3 p-pt-2">
-                <div className="p-card">
+                <div className="p-card" style={{ borderRadius: "0.5rem" }}>
                     <SectionHeader
                         icon="briefcase"
                         sectionTitle="Recent Instant Jobs"

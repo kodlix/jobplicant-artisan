@@ -65,12 +65,12 @@ const View = () => {
                         <div className="d-flex justify-content-end">
                             <button onClick={() => history.goBack()} className="btn btn-primary" style={{ backgroundColor: '#00b4d8', border: 'none', padding: '8px 24px' }}><i className="pi pi-arrow-left"></i></button>
                         </div>
-                        <div className="p-card p-4 mt-2">
+                        <div className="p-card p-4 mt-2" style={{ borderRadius: "0.5rem" }}>
                             <h5 className="p-title">Job Description</h5>
                             <p className="mt-3">{instantJobDetail?.description}</p>
 
                         </div>
-                        <div className="p-card p-4 mt-3">
+                        <div className="p-card p-4 mt-3" style={{ borderRadius: "0.5rem" }}>
                             <h5 className="p-title">Instant Job Detail</h5>
                             <div className="mt-3">
                                 <div className="p-text-secondary">

@@ -77,7 +77,7 @@ const Create = () => {
       <div className={`contacts-container ${contactContainerClassName}`}>
         <div className="p-grid contacts-content">
           <div className="p-col-12 p-md-9">
-            <div className="p-card p-p-1 p-mb-2">
+            <div className="p-card p-p-1 p-mb-2" style={{ borderRadius: "0.5rem" }}>
               <div className="p-card-title d-flex justify-content-between align-items-center p-mb-0 pageTitle-contact">
                 <div className="contact-cardtitle">
                   <i className="pi pi-user-plus p-pr-2" />
@@ -108,7 +108,7 @@ const Create = () => {
                 return null;
               }
               return (
-                <div className="p-card p-p-4 d-flex justify-content-between p-mb-2" key={user.id}>
+                <div className="p-card p-p-4 d-flex justify-content-between p-mb-2" key={user.id} style={{ borderRadius: "0.5rem" }}>
                   <span className="d-flex">
                     {
                       user.imageUrl &&

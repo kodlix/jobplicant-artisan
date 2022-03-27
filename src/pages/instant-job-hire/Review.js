@@ -61,7 +61,7 @@ const Review = (props) => {
             <div className="content-container">
                 <div className="p-grid">
 
-                    <div className="card review-card-size mt-2 p-col-sm-12">
+                    <div className="card review-card-size mt-2 p-col-sm-12" style={{ borderRadius: "0.5rem" }}>
                         <div className="card-body p-pt-0">
                             <div className="applicants-display">
                                 <div className="d-flex justify-content-between p-mb-1">
@@ -87,7 +87,7 @@ const Review = (props) => {
                         </div>
                     </div>
 
-                    <div className="card review-card-size mt-2 mb-2 p-col-sm-12">
+                    <div className="card review-card-size mt-2 mb-2 p-col-sm-12" style={{ borderRadius: "0.5rem" }}>
                         <div className="card-body p-pt-0">
                             <form onSubmit={handleSubmit(onSubmit)} className="applicants-display">
                                 <div>

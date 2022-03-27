@@ -21,19 +21,19 @@ const Applicant = (props) => {
 
     const ArtisanAccounts = useSelector(state => state.account.artisanAccounts);
     const loading = useSelector(state => state.account.loading);
-    const artisans = ArtisanAccounts.data
-
+    const artisans = ArtisanAccounts.data;
+    const meta = ArtisanAccounts.meta;
 
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
     const [search, setSearch] = useState("")
     let inputValue;
 
-
     const [rating, setRating] = useState(4);
     const userAccountType = agentService.Auth.current().accountType;
 
     const allJobs = useSelector(state => state.job.allJobs);
+    console.log(ArtisanAccounts, "ArtisanAccounts")
 
     useEffect(() => {
         if (inputValue) return setSearch(inputValue);
@@ -43,15 +43,19 @@ const Applicant = (props) => {
         inputValue = e.target.value === "clear" ? "" : e.currentTarget.value;
         if (inputValue) setSearch(inputValue);
         dispatch(loadArtisanAccounts(page, limit, search));
-
     }
+
+    useEffect(() => {
+        dispatch(loadArtisanAccounts());
+    }, [dispatch])
+
 
     return (
         <>
             <div className="content-container">
                 <div className="p-grid">
                     <div className="col-lg-9 col-sm-12">
-                        <div className="card card-size mt-2">
+                        <div className="card card-size mt-2" style={{ borderRadius: "0.5rem" }}>
                             <div className="card-body p-pt-0 ">
                                 <div className="p-4">
                                     {/* <InstantHeader
@@ -106,7 +110,7 @@ const Applicant = (props) => {
                                     <div className="row">
                                         {artisans && artisans?.length > 0 && artisans.map(artisan => {
                                             return (< div className="col-md-4 col-sm-12 highlight-card p-pb-3" >
-                                                <div className="card">
+                                                <div className="card" style={{ borderRadius: "0.5rem" }}>
                                                     <img src={artisan.imageUrl} height="150px" className="card-img-top" alt="..." />
                                                     <div className="card-body" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                         <Link to={`/applicant/${artisan.userId}`} ><p className="card-title font-weight-bold app-color" title="Click to view profile">{`${artisan.firstName} ${artisan.lastName}`}  <div className="font-weight-bold">
@@ -114,7 +118,7 @@ const Applicant = (props) => {
                                                         </div> </p></Link>
 
                                                         <p className="card-text"> <span className="font-weight-bold">Location :</span> {artisan.locations}</p>
-                                                        <p className="card-text"><span className="font-weight-bold">Phone Nuber:</span> {artisan.phoneNumber}</p>
+                                                        <p className="card-text"><span className="font-weight-bold">Phone Number:</span> {artisan.phoneNumber}</p>
                                                         <p className="card-text"><span className="font-weight-bold">Rating :
                                                         </span> <span className="p-p-0"> <Rating value={rating} disabled={true} cancel={false} onChange={(e) => setRating(e.value)} stars={artisan.rating} /></span>
                                                         </p>
@@ -134,7 +138,7 @@ const Applicant = (props) => {
                             </div>
 
                         </div>
-                        {artisans?.length > 0 && <div className="pt-2 pb-2 load-more">
+                        {artisans?.length > 0 && <div className="pt-2 pb-2">
                             <Button label="Load more" className='w-100' />
                         </div>}
                     </div>
