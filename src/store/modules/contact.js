@@ -229,13 +229,13 @@ export function loadFreeUsers(page, limit, loadingType, search) {
     return agent.Contact.load(page, limit, search).then(
       response => {
         //handle success
-        dispatch(
-          showMessage({
-            type: MESSAGE_TYPE.SUCCESS,
-            title: "Load Users",
-            message: "Users Loaded",
-          })
-        );
+        // dispatch(
+        //   showMessage({
+        //     type: MESSAGE_TYPE.SUCCESS,
+        //     title: "Load Users",
+        //     message: "Users Loaded",
+        //   })
+        // );
         dispatch(freeUsersLoaded(response));
       },
       (error) => {
@@ -253,13 +253,13 @@ export function loadContacts(page, take, loadingType) {
     return agent.Contact.loadContacts(page, take).then(
       response => {
         //handle success
-        dispatch(
-          showMessage({
-            type: MESSAGE_TYPE.SUCCESS,
-            title: "Load Contacts",
-            // message: "Contacts Loaded"
-          })
-        );
+        // dispatch(
+        //   showMessage({
+        //     type: MESSAGE_TYPE.SUCCESS,
+        //     title: "Load Contacts",
+        //     message: "Contacts Loaded"
+        //   })
+        // );
         dispatch(contactsLoaded(response));
       },
       (error) => {

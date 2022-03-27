@@ -96,7 +96,7 @@ const Applicant = (props) => {
                                                     <i className="pi pi-times p-mr-2" onClick={(e) => handleSearch(e)} name="clear" />
                                                 }
                                                 <div className="flex-shrink-0">
-                                                    <Link to="/instant-hires" className="bk-btn p-pt-2 app-color"><i className="pi pi-arrow-left">Back</i></Link>
+                                                    <Link to="/instant-hires" className="bk-btn p-pt-2 app-color"><i className="pi pi-arrow-left"></i></Link>
                                                 </div>
                                             </div>
                                         </div>

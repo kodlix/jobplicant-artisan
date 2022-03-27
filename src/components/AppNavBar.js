@@ -15,7 +15,6 @@ import NotificationDropdown from './notification/NotificationDropdown';
 import { updateNotification, UserNotifications } from 'store/modules/appNotification';
 
 const AppNavBar = ({ displaySearBar = false, instantJobAlert = false }) => {
-    const userAccountType = agentService.Auth.current()?.accountType;
     const profileInfo = useSelector((state) => state.account.profileInfo);
     const allUserNotifications = useSelector(state => state.appNotification.navBarNotifications.data);
     // notificetion
@@ -88,27 +87,12 @@ const AppNavBar = ({ displaySearBar = false, instantJobAlert = false }) => {
                                         Home
                                     </div>
                                 </Nav.Link>
-                                {userAccountType === ACCOUNT_TYPE.ARTISAN ?
-                                    <Nav.Link className="text-white" href="/instant-jobs">
-                                        <i className="pi pi-briefcase itemIcon-appNavbar" style={{ 'fontSize': '1.5em' }} />
-                                        <div className="itemTitle-appNavbar mx-3">
-                                            Jobs
-                                        </div>
-                                    </Nav.Link>
-                                    : <Nav.Link className="text-white" href="/jobs">
-                                        <i className="pi pi-briefcase itemIcon-appNavbar" style={{ 'fontSize': '1.5em' }} />
-                                        <div className="itemTitle-appNavbar mx-3">
-                                            Jobs
-                                        </div>
-                                    </Nav.Link>}
-
-                                {!isArtisanApp && <Nav.Link className="text-white" href="/howtostart">
-                                    <i className="pi pi-file itemIcon-appNavbar" style={{ 'fontSize': '1.5em' }} />
+                                <Nav.Link className="text-white" href="/instant-jobs">
+                                    <i className="pi pi-briefcase itemIcon-appNavbar" style={{ 'fontSize': '1.5em' }} />
                                     <div className="itemTitle-appNavbar mx-3">
-                                        CV Service
+                                        Jobs
                                     </div>
                                 </Nav.Link>
-                                }
                                 <Nav.Link className="text-white" href="/contacts">
                                     <i className="pi pi-users itemIcon-appNavbar" style={{ 'fontSize': '1.5em' }} />
                                     <div className="itemTitle-appNavbar mx-3">
@@ -157,11 +141,11 @@ const AppNavBar = ({ displaySearBar = false, instantJobAlert = false }) => {
                         </Navbar.Collapse>
                     </div>
                     <div className="d-flex">
-                        {isArtisanApp && <div>
+                        <div>
                             <Link to={"/create-instant-hire"} className="button btn bg-light text-muted request-instant-job d-none d-lg-block" style={{ width: "14vw", display: 'block' }}>
-                                <small>Request Instant Job</small>
+                                <small>Request Instant Service</small>
                             </Link>
-                        </div>}
+                        </div>
                         <div
                             id="profile-dropdown"
                             role="button"

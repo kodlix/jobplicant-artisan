@@ -20,13 +20,13 @@ const InstantJobs = () => {
     const [take, setTake] = useState(10);
     const toast = useRef(null);
     const [isApplied, setIsApplied] = useState(false);
-    const allInstantJobs = useSelector(state => state.instantJob.allCurrentInstantJobs);
+    const allInstantJobs = useSelector(state => state.instantJob.allCurrentInstantJobs.data);
+    const meta = useSelector(state => state.instantJob.allCurrentInstantJobs.meta);
     const applicants = useSelector(state => state.instantJob.applicants);
 
 
+    console.log(meta, "all the meta job")
     const requestedId = agent.Auth.current().id;
-
-
 
     useEffect(() => {
         dispatch(fetchAllInstantJobs(page, take))
@@ -36,14 +36,22 @@ const InstantJobs = () => {
         // dispatch(loadApplicants())
     }, [dispatch])
 
+    const loadMoreHandler = () => {
+        // setPage(page + 1)
+        dispatch(fetchAllInstantJobs(page + 1, take));
+    }
+
 
     const handleApply = (id, i) => {
+        let data = {
+            jobId: id
+        }
         confirmDialog({
             message: 'You are about to apply for this job?',
             header: 'Confirmation',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                dispatch(applyInstantJob(id))
+                dispatch(applyInstantJob(data))
                 const element = document.getElementById(i);
                 const element2 = document.getElementById(`${i}_int`)
 
@@ -71,7 +79,7 @@ const InstantJobs = () => {
 
                                 />
                                 {allInstantJobs && allInstantJobs.length > 0 && allInstantJobs.map((instantjob, i) =>
-                                    <div className="">
+                                    <div className="" key={i}>
                                         <div className="panel-login text-center"></div>
                                         <div className="highlight-card p-p-2">
                                             <div className="row" style={{ flexWrap: "nowrap !important" }}>
@@ -90,39 +98,28 @@ const InstantJobs = () => {
                                                 {/* <div className="p-2" ></div> */}
                                                 <div className="col-10">
                                                     <small className="p-text-secondary">
-                                                        {/* <Link className="p-text-secondary" to={'#'}> */}
-
-                                                        <p className="font-weight-bold ">Services : <span className="app-color text-capitalize" style={{ fontSize: 15 }}> {instantjob.service}</span></p>
-                                                        <p><span className="font-weight-bold text-capitalize">Location : </span><span>{instantjob.location}</span> </p>
-                                                        <p><span className="font-weight-bold text-capitalize">Description : </span> {instantjob.description}</p>
-                                                        <p><span className="font-weight-bold">Phone Number : </span> {instantjob.phoneNumber}</p>
-                                                        <div className="p-grid">
-                                                            <div className="p-col-4"><span className="font-weight-bold">Start Date: </span> {moment(instantjob.startDate).format('MMMM DD, YYYY')} </div>
-                                                            <div className="p-col-6"><span className="font-weight-bold">End Date: </span> {moment(instantjob.endDate).format('MMMM DD, YYYY')}</div>
+                                                        <div className='row'>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-10'> <p>{instantjob.service} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{instantjob.location} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize"> Description: </p></div>  <div className='col-md-10'> <p>{instantjob.description} </p> </div>
+                                                            {/* <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Phone Number: </p></div>  <div className='col-md-3'> <p>{instantjob.phoneNumber} </p> </div> */}
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Start Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantjob.startDate).format('MMMM DD, YYYY')} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">End Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantjob.endDate).format('MMMM DD, YYYY')} </p> </div>
                                                         </div>
-                                                        {/* </Link> */}
-                                                        <div className="p-grid p-pt-2" id={`${i}_int`} hidden={false}>
-                                                            <div className="offset-md-5 p-pr-2 d-flex">
+                                                        <div className="p-grid p-pt-5" id={`${i}_int`} hidden={false}>
+                                                            <div className="p-pr-2 d-flex">
                                                                 {requestedId !== instantjob.accountId && <p> <span className="font-weight-bold app-color p-mt-2 interest-tx"> Interested ? &nbsp; </span> </p>}</div>
                                                             {requestedId !== instantjob.accountId && <div><Button label="Yes" id="saveButton" className="p-button-sm" onClick={() => handleApply(instantjob.id, i)} /></div>}
                                                             <div className="p-pr-1 px-2"> <Link to={`/instant-hire/view/${instantjob.id}`}><Button label="View" id="reject" className="p-button-sm" /> </Link></div>
 
                                                         </div>
                                                         <p className="p-pt-2 float-right"> {moment(instantjob.createdAt).fromNow()} </p>
-
-
                                                         <div className="p-grid p-pt-2" id={`${i}`} hidden={true}>
                                                             <Tag> <span >Waiting to be accepted...</span></Tag>
 
                                                         </div>
 
-                                                        {/* {applicant.accepted && <div className="p-grid p-pl-5 p-pb-2">
-                                                            <div className="p-pr-2">
-                                                                <Tag> <span >Accepted</span></Tag>
-                                                            </div>
-                                                        </div>} */}
-
-                                                    </small >
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,19 +129,15 @@ const InstantJobs = () => {
                         </div>
                         <RecentInstantJobs />
                     </div>
-
-
                 </div>
-
-
             </div>
-            <div className="p-grid" >
+            {!allInstantJobs?.length === meta?.itemCount && <div className="p-grid" >
                 <div className="col-12">
                     <div className="pagination center p-mb-1">
-                        <Button label="Load more" className="p-button-sm" />
+                        <Button label="Load more" className="p-button-sm" onClick={loadMoreHandler} />
                     </div>
                 </div>
-            </div>
+            </div>}
 
 
 

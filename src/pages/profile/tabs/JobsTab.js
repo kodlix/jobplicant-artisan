@@ -104,9 +104,20 @@ const JobsTab = () => {
                     <div>
                       <Link to={`/instant-hire-applicants/${instantjob.id}`}>
                         <small className="p-text-secondary">
+                          <div className='row'>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-10'> <p>{instantjob.service} </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{instantjob.location} </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Address : </p></div>  <div className='col-md-10'> <p>{instantjob.address} </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Job Description: </p></div>  <div className='col-md-10'> <p>{instantjob.description} </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Start Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantjob.startDate).format('MMMM DD, YYYY')} </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">End Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantjob.endDate).format('MMMM DD, YYYY')} </p> </div>
+                          </div>
+                        </small>
+                      </Link>
+                      {/* <Link to={`/instant-hire-applicants/${instantjob.id}`}>
+                        <small className="p-text-secondary">
                           <p className="font-weight-bold app-color text-capitalize">Service :  <Tag className='app-sec-color'> {instantjob.service}</Tag> </p>
                           <p><span className="font-weight-bold app-color text-capitalize">Location : </span> {instantjob.location}</p>
-                          {/* <p><span className="font-weight-bold app-color">Time : </span>{instantjob.time} </p> */}
                           <p><span className="font-weight-bold app-color text-capitalize">Address : </span>{instantjob.address} </p>
                           <p><span className="font-weight-bold app-color text-capitalize">Phone Number : </span>{instantjob.phoneNumber} </p>
                           <p><span className="font-weight-bold app-color text-capitalize">Description : </span> {instantjob.description} </p>
@@ -114,7 +125,7 @@ const JobsTab = () => {
                             <div className="p-col-4"><span className="font-weight-bold app-color">Start Date: </span> {moment(instantjob.startDate).format('MMMM DD, YYYY')} </div>
                             <div className="p-col-6"><span className="font-weight-bold app-color">End Date: </span> {moment(instantjob.endDate).format('MMMM DD, YYYY')}</div>
                           </div>
-                        </small></Link>
+                        </small></Link> */}
                     </div>
                     <div className="d-flex">
                       <Link to={`/instant-hire/edit/${instantjob.id}`}> <span><i className="pi pi-pencil" ></i></span></Link>

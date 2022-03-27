@@ -11,21 +11,32 @@ import { Tag } from 'primereact/tag';
 import { confirmDialog } from 'primereact/confirmdialog';
 import RecentInstantJobs from 'pages/instant-jobs/Recent_instant_Jobs';
 import { loadAccountByUser } from 'store/modules/account';
+import { actionSetSelectedContact } from 'store/modules/chat';
 
 const Applicant = (props) => {
     const dispatch = useDispatch()
 
-    const [rating, setRating] = useState(4);
-    const [modalDisplay, setModalDisplay] = useState(false);
-    const [applicantList, setApplicantList] = useState({});
-
     const instantJob = useSelector(state => state.instantJob.instantjob);
     const instantJobId = props.match.params.id;
 
-    const applicants = useSelector(state => state.instantJob.applicants);
+    const applicants = useSelector(state => state.instantJob.applicants.data);
+    const meta = useSelector(state => state.instantJob.applicants.meta);
     const individualProfile = useSelector(state => state.account.profileInfo);
 
+    const [rating, setRating] = useState(4);
+    const [modalDisplay, setModalDisplay] = useState(false);
+    const [applicantList, setApplicantList] = useState({});
+    const [metaData, setMetaData] = useState({});
 
+    console.log(metaData, "meta")
+
+
+
+    useEffect(() => {
+        if (meta) {
+            setMetaData(meta)
+        }
+    }, [meta])
 
     useEffect(() => {
         dispatch(loadApplicants(instantJobId))
@@ -49,6 +60,9 @@ const Applicant = (props) => {
 
         // accetedApplicantHandler(id);
     }
+    const handleOpenChatRoom = (applicant) => {
+        dispatch(actionSetSelectedContact(applicant));
+    };
 
     // const accetedApplicantHandler = (applicationId) => {
     //     const acceptedUser = applicants.filter(function (item) {
@@ -180,7 +194,7 @@ const Applicant = (props) => {
                                     </div>
                                     <div>
                                         <Link to="/instant-hires" className="bk-btn p-pt-2 app-color">
-                                            <i className="pi pi-arrow-left">Back</i>
+                                            <i className="pi pi-arrow-left"></i>
                                         </Link>
                                     </div>
                                 </div>
@@ -197,15 +211,15 @@ const Applicant = (props) => {
                                                 <div className="card-body">
                                                     <div className="applicant-actionIcons float-right">
                                                         <i className="pi pi-video p-pr-2" data-toggle="tooltip" data-placement="top" title="Video Call" />
-                                                        <i className="pi pi-comments p-pr-2" data-toggle="tooltip" data-placement="top" title="Message" />
+                                                        <i className="pi pi-comments p-pr-2" data-toggle="tooltip" data-placement="top" title="Message"
+                                                        />
                                                     </div> <hr />
                                                     {/* <div className="card-body" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> */}
-                                                    <p className="card-text"> <span className="font-weight-bold text-capitalize">Occupation :</span> <span className="font-weight-bold app-color">
-                                                        {applicant.occupation}</span></p>
-                                                    <p className="card-title"><span className="font-weight-bold text-capitalize">Name : </span>{applicant.name} </p>
-                                                    <p className="card-text"> <span className="font-weight-bold text-capitalize">Location :</span>{applicant.address}</p>
-                                                    <p className="card-text"><span className="font-weight-bold text-capitalize">Phone Number :</span> {applicant.phoneNumber}</p>
-                                                    <p className="card-text"><span className="font-weight-bold text-capitalize">Rating :
+                                                    <p className="card-text"> <span className="font-weight-bold text-capitalize"><i className='align-text-button pi pi-briefcase p-mr-1'></i>Occupation :</span> <span className="font-weight-bold app-color text-wrap p-0">{applicant.occupation}</span></p>
+                                                    <p className="card-title"><span className="font-weight-bold text-capitalize"><i className='align-text-button pi pi-user p-mr-1'></i>Name : </span>{applicant.name} </p>
+                                                    <p className="card-text"> <span className="font-weight-bold text-capitalize"> <i class="align-text-bottom pi pi-map-marker p-mr-1"></i>Location :</span>{applicant.address}</p>
+                                                    <p className="card-text"><span className="font-weight-bold text-capitalize"> <i className='align-text-button pi pi-phone p-mr-1'></i>Phone :</span> {applicant.phoneNumber}</p>
+                                                    <p className="card-text"><span className="font-weight-bold text-capitalize"><i className='align-text-button pi pi-star p-mr-1'></i>Rating :
                                                     </span> <span className="p-p-0"> <Rating value={rating} disabled={true} cancel={false}
                                                         onChange={(e) => setRating(applicant.rating)} stars={5} /></span>
                                                     </p>
@@ -254,14 +268,13 @@ const Applicant = (props) => {
                     </div>
                     <RecentInstantJobs />
                 </div>
-                <div className="p-grid">
+                {!applicantList?.length === metaData?.itemCount && <div className="p-grid">
                     <div className="col-12">
                         <div className="pagination center p-mb-1">
                             <Button label="Load more" className="p-button-sm" />
                         </div>
                     </div>
-                </div>
-
+                </div>}
             </div>
             <div className="modal fade p-mt-6" id="staticBackdrop" modalDisplay={modalDisplay} data-backdrop="static" data-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">

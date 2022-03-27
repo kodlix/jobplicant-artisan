@@ -370,13 +370,13 @@ export function loadPosts(page, take, loadingType) {
     return agent.Post.load(page, take).then(
       response => {
         //handle success
-        dispatch(
-          showMessage({
-            type: MESSAGE_TYPE.SUCCESS,
-            title: "Load Posts",
-            message: "Posts Loaded",
-          })
-        );
+        // dispatch(
+        //   showMessage({
+        //     type: MESSAGE_TYPE.SUCCESS,
+        //     title: "Load Posts",
+        //     message: "Posts Loaded",
+        //   })
+        // );
 
         //For when there are comments loaded in each post
         response.data.forEach(post => {
@@ -416,13 +416,13 @@ export function loadPostsByUserId(page, take) {
     return agent.Post.loadByUserId(page, take).then(
       response => {
         //handle success
-        dispatch(
-          showMessage({
-            type: MESSAGE_TYPE.SUCCESS,
-            title: "Load Posts",
-            message: "Posts Loaded",
-          })
-        );
+        // dispatch(
+        //   showMessage({
+        //     type: MESSAGE_TYPE.SUCCESS,
+        //     title: "Load Posts",
+        //     message: "Posts Loaded",
+        //   })
+        // );
       },
       (error) => {
         // handle error
@@ -438,13 +438,13 @@ export function viewPost(id, loadingType) {
     return agent.Post.view(id).then(
       response => {
         //handle success
-        dispatch(
-          showMessage({
-            type: MESSAGE_TYPE.SUCCESS,
-            title: "Load Post",
-            message: "Post Loaded",
-          })
-        );
+        // dispatch(
+        //   showMessage({
+        //     type: MESSAGE_TYPE.SUCCESS,
+        //     title: "Load Post",
+        //     message: "Post Loaded",
+        //   })
+        // );
         dispatch(postByPostIdLoaded(response));
         dispatch(commentsLoaded(id, response.comments, response.commentCount));
         dispatch(loadCommentIdsByPostId(id, response.comments.data));

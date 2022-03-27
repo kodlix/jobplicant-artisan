@@ -16,7 +16,7 @@ const RecentInstantJobs = () => {
     const [take, setTake] = useState(10);
     const [copyAlert, setCopyAlert] = useState(null);
 
-    const allCurrentInstantJobs = useSelector(state => state.instantJob.allCurrentInstantJobs);
+    const allCurrentInstantJobs = useSelector(state => state.instantJob.allCurrentInstantJobs?.data);
 
     useEffect(() => {
         dispatch(fetchAllInstantJobs(page, take))

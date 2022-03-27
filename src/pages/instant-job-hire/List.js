@@ -65,6 +65,7 @@ const InstantHires = () => {
                                         showSearchBar={true}
                                     />
                                     {instantJobs && instantJobs.length > 0 && instantJobs.map(instantjob =>
+
                                         <div key={instantjob.id}>
                                             <div className="panel-login text-center"></div>
                                             <div className="highlight-card p-p-2">
@@ -74,17 +75,16 @@ const InstantHires = () => {
                                                 </div>
                                                 <Link to={`/instant-hire-applicants/${instantjob.id}`}>
                                                     <small className="p-text-secondary">
-                                                        <p className="font-weight-bold app-color text-capitalize">Service : {instantjob.service} </p>
-                                                        <p><span className="font-weight-bold app-color text-capitalize">Location : </span> {instantjob.location}</p>
-                                                        {/* <p><span className="font-weight-bold app-color">Time : </span>{instantjob.time} </p> */}
-                                                        <p><span className="font-weight-bold app-color text-capitalize">Address : </span>{instantjob.address} </p>
-                                                        <p><span className="font-weight-bold app-color text-capitalize">Phone Number : </span>{instantjob.phoneNumber} </p>
-                                                        <p><span className="font-weight-bold app-color text-capitalize">Job Description : </span> {instantjob.description} </p>
-                                                        <div className="p-grid">
-                                                            <div className="p-col-4"><span className="font-weight-bold app-color">Start Date: </span> {moment(instantjob.startDate).format('MMMM DD, YYYY')} </div>
-                                                            <div className="p-col-6"><span className="font-weight-bold app-color">End Date: </span> {moment(instantjob.endDate).format('MMMM DD, YYYY')}</div>
+                                                        <div className='row'>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-10'> <p>{instantjob.service} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{instantjob.location} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Address : </p></div>  <div className='col-md-10'> <p>{instantjob.address} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Job Description : </p></div>  <div className='col-md-10'> <p>{instantjob.description} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Start Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantjob.startDate).format('MMMM DD, YYYY')} </p> </div>
+                                                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">End Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantjob.endDate).format('MMMM DD, YYYY')} </p> </div>
                                                         </div>
-                                                    </small></Link>
+                                                    </small>
+                                                </Link>
                                             </div>
                                             <hr />
                                         </div>

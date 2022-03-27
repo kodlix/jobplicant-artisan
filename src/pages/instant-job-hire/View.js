@@ -23,12 +23,15 @@ const View = () => {
     }, []);
 
     const handleApply = (id) => {
+        let data = {
+            jobId: id
+        }
         confirmDialog({
             message: 'You are about to apply for this job?',
             header: 'Confirmation',
             icon: 'pi pi-exclamation-triangle',
             accept: () => {
-                dispatch(applyInstantJob(id))
+                dispatch(applyInstantJob(data))
             },
             reject: () => {
                 return;
@@ -60,28 +63,24 @@ const View = () => {
                 <div className="row mt-4 mb-5">
                     <div className="col-md-9">
                         <div className="d-flex justify-content-end">
-                            <button onClick={() => history.goBack()} className="btn btn-primary" style={{ backgroundColor: '#5B2946', border: 'none', padding: '8px 24px' }}><i className="pi pi-arrow-left"></i> Back</button>
+                            <button onClick={() => history.goBack()} className="btn btn-primary" style={{ backgroundColor: '#00b4d8', border: 'none', padding: '8px 24px' }}><i className="pi pi-arrow-left"></i></button>
                         </div>
                         <div className="p-card p-4 mt-2">
-                            <h4 className="p-title">Job Description</h4>
+                            <h5 className="p-title">Job Description</h5>
                             <p className="mt-3">{instantJobDetail?.description}</p>
 
                         </div>
                         <div className="p-card p-4 mt-3">
-                            <h4 className="p-title">Instant Job Detail</h4>
+                            <h5 className="p-title">Instant Job Detail</h5>
                             <div className="mt-3">
                                 <div className="p-text-secondary">
-                                    <p className="font-weight-bold app-color "> Service : <Tag>{instantJobDetail.service}</Tag> </p>
-                                    <p><span className="font-weight-bold app-color"> Location : </span> {instantJobDetail.location}</p>
-                                    <p><span className="font-weight-bold app-color">Address : </span>{instantJobDetail.address} </p>
-                                    <p><span className="font-weight-bold app-color">Phone Number : </span>{instantJobDetail.phoneNumber} </p>
-                                    {/* <p><span className="font-weight-bold app-color">Job Description : </span> {instantJobDetail.description} </p> */}
-                                    <div className="p-grid">
-                                        <div className="p-col-4"><span className="font-weight-bold app-color">Start Date: </span> {moment(instantJobDetail.startDate).format('MMMM DD, YYYY')} </div>
-                                        <div className="p-col-6"><span className="font-weight-bold app-color">End Date: </span> {moment(instantJobDetail.endDate).format('MMMM DD, YYYY')}</div>
+                                    <div className='row'>
+                                        <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-10'> <p>{instantJobDetail.service} </p> </div>
+                                        <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{instantJobDetail.location} </p> </div>
+                                        <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Address : </p></div>  <div className='col-md-10'> <p>{instantJobDetail.address} </p> </div>
+                                        <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Start Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantJobDetail.startDate).format('MMMM DD, YYYY')} </p> </div>
+                                        <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">End Date  : </p></div>  <div className='col-md-3'> <p>{moment(instantJobDetail.endDate).format('MMMM DD, YYYY')} </p> </div>
                                     </div>
-                                    <p className="float-right font-weight-bold"> {moment(instantJobDetail.createdAt).fromNow()} </p>
-
                                 </div>
                             </div>
                         </div>
@@ -163,7 +162,7 @@ const styles = {
         marginLeft: '8px'
     },
     btnApply: {
-        backgroundColor: '#5B2946',
+        backgroundColor: '#00b4d8',
         color: 'white',
         padding: '12px 0',
         marginTop: '10px',

@@ -53,7 +53,7 @@ export default function reducer(state = Initial_State, action = {}) {
         ...state,
         error: null,
         fetching: false,
-        allCurrentInstantJobs: action.payload.data,
+        allCurrentInstantJobs: action.payload,
       };
     case LOAD_INSTANT_APPLICANTS:
       return {
@@ -190,13 +190,14 @@ export function loadInstantJobs() {
     );
   };
 }
-// This function loads all instant jobs that created by different users.
+// This function loads all instant jobs that are created by different users.
 export function fetchAllInstantJobs(page, take) {
   return (dispatch) => {
     return agent.InstantJob.loadAllInstantJobs(page, take).then(
       (response) => {
         //handle success
         dispatch(onLoadAllInstantJobs(response));
+        console.log(response, "all instant data")
       },
       (error) => {
         dispatch(
@@ -286,9 +287,9 @@ export function loadInstantJob(id) {
   };
 }
 
-export function applyInstantJob(id) {
+export function applyInstantJob(data) {
   return (dispatch) => {
-    return agent.InstantJob.apply(id).then(
+    return agent.InstantJob.apply(data).then(
       (response) => {
         //handle success
         dispatch(
