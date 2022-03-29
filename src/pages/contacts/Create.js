@@ -77,7 +77,7 @@ const Create = () => {
       <div className={`contacts-container ${contactContainerClassName}`}>
         <div className="p-grid contacts-content">
           <div className="p-col-12 p-md-9">
-            <div className="p-card p-p-1 p-mb-2" style={{ borderRadius: "0.5rem" }}>
+            <div className="p-card p-p-1 p-mb-2" style={{ borderRadius: "1rem" }}>
               <div className="p-card-title d-flex justify-content-between align-items-center p-mb-0 pageTitle-contact">
                 <div className="contact-cardtitle">
                   <i className="pi pi-user-plus p-pr-2" />
@@ -108,7 +108,7 @@ const Create = () => {
                 return null;
               }
               return (
-                <div className="p-card p-p-4 d-flex justify-content-between p-mb-2" key={user.id} style={{ borderRadius: "0.5rem" }}>
+                <div className="p-card p-p-4 d-flex justify-content-between p-mb-2" key={user.id} style={{ borderRadius: "1rem" }}>
                   <span className="d-flex">
                     {
                       user.imageUrl &&
@@ -149,13 +149,13 @@ const Create = () => {
                   <div className="align-self-center">
                     {
                       loading === "sendContactRequest" && user.id === selectedId &&
-                      <Button className="contacts-cardsubtitle p-p-1 p-mr-3">
+                      <Button className="contacts-cardsubtitle p-p-1 p-mr-3 rounded-pill">
                         <i className="pi pi-spin pi-spinner contacts-spinner" />
                       </Button>
                     }
                     {
                       (error || user.id !== selectedId) &&
-                      <Button className="contacts-cardsubtitle p-p-1 p-mr-3" data-id={user.id} onClick={(e) => handleConnectionRequest(e)}>
+                      <Button className="contacts-cardsubtitle p-p-1 p-mr-3 rounded-pill" data-id={user.id} onClick={(e) => handleConnectionRequest(e)}>
                         <span className="p-m-2">
                           Send Connection Request
                         </span>
@@ -168,7 +168,7 @@ const Create = () => {
             {
               users.ids.length > 0 &&
               loading !== "loadMore" &&
-              <Button label='Load More' onClick={loadMoreUsers} className="p-mr-2 w-100" />
+              <Button label='Load More' onClick={loadMoreUsers} className="p-mr-2 w-100 rounded-pill" />
             }
             {
               users.ids.length === 0 && loading !== "loadingFreeUsers" &&
@@ -183,7 +183,7 @@ const Create = () => {
               users.meta.total > users.ids.length &&
               loading === "loadMore" &&
               <Button
-                className="p-mr-2 w-100"
+                className="p-mr-2 w-100 rounded-pill"
                 loading={loading === "loadMore"}
                 disabled={loading === "loadMore"}
               />

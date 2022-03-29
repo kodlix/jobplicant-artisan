@@ -182,7 +182,7 @@ const Applicant = (props) => {
                         <hr />
                     </div> */}
 
-                    <div className="card card-size mt-2 p-col-sm-12" style={{ borderRadius: "0.5rem" }}>
+                    <div className="card card-size mt-2 p-col-sm-12" style={{ borderRadius: "1rem" }}>
                         <div className="card-body p-pt-0">
                             <div className="applicants-display">
                                 <div className="d-flex justify-content-between p-mb-1">
@@ -206,7 +206,7 @@ const Applicant = (props) => {
                                     {applicantList && applicantList?.length > 0 && applicantList.map(applicant =>
 
                                         <div className="col-md-4 col-sm-12 highlight-card p-pb-3" >
-                                            <div key={applicant.applicantId} className="card" style={{ borderRadius: "0.5rem" }}>
+                                            <div key={applicant.applicantId} className="card" style={{ borderRadius: "1rem" }}>
                                                 <img src={applicant.imageUrl} height="150px" className="card-img-top" alt="..." />
                                                 <div className="card-body">
                                                     <div className="applicant-actionIcons float-right">
@@ -229,11 +229,11 @@ const Applicant = (props) => {
                                                         <Link to={`/applicant/${applicant.applicantId}`} onClick={() => getApplicantInfo(applicant.applicantId)}><a className="pi pi-user" title="View Applicant Profile"></a></Link>
                                                     </div>
                                                     <div className="p-pr-2">
-                                                        <Button label="Accept" id="saveButton" className="p-button-sm"
+                                                        <Button label="Accept" id="saveButton" className="p-button-sm rounded-pill"
                                                             onClick={() => acceptHandler(applicant.applicationId)} />
                                                     </div>
                                                     <div className="">
-                                                        <Button label="Reject" id="reject" className="p-button-sm"
+                                                        <Button label="Reject" id="reject" className="p-button-sm rounded-pill"
                                                             onClick={() => rejectHandler(applicant.applicationId)} />
                                                     </div>
 
@@ -245,7 +245,7 @@ const Applicant = (props) => {
                                                         </div>
                                                     </div>}
                                                     {applicant.accepted && <div className="p-grid p-pl-5 p-pb-2">
-                                                        <div className="p-pr-2 p-pt-2">
+                                                        <div className="p-pr-2 p-pt-2 ">
                                                             {/* <Button label="Review" id="reject" className="p-button-sm" /> */}
                                                             <Link to={`/review/${instantJobId}/${applicant.applicantId}`}><u className="app-color font-weight-bold">Leave a Review</u> </Link>
                                                         </div>
@@ -271,7 +271,7 @@ const Applicant = (props) => {
                 {!applicantList?.length === metaData?.itemCount && <div className="p-grid">
                     <div className="col-12">
                         <div className="pagination center p-mb-1">
-                            <Button label="Load more" className="p-button-sm" />
+                            <Button label="Load more" className="p-button-sm rounded-pill" />
                         </div>
                     </div>
                 </div>}

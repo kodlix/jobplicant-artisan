@@ -60,7 +60,7 @@ const Applicant = (props) => {
           <div className="col-lg-9 col-sm-12">
             <div
               className="card card-size mt-2"
-              style={{ borderRadius: "0.5rem" }}
+              style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-pt-0 ">
                 <div className="p-4">
@@ -129,7 +129,7 @@ const Applicant = (props) => {
                           <div className="col-md-4 col-sm-12 highlight-card p-pb-3">
                             <div
                               className="card"
-                              style={{ borderRadius: "0.5rem" }}
+                              style={{ borderRadius: "1rem" }}
                             >
                               <img
                                 src={artisan.imageUrl}

@@ -33,7 +33,7 @@ const HowToStart = () => {
     }, [cvData])
 
     console.log('profile', profileInfo)
-    const isValidProfileInfo = () => (profileInfo.educations.length > 0 || profileInfo.experiences.length > 0 || profileInfo.contactPhoneNumber !== null) ;
+    const isValidProfileInfo = () => (profileInfo.educations.length > 0 || profileInfo.experiences.length > 0 || profileInfo.contactPhoneNumber !== null);
     const goToCvTemplate = () => {
 
         if (!isValidProfileInfo()) {
@@ -70,7 +70,7 @@ const HowToStart = () => {
                                                 <Link to={"/cv-template"}>
                                                     <Button
                                                         label="Create New"
-                                                        className="p-button "
+                                                        className="p-button rounded-pill"
                                                     />
                                                 </Link>
                                             </div>

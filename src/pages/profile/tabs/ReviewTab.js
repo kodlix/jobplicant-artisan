@@ -31,11 +31,14 @@ const ReviewTab = () => {
                   <div>
                     <p>{review?.reviewerDisplayName}</p>
                   </div>
-                  <img
+                  {/* {review.imageUrl ? <img src={review.imageUrl}
+                    className="rounded-circle"
+                    alt="review'sImage"
+                  /> : <img
                     src="https://source.unsplash.com/random/50x50"
                     className="rounded circle"
                     alt="image"
-                  />
+                  />} */}
                 </div>
                 <div className="p-2"></div>
                 <div>
@@ -44,7 +47,7 @@ const ReviewTab = () => {
                       {review?.title}
                     </li>
                     <li className="d-flex flex-column">
-                      <p className="p-1">{}</p>
+                      <p className="p-1">{ }</p>
                       <span>
                         <div
                           className="stars"
@@ -62,7 +65,7 @@ const ReviewTab = () => {
               </p>
             </div>
           ))}
-        {applicantReview?.reviews.length === 0 && (
+        {applicantReview?.reviews?.length === 0 && (
           <strong className="mx-auto text-secondary">No review found</strong>
         )}
       </div>

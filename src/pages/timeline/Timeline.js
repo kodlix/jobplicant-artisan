@@ -87,7 +87,7 @@ const Timeline = () => {
                   <div className="p-col-10">
                     <Button
                       label="Start a Post"
-                      className="postInputButton"
+                      className="postInputButton rounded-pill"
                       onClick={() => onShow()}
                     />
                     <ModalMode
@@ -151,7 +151,7 @@ const Timeline = () => {
                     loading !== "loadMore" &&
                     <Button
                       onClick={loadmorePosts}
-                      className="p-mr-2 w-100"
+                      className="p-mr-2 w-100 rounded-pill"
                       label='Load More'
                     />
                   }
@@ -160,7 +160,7 @@ const Timeline = () => {
                     posts.meta.total > posts.ids.length &&
                     loading === "loadMore" &&
                     <Button
-                      className="p-mr-2 w-100"
+                      className="p-mr-2 w-100 rounded-pill"
                       loading={loading === "loadMore"}
                       disabled={loading === "loadMore"}
                     />

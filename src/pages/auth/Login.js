@@ -110,7 +110,7 @@ const Login = ({ props }) => {
                                             <Button
                                                 label="Login"
                                                 type="submit"
-                                                className="form-group"
+                                                className="form-group rounded-pill"
                                                 loading={isRequestLoading}
                                             />
 
