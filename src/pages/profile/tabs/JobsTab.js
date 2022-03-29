@@ -100,12 +100,13 @@ const JobsTab = () => {
             <div className="p-col-12 p-md-9">
               <div className="card-size-list">
                 {instantJobs && instantJobs.length > 0 && instantJobs.map(instantjob =>
-                  <div className='d-flex' key={instantjob.id}>
+                  <div className='d-flex mb-4' key={instantjob.id}>
+                    <hr />
                     <div>
                       <Link to={`/instant-hire-applicants/${instantjob.id}`}>
                         <small className="p-text-secondary">
                           <div className='row'>
-                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-10'> <p>{instantjob.service} </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-10'> <p> <Tag className='app-sec-color'> {instantjob.service} </Tag></p> </div>
                             <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{instantjob.location} </p> </div>
                             <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Address : </p></div>  <div className='col-md-10'> <p>{instantjob.address} </p> </div>
                             <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Job Description: </p></div>  <div className='col-md-10'> <p>{instantjob.description} </p> </div>
@@ -131,7 +132,7 @@ const JobsTab = () => {
                       <Link to={`/instant-hire/edit/${instantjob.id}`}> <span><i className="pi pi-pencil" ></i></span></Link>
                       <i className="pi pi-trash" style={{ fontSize: '0.8rem', padding: '.2rem' }} onClick={() => deleteRequest(instantjob.id)}></i>
                     </div>
-                    <hr />
+                    <hr fontSize="3" />
                   </div>
                 )}
                 {

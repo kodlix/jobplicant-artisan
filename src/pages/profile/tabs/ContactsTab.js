@@ -39,7 +39,7 @@ const ContactsTab = () => {
 
   return (
     <>
-      <div className="p-card p-4 mt-1">
+      <div className="p-card p-4 mt-1" style={{ borderRadius: "0.5rem" }}>
         <h3>Contacts</h3>
       </div>
       <div className="mt-1">
@@ -50,8 +50,8 @@ const ContactsTab = () => {
           }
           return (
             <div
-              className="p-card p-4 mt-2 d-flex justify-content-between"
-              key={index}
+              className="p-card p-4 mt-2 d-flex justify-content-between "
+              key={index} style={{ borderRadius: "0.5rem" }}
             >
               <div className="d-flex">
                 <img
@@ -94,7 +94,7 @@ const ContactsTab = () => {
         })}
 
         {
-          myContacts === 0 && <div className="p-card p-p-4 p-mb-2 d-flex justify-content-center">
+          myContacts === 0 && <div className="p-card p-p-4 p-mb-2 d-flex justify-content-center" style={{ borderRadius: "0.5rem" }}>
             <div className="text-center">
               <span className="p-card-title ">
                 Oops. Contact List is Empty

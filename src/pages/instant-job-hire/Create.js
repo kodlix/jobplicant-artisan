@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createInstantJob } from 'store/modules/instantJob';
 import { Calendar } from 'primereact/calendar';
 import RecentInstantJobs from 'pages/instant-jobs/Recent_instant_Jobs';
+import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng, } from 'react-places-autocomplete';
+
 
 import './InstantJobHire.css'
 import { loadServices } from 'store/modules/admin';
@@ -33,19 +35,34 @@ const New = ({ mode }) => {
     const [endDate, setEndDate] = useState(null);
     const API_KEY = "AIzaSyDxaC_Q4OI6Kx84VPT4W4k6N6FYLEVfcw0";
 
+
     const loading = useSelector(state => state.instantJob.loading);
     const services = useSelector(state => state.admin.services).data;
 
-    console.log(services, "services list");
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
     const [search, setSearch] = useState("");
+    const [address, setAddress] = useState("");
+    const [location, setLocation] = useState("");
+    const [coordinates, setCoordinates] = useState({ lat: null, lng: null });
 
     useEffect(() => {
         dispatch(loadServices(page, limit, "loadServices", search));
     }, [])
 
+    const handleSelect = async (value) => {
+        const results = await geocodeByAddress(value);
+        setLocation(value);
+        setValue("location", location, { shouldValidate: true })
+    }
 
+    const handleSelectAddress = async (value) => {
+        const results = await geocodeByAddress(value);
+        const ll = await getLatLng(results[0]);
+        setAddress(value);
+        setValue("address", address, { shouldValidate: true })
+        setCoordinates(ll);
+    }
 
     // const minDate = () => {
     //     let mindate = new Date();
@@ -120,6 +137,12 @@ const New = ({ mode }) => {
     }
 
 
+    useEffect(() => {
+        register("location", { required: "Location is required" })
+        register("address", { required: "Address is required" })
+    }, [register])
+
+
     const onSubmit = (data) => {
         confirmDialog({
             message: 'Are you sure you want to make this request?',
@@ -134,6 +157,10 @@ const New = ({ mode }) => {
                 }
                 data.service = data.service.name;
                 data.requesterLocation = locateUserHandler();
+                data.requesterLocation = { lat: coordinates.lat, long: coordinates.lng };
+                data.location = location;
+                data.address = address;
+                console.log(data, "create Data");
                 dispatch(createInstantJob(data));
             },
             reject: () => {
@@ -149,7 +176,7 @@ const New = ({ mode }) => {
                 <div className="content-container">
                     <div className="p-grid">
                         <div className="p-col-12 p-md-9">
-                            <div className="card card-size-list">
+                            <div className="card card-size-list" style={{ borderRadius: "0.5rem" }}>
                                 <div className="card-body"></div>
                                 <InstantHeader
                                     title="Create new instant hire"
@@ -184,21 +211,105 @@ const New = ({ mode }) => {
                                         <div className="p-fluid p-md-6 p-sm-12">
                                             <div className="p-field">
                                                 <label htmlFor="location">Location * </label>
-                                                <InputText
+                                                <PlacesAutocomplete
+                                                    value={location}
+                                                    onChange={setLocation}
+                                                    onSelect={handleSelect}
+                                                >
+                                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                                        <div>
+                                                            <InputText
+                                                                {...getInputProps({
+                                                                    placeholder: 'Enter Location ...',
+                                                                    className: 'location-search-input',
+                                                                    name: "location"
+                                                                })}
+
+                                                            />
+                                                            <div className="autocomplete-dropdown-container">
+                                                                {loading && <div>Loading...</div>}
+                                                                {suggestions.map(suggestion => {
+                                                                    const className = suggestion.active
+                                                                        ? 'suggestion-item--active'
+                                                                        : 'suggestion-item';
+                                                                    // inline style for demonstration purpose
+                                                                    const style = suggestion.active
+                                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                                    return (
+                                                                        <div
+                                                                            {...getSuggestionItemProps(suggestion, {
+                                                                                className,
+                                                                                style,
+                                                                            })}
+                                                                        >
+                                                                            <span>{suggestion.description}</span>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </PlacesAutocomplete>
+                                                {errors.location && <span className="text-danger font-weight-bold "> <p>{errors.location.message}</p>
+                                                </span>}
+                                                {/* <InputText
                                                     type="text"
                                                     placeholder="Location"
                                                     name="location"
                                                     {...register("location", { required: "Location is required" })}
                                                 />
                                                 {errors.location && <span className="text-danger font-weight-bold "> <p>{errors.location.message}</p>
-                                                </span>}
+                                                </span>} */}
                                             </div>
                                         </div>
 
                                         <div className="p-fluid p-md-6 p-sm-12">
                                             <div className="p-field">
                                                 <label htmlFor="address">Address/Meet Up Location * </label>
-                                                <InputText
+                                                <PlacesAutocomplete
+                                                    value={address}
+                                                    onChange={setAddress}
+                                                    onSelect={handleSelectAddress}
+                                                >
+                                                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                                        <div>
+                                                            <InputText
+                                                                {...getInputProps({
+                                                                    placeholder: 'Meet up Place ...',
+                                                                    className: 'location-search-input',
+                                                                    name: "address"
+                                                                })}
+
+                                                            />
+                                                            <div className="autocomplete-dropdown-container">
+                                                                {loading && <div>Loading...</div>}
+                                                                {suggestions.map(suggestion => {
+                                                                    const className = suggestion.active
+                                                                        ? 'suggestion-item--active'
+                                                                        : 'suggestion-item';
+                                                                    // inline style for demonstration purpose
+                                                                    const style = suggestion.active
+                                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                                    return (
+                                                                        <div
+                                                                            {...getSuggestionItemProps(suggestion, {
+                                                                                className,
+                                                                                style,
+                                                                            })}
+                                                                        >
+                                                                            <span>{suggestion.description}</span>
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </PlacesAutocomplete>
+                                                {errors.address && <span className="text-danger font-weight-bold "> <p>{errors.address.message}</p>
+                                                </span>}
+                                                {/* <InputText
                                                     type="text"
                                                     placeholder="Enter a plcae"
                                                     name="address"
@@ -206,7 +317,7 @@ const New = ({ mode }) => {
                                                     id="autocomplete"
                                                 />
                                                 {errors.address && <span className="text-danger font-weight-bold "> <p>{errors.address.message}</p>
-                                                </span>}
+                                                </span>} */}
                                             </div>
                                         </div>
 

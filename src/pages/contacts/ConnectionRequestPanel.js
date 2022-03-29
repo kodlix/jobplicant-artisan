@@ -48,7 +48,7 @@ const ConnectionRequestPanel = ({ setSelectedId, selectedId }) => {
 
   return (
     <div className="p-col-12 p-md-3 p-p-md-2 p-pt-0">
-      <div className="p-card">
+      <div className="p-card" style={{ borderRadius: "0.5rem" }}>
         <div className="p-card-title contact-sidepanel-cardtitle p-mb-3">
           Connection Requests
         </div>

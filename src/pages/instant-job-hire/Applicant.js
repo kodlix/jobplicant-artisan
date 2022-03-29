@@ -182,7 +182,7 @@ const Applicant = (props) => {
                         <hr />
                     </div> */}
 
-                    <div className="card card-size mt-2 p-col-sm-12">
+                    <div className="card card-size mt-2 p-col-sm-12" style={{ borderRadius: "0.5rem" }}>
                         <div className="card-body p-pt-0">
                             <div className="applicants-display">
                                 <div className="d-flex justify-content-between p-mb-1">
@@ -206,7 +206,7 @@ const Applicant = (props) => {
                                     {applicantList && applicantList?.length > 0 && applicantList.map(applicant =>
 
                                         <div className="col-md-4 col-sm-12 highlight-card p-pb-3" >
-                                            <div key={applicant.applicantId} className="card">
+                                            <div key={applicant.applicantId} className="card" style={{ borderRadius: "0.5rem" }}>
                                                 <img src={applicant.imageUrl} height="150px" className="card-img-top" alt="..." />
                                                 <div className="card-body">
                                                     <div className="applicant-actionIcons float-right">
