@@ -39,7 +39,7 @@ const CommentList = ({ postId, onViewComments, expandProfileImage, commentCount 
         <Button
           label="View comments"
           loading={loadingType === postId + "-loadingComments"}
-          className="timeline-commentListTitle"
+          className="timeline-commentListTitle rounded-pill"
           onClick={() => onViewComments(postId, 1, pageLimit, postId + "-loadingComments")}
         />
       }
@@ -49,7 +49,7 @@ const CommentList = ({ postId, onViewComments, expandProfileImage, commentCount 
         <Button
           label={`View more comments (${(comments.meta[postId].total) - (commentIds?.[postId]?.length)})`}
           loading={loadingType === postId + "-loadingMoreComments"}
-          className="timeline-commentListTitle"
+          className="timeline-commentListTitle rounded-pill"
           onClick={onViewMoreComments}
         />
       }

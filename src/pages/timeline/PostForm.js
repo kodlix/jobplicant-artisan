@@ -141,7 +141,7 @@ const CreatePostModal = ({ post, clearModalInput }) => {
   };
 
   const inputChange = (e, inputName) => {
-    
+
     const inputValue =
       inputName && (inputName === "body")
         ? e.htmlValue
@@ -318,7 +318,7 @@ const CreatePostModal = ({ post, clearModalInput }) => {
             className="TextEditor-container-timeline"
             onTextChange={(e) => { inputChange(e, "body") }}
             {...register("body", {
-              validate: (e) => {validateEditorBody(e)}
+              validate: (e) => { validateEditorBody(e) }
             })}
             id="body"
             name="body"
@@ -359,12 +359,12 @@ const CreatePostModal = ({ post, clearModalInput }) => {
                       data-bs-toggle="dropdown"
                       id="postFormMediaItem"
                       aria-expanded="false"
-                      className="timeline-postMediaItem-actionButton"
+                      className="timeline-postMediaItem-actionButton rounded-pill"
                     >
                       <i className="pi pi-ellipsis-h text-white" />
                     </Button>
                     <ul
-                      className="dropdown-menu timeline-postForm-actionDropdown"
+                      className="dropdown-menu timeline-postForm-actionDropdown rounded-pill"
                       aria-labelledby="postFormMediaItem"
                     >
                       <li
@@ -392,7 +392,7 @@ const CreatePostModal = ({ post, clearModalInput }) => {
           <Button
             label="Post"
             autoFocus
-            className="d-flex p-mt-3"
+            className="d-flex p-mt-3 rounded-pill"
             type="submit"
           />
         </div>

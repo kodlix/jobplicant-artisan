@@ -125,7 +125,7 @@ const List = () => {
       <div className={`contacts-container ${contactContainerClassName}`}>
         <div className="p-grid contacts-content">
           <div className="p-col-12 p-md-9">
-            <div className="p-card" style={{ borderRadius: "0.5rem" }}>
+            <div className="p-card" style={{ borderRadius: "1rem" }}>
               <div className="p-card-title d-flex justify-content-between align-items-center">
                 <span className="contact-cardtitle">
                   <i className="pi pi-book p-pr-2" />
@@ -133,7 +133,7 @@ const List = () => {
                 </span>
                 <span>
                   <Link to="/contacts/create">
-                    <Button className="contacts-cardsubtitle p-mr-3">
+                    <Button className="contacts-cardsubtitle p-mr-3 rounded-pill">
                       Add New Contact
                     </Button>
                   </Link>
@@ -148,7 +148,7 @@ const List = () => {
               return (
                 <div
                   className="p-card contact-individualContainer"
-                  key={contact.id} style={{ borderRadius: "0.5rem" }}
+                  key={contact.id} style={{ borderRadius: "1rem" }}
                 >
                   <span className="d-flex">
                     {contact.imageUrl && (
@@ -215,7 +215,7 @@ const List = () => {
                   loading === "loadMoreContacts" ? "Loading..." : "Load More"
                 }
                 onClick={loadMoreContacts}
-                className="p-mr-2 w-100"
+                className="p-mr-2 w-100 rounded-pill"
               />
             )}
             {contacts.ids.length === 0 && loading !== "loadingContacts" && (

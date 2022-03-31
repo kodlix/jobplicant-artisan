@@ -176,7 +176,7 @@ const New = ({ mode }) => {
                 <div className="content-container">
                     <div className="p-grid">
                         <div className="p-col-12 p-md-9">
-                            <div className="card card-size-list" style={{ borderRadius: "0.5rem" }}>
+                            <div className="card card-size-list" style={{ borderRadius: "1rem" }}>
                                 <div className="card-body"></div>
                                 <InstantHeader
                                     title="Create new instant hire"
@@ -433,7 +433,7 @@ const New = ({ mode }) => {
                                         label={loading ? "Please wait..." : "Submit"}
                                         disabled={loading}
                                         type="submit"
-                                        className="float-right" />
+                                        className="float-right rounded-pill" />
                                 </form>
 
                                 {/* <ConfirmDialog visible={visible} onHide={() => setVisible(false)} message="Are you sure you want to proceed?"

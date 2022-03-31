@@ -128,9 +128,9 @@ const ApplicantProfile = () => {
           <div className="flex-shrink-0">
             <Button
               onClick={() => history.goBack()}
-              className="bk-btn p-pt-2 app-color"
+              className="bk-btn p-pt-2 app-color rounded-pill"
             >
-              <i className="pi pi-arrow-left text-white"> Back</i>
+              <i className="pi pi-arrow-left text-white rounded-pill"> Back</i>
             </Button>
           </div>
         </div>
@@ -147,9 +147,8 @@ const ApplicantProfile = () => {
                   className="text-center pointer"
                 >
                   <i
-                    className={`pi pi-info-circle ${
-                      activeTab === "info" && "pi-active"
-                    }`}
+                    className={`pi pi-info-circle ${activeTab === "info" && "pi-active"
+                      }`}
                   ></i>
                   <div className="tab-titles pi-active">Info</div>
                 </div>
@@ -162,9 +161,8 @@ const ApplicantProfile = () => {
                   className="text-center pointer"
                 >
                   <i
-                    className={`pi pi-star ${
-                      activeTab === "review" && "pi-active"
-                    }`}
+                    className={`pi pi-star ${activeTab === "review" && "pi-active"
+                      }`}
                   ></i>
                   <div className={`tab-titles`}>Reviews</div>
                 </div>
@@ -298,7 +296,7 @@ const ApplicantProfile = () => {
                               {review?.title}
                             </li>
                             <li className="d-flex flex-column">
-                              <p className="p-1">{}</p>
+                              <p className="p-1">{ }</p>
                               <span>
                                 <div
                                   className="stars"

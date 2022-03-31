@@ -197,7 +197,7 @@ export function fetchAllInstantJobs(page, take) {
       (response) => {
         //handle success
         dispatch(onLoadAllInstantJobs(response));
-        console.log(response, "all instant data")
+        console.log(response, "all instant data");
       },
       (error) => {
         dispatch(

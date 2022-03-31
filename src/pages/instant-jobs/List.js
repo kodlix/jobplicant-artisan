@@ -70,7 +70,7 @@ const InstantJobs = () => {
                 <div className="content-container">
                     <div className="p-grid">
                         <div className="p-col-12 p-md-9">
-                            <div className="card card-size-list" style={{ borderRadius: "0.5rem" }}>
+                            <div className="card card-size-list" style={{ borderRadius: "1rem" }}>
                                 <InstantHeader
                                     title="All Instant Jobs"
                                     showCreateButton={false}
@@ -109,8 +109,8 @@ const InstantJobs = () => {
                                                         <div className="p-grid p-pt-5" id={`${i}_int`} hidden={false}>
                                                             <div className="p-pr-2 d-flex">
                                                                 {requestedId !== instantjob.accountId && <p> <span className="font-weight-bold app-color p-mt-2 interest-tx"> Interested ? &nbsp; </span> </p>}</div>
-                                                            {requestedId !== instantjob.accountId && <div><Button label="Yes" id="saveButton" className="p-button-sm" onClick={() => handleApply(instantjob.id, i)} /></div>}
-                                                            <div className="p-pr-1 px-2"> <Link to={`/instant-hire/view/${instantjob.id}`}><Button label="View" id="reject" className="p-button-sm" /> </Link></div>
+                                                            {requestedId !== instantjob.accountId && <div><Button label="Yes" id="saveButton" className="p-button-sm rounded-pill" onClick={() => handleApply(instantjob.id, i)} /></div>}
+                                                            <div className="p-pr-1 px-2"> <Link to={`/instant-hire/view/${instantjob.id}`}><Button label="View" id="reject" className="p-button-sm rounded-pill" /> </Link></div>
 
                                                         </div>
                                                         <p className="p-pt-2 float-right"> {moment(instantjob.createdAt).fromNow()} </p>

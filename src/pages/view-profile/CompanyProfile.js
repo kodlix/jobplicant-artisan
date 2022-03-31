@@ -162,7 +162,7 @@ const ViewCompanyProfile = () => {
                 <div className="">
 
                     <div className="d-flex flex-row-reverse py-3">
-                        <Button onClick={() => history.goBack()} className="bk-btn p-pt-2 app-color" ><i className="pi pi-arrow-left text-white">  Back</i></Button>
+                        <Button onClick={() => history.goBack()} className="bk-btn p-pt-2 app-color rounded-pill" ><i className="pi pi-arrow-left text-white"></i></Button>
                     </div>
                 </div>
                 <div className="p-grid">
