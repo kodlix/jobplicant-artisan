@@ -40,7 +40,7 @@ const TimelineLeftPanel = ({ profileInfo, expandProfileImage }) => {
 
   return (
     <div className="p-col-12 p-md-3 p-pl-0 p-py-md-2 p-pr-md-2 p-pb-0 p-pr-0">
-      <div className="p-card">
+      <div className="p-card" style={{ borderRadius: "1.5rem" }}>
         <div className="leftpanel-top-container-timeline"></div>
         <div className="leftpanel-bottom-container-timeline">
           {
@@ -152,7 +152,7 @@ const TimelineLeftPanel = ({ profileInfo, expandProfileImage }) => {
           </Link>
         </div>
       </div>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1.5rem" }}>
         <div className="p-card-title cardtitle-timeline p-mb-3">
           Suggestions
         </div>

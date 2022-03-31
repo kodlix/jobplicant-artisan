@@ -57,7 +57,7 @@ const Post = ({ profileInfo, post, isAuthenticated, expandProfileImage, onShow, 
   }
 
   return (
-    <div className="p-card p-py-3 p-py-sm-5 p-pl-3 p-pl-sm-5 p-pr-4 p-pr-sm-6 p-mb-2 timeline-posts">
+    <div className="p-card p-py-3 p-py-sm-5 p-pl-3 p-pl-sm-5 p-pr-4 p-pr-sm-6 p-mb-2 timeline-posts" style={{ borderRadius: "1.5rem" }}>
       <span className="d-flex justify-content-between">
         <span className="d-flex">
           {

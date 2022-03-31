@@ -82,7 +82,7 @@ const ViewPost = () => {
               }
               {
                 error?.statusCode === 404 &&
-                <div className="p-card p-py-3 p-py-sm-5 p-pl-3 p-pl-sm-5 p-pr-4 p-pr-sm-6 timeline-posts timeline-postsContainer--empty">
+                <div className="p-card p-py-3 p-py-sm-5 p-pl-3 p-pl-sm-5 p-pr-4 p-pr-sm-6 timeline-posts timeline-postsContainer--empty" style={{ borderRadius: "1.5rem" }}>
                   <h1>
                     <u>
                       404

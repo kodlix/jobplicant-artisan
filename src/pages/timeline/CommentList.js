@@ -17,7 +17,7 @@ const CommentList = ({ postId, onViewComments, expandProfileImage, commentCount 
   }
 
   return (
-    <div className='p-card-body p-pt-1 p-px-0'>
+    <div className='p-card-body p-pt-1 p-px-0' style={{ borderRadius: "1.5rem" }}>
       {
         commentIds?.[postId]?.map((commentId) => {
           const comment = comments.data[commentId];
