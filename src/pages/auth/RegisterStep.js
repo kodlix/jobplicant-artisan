@@ -83,7 +83,8 @@ const RegisterStep = ({ goto, accountType }) => {
                     <div className="login-pane-right p-md-4 my-4 mx-auto p-px-4">
                         <div className="logo-container finger" onClick={handleGoto}>
                             {/* <Link to="/"> */}
-                            <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" />
+                            {/* <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" /> */}
+                            <h3 className='app-pri-text-color' style={{ fontFamily: "cursive" }}>Hand-Job</h3>
                             {/* </Link> */}
                         </div>
                         <div className="">

@@ -98,6 +98,7 @@ const Create = () => {
                       <i className="pi pi-times p-mr-2" onClick={(e) => handleSearchInputChange(e)} name="clear" />
                     }
                   </div>
+                  <div><Link to="/contacts" className="bk-btn p-pt-2 app-color px-4" ><i className="pi pi-arrow-left"></i></Link></div>
                   {/* <Dropdown value={sortBy} options={sortOptions} onChange={(e) => setSortBy(e.value)} optionLabel="name" placeholder="Sorty By" className="p-mr-2 contacts-cardsubtitle contact-sortDropdown" panelClassName="contacts-cardsubtitle" /> */}
                 </div>
               </div>

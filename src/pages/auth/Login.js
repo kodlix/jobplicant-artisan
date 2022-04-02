@@ -51,7 +51,8 @@ const Login = ({ props }) => {
                     <Toast ref={toast} />
                     <div className="login-pane-right p-md-4 mx-auto">
                         <div className="brand-logo text-center">
-                            <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" />
+                            {/* <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" /> */}
+                            <h3 className='app-pri-text-color' style={{ fontFamily: "cursive" }}>Hand-Job</h3>
                         </div>
                         <div className="">
                             <div className="">

@@ -13,7 +13,8 @@ const LandingPage = () => {
                             <div className="col-lg-12">
                                 <nav className="navbar navbar-expand-lg py-2">
                                     <Link className="navbar-brand logo" to="index.html">
-                                        <img className="logo1" src="assets/images/logo/applogo.jpeg" height="40px" alt="Logo" />
+                                        {/* <img className="logo1" src="assets/images/logo/applogo.jpeg" height="40px" alt="Logo" /> */}
+                                        <h3 className='app-pri-text-color' style={{ fontFamily: "cursive" }}>Hand-Job</h3>
                                     </Link>
                                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                         <span className="toggler-icon"></span>
@@ -62,7 +63,7 @@ const LandingPage = () => {
                                     </div>
                                     <div className="col-lg-6 co-12">
                                         <div className="hero-image wow fadeInRight" data-wow-delay=".4s">
-                                            <img src="assets/images/hero/banner.png" alt="#" />
+                                            <img src="assets/images/hero/artisans.jpeg" alt="#" />
                                         </div>
                                     </div>
                                 </div>
@@ -451,7 +452,9 @@ const LandingPage = () => {
                                 <div className="f-about single-footer">
                                     <div className="logo">
                                         <Link className="navbar-brand logo" to="index.html">
-                                            <img className="logo1" src="assets/images/logo/applogo.jpeg" height="40px" alt="Logo" />
+                                            {/* <img className="logo1" src="assets/images/logo/applogo.jpeg" height="40px" alt="Logo" /> */}
+                                            <h2 className='app-pri-text-color' style={{ fontFamily: "cursive" }}>Hand-Job</h2>
+
                                         </Link>
                                     </div>
 
