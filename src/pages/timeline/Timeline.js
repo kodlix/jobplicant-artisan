@@ -83,7 +83,7 @@ const Timeline = () => {
             <div className={`p-col-12 p-px-0 ${isAuthenticated ? "p-md-6" : "p-md-9"}`}>
               {
                 isAuthenticated &&
-                <div className="p-card p-grid p-mb-2 p-mt-0 p-mx-0 p-p-3 align-items-center">
+                <div className="p-card p-grid p-mb-2 p-mt-0 p-mx-0 p-p-3 align-items-center" style={{ borderRadius: "1.5rem" }}>
                   <div className="p-col-10">
                     <Button
                       label="Start a Post"
@@ -111,7 +111,7 @@ const Timeline = () => {
                 isAuthenticated &&
                 loading !== "loadPosts" &&
                 posts.ids.length === 0 &&
-                <div className="p-card p-p-3 p-mb-1 timeline-posts">
+                <div className="p-card p-p-3 p-mb-1 timeline-posts" style={{ borderRadius: "1.5rem" }}>
                   <div className="p-mb-6 p-p-4 text-center">
                     <h3 className="p-card-title">
                       Create a post
