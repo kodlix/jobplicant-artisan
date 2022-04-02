@@ -133,7 +133,7 @@ const List = () => {
                 </span>
                 <span>
                   <Link to="/contacts/create">
-                    <Button className="contacts-cardsubtitle p-mr-3 rounded-pill">
+                    <Button className="contacts-cardsubtitle p-mr-3 rounded-pill on-hover">
                       Add New Contact
                     </Button>
                   </Link>
@@ -215,7 +215,7 @@ const List = () => {
                   loading === "loadMoreContacts" ? "Loading..." : "Load More"
                 }
                 onClick={loadMoreContacts}
-                className="p-mr-2 w-100 rounded-pill"
+                className="p-mr-2 w-100 rounded-pill on-hover"
               />
             )}
             {contacts.ids.length === 0 && loading !== "loadingContacts" && (
