@@ -155,7 +155,7 @@ const Create = () => {
                     }
                     {
                       (error || user.id !== selectedId) &&
-                      <Button className="contacts-cardsubtitle p-p-1 p-mr-3 rounded-pill" data-id={user.id} onClick={(e) => handleConnectionRequest(e)}>
+                      <Button className="contacts-cardsubtitle p-p-1 p-mr-3 rounded-pill on-hover" data-id={user.id} onClick={(e) => handleConnectionRequest(e)}>
                         <span className="p-m-2">
                           Send Connection Request
                         </span>
@@ -168,7 +168,7 @@ const Create = () => {
             {
               users.ids.length > 0 &&
               loading !== "loadMore" &&
-              <Button label='Load More' onClick={loadMoreUsers} className="p-mr-2 w-100 rounded-pill" />
+              <Button label='Load More' onClick={loadMoreUsers} className="p-mr-2 w-100 rounded-pill on-hover" />
             }
             {
               users.ids.length === 0 && loading !== "loadingFreeUsers" &&

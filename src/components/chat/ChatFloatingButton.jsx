@@ -23,7 +23,7 @@ const ChatFloatingButton = () => {
       <Button
         onClick={handleShowChat}
         icon="pi pi-comment"
-        className="p-button-rounded p-button-info "
+        className="p-button-rounded p-button-info on-hover"
       />
     </div>
   );

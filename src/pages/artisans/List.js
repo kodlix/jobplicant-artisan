@@ -219,7 +219,7 @@ const Applicant = (props) => {
             </div>
             {artisans?.length > 0 && (
               <div className="pt-2 pb-2">
-                <Button label="Load more" className="w-100" />
+                <Button label="Load more" className="w-100 on-hover" />
               </div>
             )}
           </div>

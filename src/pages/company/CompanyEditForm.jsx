@@ -320,7 +320,6 @@ const CompanyEditForm = ({ countryId, stateId, lgaId }) => {
                               shouldValidate: true,
                             });
                           }}
-                          name="yearOfEstablishment"
                           {...register("yearOfEstablishment", {
                             required: `* Year of establishment is required`,
                           })}
@@ -625,6 +624,7 @@ const CompanyEditForm = ({ countryId, stateId, lgaId }) => {
             >
               {!editMode && (
                 <Button
+                  className="on-hover"
                   disabled={loading}
                   icon="pi pi-check"
                   iconPos="left"

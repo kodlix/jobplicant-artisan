@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 const SectionSelectedFiles = ({ selectedFiles, removeFile }) => {
-  
+
   return (<> <p className="pl-2"> Selected files</p>
     {selectedFiles.map(({ id, imageURL }, index) => (
       <div key={index} className="p-d-flex justify-content-start align-items-center m-2 p-3" style={{ border: '1px dashed #AAA' }}>
@@ -112,15 +112,15 @@ const PortfolioForm = ({ data, closeEditMode }) => {
           icon="images"
           sectionTitle="Portfolio"
         />
-        
+
         <div className="p-card-body">
           <form onSubmit={handleSubmit(portfolioSubmit)}>
-          {selectedFiles.length > 0 && (<><SectionSelectedFiles selectedFiles={selectedFiles} removeFile={removeFile} />
-        <ModeFooter
-              loading={loading}
-              id="portfolioEdit"
-              onCancel={closeEditMode}
-            /></>)}
+            {selectedFiles.length > 0 && (<><SectionSelectedFiles selectedFiles={selectedFiles} removeFile={removeFile} />
+              <ModeFooter
+                loading={loading}
+                id="portfolioEdit"
+                onCancel={closeEditMode}
+              /></>)}
             <br />
             <span className="width-100 p-mb-4">
               <div className="p-grid">
@@ -151,6 +151,7 @@ const PortfolioForm = ({ data, closeEditMode }) => {
                         <img src={item} alt="Portfolio Item" />
                         <span className="portfolioItem-icons">
                           <Button
+                            className="on-hover"
                             type="button"
                             icon="pi pi-ellipsis-h"
                             onClick={(e) => ref.current[item].toggle(e)}
@@ -174,7 +175,7 @@ const PortfolioForm = ({ data, closeEditMode }) => {
               </div>
             </span>
             <div></div>
-            
+
           </form>
         </div>
       </div>

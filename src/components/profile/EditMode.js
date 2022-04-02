@@ -191,7 +191,7 @@ const EditMode = (props) => {
               </div>
               <div className="p-field p-col-12">
                 year of graduation
-                  <Calendar selectionMode="range" value={dates} onChange={(e) => setDates(e.value)} dateFormat="dd/mm/yy"></Calendar>
+                <Calendar selectionMode="range" value={dates} onChange={(e) => setDates(e.value)} dateFormat="dd/mm/yy"></Calendar>
               </div>
               <div className="p-field p-col-12 p-md-6">
                 <label className="inputLabel" htmlFor="firstname6">Institution Name</label>
@@ -409,7 +409,7 @@ const EditMode = (props) => {
                     <div className="p-mx-2">
                       <img src={item.imageURL} alt="Portfolio Item" />
                       <span className="portfolioItem-icons">
-                        <Button type="button" icon="pi pi-ellipsis-h" onClick={(e) => ref.current[item.id].toggle(e)} />
+                        <Button className="on-hover" type="button" icon="pi pi-ellipsis-h" onClick={(e) => ref.current[item.id].toggle(e)} />
                         <OverlayPanel ref={element => (ref.current[item.id] = element)} >
                           <div className="p-py-2 p-px-3" onClick={deletePortfolio} id={item.id}><i className="pi pi-trash p-pr-2"></i> Delete Image</div>
                         </OverlayPanel>
@@ -433,8 +433,8 @@ const ModeFooter = (props) => {
   return (
     <>
       <div className="editMode-footer">
-        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" />
-        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" />
+        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" className="on-hover" />
+        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" className="on-hover" />
       </div>
     </>
   );

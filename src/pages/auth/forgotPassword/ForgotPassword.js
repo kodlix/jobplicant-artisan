@@ -78,7 +78,7 @@ const ForgotPassword = () => {
                                         </label>
                                     </div>
                                     <Button
-                                        label={loading ? "Recovering..." : "Recover Password"} className="form-group" />
+                                        label={loading ? "Recovering..." : "Recover Password"} className="form-group on-hover" />
                                     <div className="form-group">
                                         <Link to="/Login" className="p-mt-2 p-text-secondary back-button">Back to Login</Link>
                                     </div>

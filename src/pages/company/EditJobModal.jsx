@@ -11,7 +11,7 @@ import BackgroundImage from '../../assets/bg.png'
 import avatarImage from '../../assets/avatar.png'
 import { Dropdown } from "primereact/dropdown";
 import { loadCountry, loadStates } from "store/modules/location";
-import {  editJob } from "store/modules/job";
+import { editJob } from "store/modules/job";
 import { Link, useHistory } from "react-router-dom";
 
 import './EditJob.css';
@@ -53,9 +53,9 @@ const EditJobModal = ({ showModal, onHide, job }) => {
   useEffect(() => {
     dispatch(loadCountry());
   }, [dispatch]);
-  
+
   useEffect(() => {
-    if(countries){
+    if (countries) {
       console.log('country', countries, 'job country', job)
       // if(countries.find(c => c.name === job.country) !== null){
       // const countryId = countries.find(c => c.name === job.country).id;
@@ -63,8 +63,8 @@ const EditJobModal = ({ showModal, onHide, job }) => {
       //   dispatch(loadStates(countryId));
       // }
     }
-  }, 
-  [countries])
+  },
+    [countries])
 
 
   useEffect(() => {
@@ -104,7 +104,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
       setValue('minSalary', job.minSalary)
       setValue('maxSalary', job.maxSalary)
       setValue('country', countries.find(c => c.name === job.country))
-      setValue('state', states.find(s => s.name === job.state) )
+      setValue('state', states.find(s => s.name === job.state))
       setValue('hideCompanyName', job.hideCompanyName)
       setValue('jobDescription', job.description)
       setValue('minYearOfExperience', job.minYearOfExperience)
@@ -183,7 +183,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
                     inputLabel="Company Name"
                     register={register}
                     inputChange={handleChange}
-                    className="form-control" 
+                    className="form-control"
                     value={job.companyName}
                   />
                 </div>
@@ -202,7 +202,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
                     inputLabel="industry"
                     register={register}
                     inputChange={handleChange}
-                    className="form-control" 
+                    className="form-control"
                     value={job.industry}
                   />
                 </div>
@@ -221,7 +221,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
                     inputLabel="Address"
                     register={register}
                     inputChange={handleChange}
-                    className="form-control" 
+                    className="form-control"
                     value={job.address}
                   />
                 </div>
@@ -240,7 +240,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
                     inputLabel="Phone Number"
                     register={register}
                     inputChange={handleChange}
-                    className="form-control" 
+                    className="form-control"
                     value={job.phoneNumber}
                   />
                 </div>
@@ -259,7 +259,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
                     inputLabel="Email"
                     register={register}
                     inputChange={handleChange}
-                    className="form-control" 
+                    className="form-control"
                     value={job.email}
                   />
                 </div>
@@ -278,7 +278,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
                     inputLabel="Website"
                     register={register}
                     inputChange={handleChange}
-                    className="form-control" 
+                    className="form-control"
                     value={job.jobUrl}
                   />
                 </div>
@@ -647,6 +647,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
         <div className="p-2"></div>
         <div className="d-flex justify-content-end">
           <Button
+            className="on-hover"
             icon="pi pi-check"
             iconPos="left"
             label={editingJob ? 'Please wait...' : "Update"}
@@ -658,7 +659,7 @@ const EditJobModal = ({ showModal, onHide, job }) => {
         {/* button */}
       </form>
     </div> : <Spinner />
-}
+    }
   </Dialog>
   );
 };

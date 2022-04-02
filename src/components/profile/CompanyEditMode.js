@@ -160,8 +160,8 @@ const ModeFooter = (props) => {
   return (
     <>
       <div className="editMode-footer">
-        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" />
-        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" />
+        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" className="on-hover" />
+        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" className="on-hover" />
       </div>
     </>
   );

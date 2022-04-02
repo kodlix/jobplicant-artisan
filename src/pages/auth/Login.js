@@ -110,7 +110,7 @@ const Login = ({ props }) => {
                                             <Button
                                                 label="Login"
                                                 type="submit"
-                                                className="form-group rounded-pill"
+                                                className="form-group rounded-pill on-hover"
                                                 loading={isRequestLoading}
                                             />
 
