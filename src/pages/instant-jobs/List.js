@@ -84,8 +84,8 @@ const InstantJobs = () => {
                                         <div className="highlight-card p-p-2">
                                             <div className="row" style={{ flexWrap: "nowrap !important" }}>
                                                 <div className="col-2">
-                                                    {instantjob.poster.imageUrl ? <img
-                                                        src={instantjob.poster.imageUrl}
+                                                    {instantjob?.poster?.imageUrl ? <img
+                                                        src={instantjob?.poster?.imageUrl}
                                                         className="img-fluid rounded-circle"
                                                         alt="user-image" style={{ width: "70px", height: "70px" }}
                                                     /> : <img
@@ -110,7 +110,7 @@ const InstantJobs = () => {
                                                             <div className="p-pr-2 d-flex">
                                                                 {requestedId !== instantjob.accountId && <p> <span className="font-weight-bold app-color p-mt-2 interest-tx"> Interested ? &nbsp; </span> </p>}</div>
                                                             {requestedId !== instantjob.accountId && <div><Button label="Yes" id="saveButton" className="p-button-sm rounded-pill" onClick={() => handleApply(instantjob.id, i)} /></div>}
-                                                            <div className="p-pr-1 px-2"> <Link to={`/instant-hire/view/${instantjob.id}`}><Button label="View" id="reject" className="p-button-sm rounded-pill" /> </Link></div>
+                                                            <div className="p-pr-1 px-2"> <Link to={`/instant-hire/view/${instantjob.id}`}><Button label="View" id="reject" className="p-button-sm rounded-pill on-hover" /> </Link></div>
 
                                                         </div>
                                                         <p className="p-pt-2 float-right"> {moment(instantjob.createdAt).fromNow()} </p>

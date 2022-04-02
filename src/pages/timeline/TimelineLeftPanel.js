@@ -193,7 +193,7 @@ const TimelineLeftPanel = ({ profileInfo, expandProfileImage }) => {
                 type="button"
                 iconPos="left"
                 icon="pi pi-plus"
-                className="p-p-0 suggestion-button-timeline rounded-pill"
+                className="p-p-0 suggestion-button-timeline rounded-pill on-hover"
               />
             </div>
           )

@@ -257,7 +257,7 @@ const RegisterStep = ({ goto, accountType }) => {
                                                 &nbsp; and <Link to="/"> <span className="app-color font-weight-bold">Cookie Policy.</span></Link>.</p>
 
                                         </div>
-                                        <Button type="submit" label="Sign up" className="form-group rounded-pill" />
+                                        <Button type="submit" label="Sign up" className="form-group rounded-pill on-hover" />
                                     </div>
 
                                 </form>

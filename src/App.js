@@ -40,13 +40,13 @@ function App() {
 
       notificationSocket.on("notification_msg_to_client", (data) => {
         console.log("message sent to clients");
-        if (data && data.recieverId === user.id) {
-          dispatch(UserNotifications(user.id));
+        if (data && data?.recieverId === user?.id) {
+          dispatch(UserNotifications(user?.id));
         }
       });
     })
 
-    
+
     return () => notificationSocket.disconnect();
   }, []);
 

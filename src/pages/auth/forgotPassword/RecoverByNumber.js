@@ -28,7 +28,7 @@ const ResetPassword = () => {
                                         <InputText id="enterCode" type="text" placeholder="Enter Code" />
                                         <Link to="/" className="p-ml-2"><i className="pi pi-undo"></i> <small>Resend code</small></Link>
                                     </div>
-                                    <Button label="Reset Password" className="form-group" />
+                                    <Button label="Reset Password" className="form-group on-hover" />
                                     <div className="form-group">
                                         <Link to="/Login" className="p-mt-2 p-text-secondary back-button">Back to Login</Link>
                                     </div>

@@ -104,7 +104,7 @@ const ConnectionRequestPanel = ({ setSelectedId, selectedId }) => {
                         }
                         {
                           (error === "requestFail" || contact.id !== selectedId || loading !== "rejectRequest") &&
-                          <Button className="contacts-reject-button p-ml-2 rounded-pill" data-id={contact.id} onClick={confirmRequestRejection}>
+                          <Button className="contacts-reject-button bg-danger p-ml-2 rounded-pill on-hover" data-id={contact.id} onClick={confirmRequestRejection}>
                             <i className="pi pi-times" />
                           </Button>
 
@@ -137,7 +137,7 @@ const ConnectionRequestPanel = ({ setSelectedId, selectedId }) => {
         }
         {
           requests.ids.length > 0 &&
-          <Button label={loading === "loadMoreRequests" ? 'Loading...' : 'Load More'} onClick={loadMoreRequests} className="p-mr-2 w-100 rounded-pill" />
+          <Button label={loading === "loadMoreRequests" ? 'Loading...' : 'Load More'} onClick={loadMoreRequests} className="p-mr-2 w-100 rounded-pill on-hover" />
         }
         {
           requests.ids.length === 0 &&

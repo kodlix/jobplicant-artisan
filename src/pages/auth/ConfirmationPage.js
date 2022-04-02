@@ -75,10 +75,10 @@ const ConfirmationPage = () => {
                                     <div className="row">
                                         <div className="p-col-7">
                                             <Link to="/register">
-                                                <Button label="Update Contact Info" className="appcolor label" /> </Link>
+                                                <Button label="Update Contact Info" className="appcolor label on-hover" /> </Link>
                                         </div>
                                         <div className="p-col-5">
-                                            <Button label="Continue" className="p-button-success continue-btn" />
+                                            <Button label="Continue" className="p-button-success continue-btn on-hover" />
                                         </div>
                                     </div>
                                 </form>
