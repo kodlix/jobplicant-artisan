@@ -133,7 +133,7 @@ const EditMode = (props) => {
   return (
     <>
       {componentStatus.biographyEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="bookmark" sectionTitle="Biography" deleteButton="true" onDelete={handleDelete} />
           <div className="p-card-body">
             <label htmlFor="biographyInput" className="inputLabel">Give a short descripiton of your career history</label>
@@ -143,7 +143,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.experienceEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="star-o" sectionTitle="Experience" />
           <div className="p-card-body">
             <div className="p-fluid p-formgrid p-grid">
@@ -177,7 +177,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.educationEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="book" sectionTitle="Education" />
           <div className="p-card-body">
             <div className="p-fluid p-formgrid p-grid">
@@ -211,7 +211,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.skillEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="tag" sectionTitle="Skills" />
           <div className="p-card-body">
             <label htmlFor="skillInput" className="inputLabel p-pr-3">Add up to 10 skills</label>
@@ -230,7 +230,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.hobbyEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="heart" sectionTitle="Hobbies / Likes" />
           <div className="p-card-body">
             <form>
@@ -253,7 +253,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.POIEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="briefcase" sectionTitle="Professions of Interest" />
           <div className="p-card-body">
             <form>
@@ -276,7 +276,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.LOIEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="map-marker" sectionTitle="Location of Interest" />
           <div className="p-card-body">
             <form>
@@ -294,7 +294,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.contactInfoEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="phone" sectionTitle="Contact Information" />
           <div className="p-card-body">
             <form>
@@ -336,7 +336,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.personalInfoEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="user" sectionTitle="Personal Information" />
           <div className="p-card-body">
             <form>
@@ -383,7 +383,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.portfolioEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="images" sectionTitle="Portfolio" />
           <div className="p-card-body">
             <span className="width-100 p-mb-4">

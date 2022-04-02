@@ -61,7 +61,7 @@ const HobbyForm = ({ data, closeEditMode }) => {
 
   const hobbySubmit = (hobby) => {
     dispatch(updateUserHobies(hobbies));
-    
+
   };
 
   const componentStatus = { skills: "add" };
@@ -71,7 +71,7 @@ const HobbyForm = ({ data, closeEditMode }) => {
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader
           componentStatus={componentStatus}
           icon="heart"

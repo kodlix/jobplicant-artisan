@@ -56,12 +56,12 @@ const ProfessionsOfInterestForm = ({ data, closeEditMode, onClick }) => {
 
   const interestSubmit = (interest) => {
     dispatch(updateProfessionOfInterest(interests));
-  
+
   };
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader icon="heart" sectionTitle="Professions of Interest" />
         <div className="p-card-body">
           <form onSubmit={handleSubmit(interestSubmit)}>

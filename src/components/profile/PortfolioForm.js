@@ -105,7 +105,7 @@ const PortfolioForm = ({ data, closeEditMode }) => {
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <Toast ref={toast} />
         <SectionHeader
           componentStatus={componentStatus}
