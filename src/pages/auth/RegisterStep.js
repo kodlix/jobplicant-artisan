@@ -80,7 +80,7 @@ const RegisterStep = ({ goto, accountType }) => {
         <>
             <div className="p-fluid">
                 <div className="p-grid p-px-4">
-                    <div className="login-pane-right p-md-4 my-4 mx-auto p-px-4">
+                    <div className="login-pane-right p-md-4 my-4 mx-auto p-px-4" style={{ borderRadius: "2rem" }}>
                         <div className="logo-container finger" onClick={handleGoto}>
                             {/* <Link to="/"> */}
                             {/* <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" /> */}
