@@ -45,8 +45,8 @@ const LandingPage = () => {
                                     <div className="col-lg-6 co-12">
                                         <div className="inner-content">
                                             <div className="hero-text">
-                                                <h1 className="wow fadeInUp prim" data-wow-delay=".3s">Join our community of Job seekers
-                                                    <br /> and connect to the right jobs for yourself
+                                                <h1 className="wow fadeInUp prim" data-wow-delay=".3s">Join our community of Artisan-Job seekers
+                                                    <br /> and connect to the right vendor for yourself
 
                                                 </h1>
                                                 <p className="wow fadeInUp" data-wow-delay=".5s">Creating a beautiful job website is
@@ -55,7 +55,7 @@ const LandingPage = () => {
                                                     Leverage agile frameworks to high level overviews.
                                                 </p>
                                                 <div className="button wow fadeInUp" data-wow-delay=".7s">
-                                                    <Link to="/login" className="btn">Post a Job</Link>
+                                                    <Link to="/login" className="btn">Request for an Instant Service</Link>
                                                     {/* <Link to="#" className="btn btn-alt green-back">See latest  all hires</Link> */}
                                                 </div>
                                             </div>
@@ -63,7 +63,7 @@ const LandingPage = () => {
                                     </div>
                                     <div className="col-lg-6 co-12">
                                         <div className="hero-image wow fadeInRight" data-wow-delay=".4s">
-                                            <img src="assets/images/hero/artisans.jpeg" alt="#" />
+                                            <img src="assets/images/hero/handyman.png" alt="#" />
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@ const LandingPage = () => {
                                                     Leverage agile frameworks to high level overviews.
                                                 </p>
                                                 <div className="button wow fadeInUp" data-wow-delay=".7s">
-                                                    <Link to="/login" className="btn">Post a Job</Link>
+                                                    <Link to="/login" className="btn">Request for an Instant Service</Link>
                                                     {/* <Link to="#" className="btn btn-alt">See latest  all hires</Link> */}
                                                 </div>
                                             </div>
@@ -106,28 +106,14 @@ const LandingPage = () => {
             <section className="apply-process section">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3 col-md-4 col-12">
+                        <div className="col-lg-6 col-md-6 col-12">
                             <div className="process-item">
                                 <i className="lni lni-cog"></i>
                                 <h4>Artisan Job-Seekers</h4>
                                 <p>Set up ypur profile in minutes and make yourself available by those that requires your servicez.</p>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-12">
-                            <div className="process-item">
-                                <i className="lni lni-user"></i>
-                                <h4>Recruiter </h4>
-                                <p>Make your vacant position in your company for corporate job seekers to find and apply for them.</p>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-md-4 col-12">
-                            <div className="process-item">
-                                <i className="lni lni-book"></i>
-                                <h4>Corporate Job</h4>
-                                <p> Find and apply for Vacancies from various companies in your prefered location and apply form them.</p>
-                            </div>
-                        </div>
-                        <div className="col-lg-3 col-md-4 col-12">
+                        <div className="col-lg-6 col-md-6 col-12">
                             <div className="process-item">
                                 <i className="lni lni-fireworks"></i>
                                 <h4>Instant Applicant Hire</h4>
@@ -148,7 +134,7 @@ const LandingPage = () => {
                                 <div className="inner-content">
                                     <div className="hero-text">
                                         <h1 className="wow fadeInUp" data-wow-delay=".3s">Find the Most Exciting<br />
-                                            Jobs to Make a
+                                            Artisan Jobs to Make a
                                             Better Life
                                         </h1>
                                         <p className="wow fadeInUp" data-wow-delay=".5s">Creating a beautiful job website is not
@@ -158,7 +144,7 @@ const LandingPage = () => {
                                             synopsis for high level overviews.
                                         </p>
                                         <div className="button wow fadeInUp" data-wow-delay=".7s">
-                                            <Link to="/login" className="btn">Post a Job</Link>
+                                            <Link to="/login" className="btn">Request for an Instant Service</Link>
                                             {/* <Link to="#" className="btn btn-alt">See latest  all hires</Link> */}
                                         </div>
                                     </div>
@@ -226,16 +212,14 @@ const LandingPage = () => {
                             <div className="inner">
                                 <div className="section-title">
                                     <span className="wow fadeInDown" data-wow-delay=".2s">GETTING STARTED TO WORK</span>
-                                    <h2 className="wow fadeInUp" data-wow-delay=".4s">Don’t just find. Be found. Put your
-                                        CV in front of great employers</h2>
+                                    <h2 className="wow fadeInUp" data-wow-delay=".4s">Don’t just find. Be found. Sign up and update your portfolio with your works</h2>
                                     <p className="wow fadeInUp" data-wow-delay=".6s">It helps you to increase your chances of
-                                        finding a suitable job and let recruiters contact you
-                                        about jobs that are not needed to pay for advertising.</p>
+                                        getting a suitable hand-job and let instant service seeker contact you
+                                        for your service.</p>
                                     <div className="button wow fadeInUp" data-wow-delay=".8s">
-                                        <Link to="add-resume.html" className="btn">
-                                            <i className="lni lni-upload"></i>
-                                            Generate Your
-                                            Resume</Link>
+                                        <Link to="/register" className="btn">
+                                            {/* <i className="lni lni-upload"></i> */}
+                                            Get Started</Link>
                                     </div>
                                 </div>
                             </div>
@@ -422,7 +406,7 @@ const LandingPage = () => {
                         <div className="row align-items-center justify-content-center">
                             <div className="col-lg-6 col-12">
                                 <div className="download-text text-white">
-                                    <h3 className="text-white">Download jobplicant now</h3>
+                                    <h3 className="text-white">Download Hand-Job Now</h3>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do<br />
                                         eiusmod tempor
                                         incididunt ut labore et dolore</p>
@@ -487,7 +471,7 @@ const LandingPage = () => {
                                     <div className="col-lg-4 col-md-6 col-12">
 
                                         <div className="single-footer f-link">
-                                            <h3>For Candidates</h3>
+                                            <h3>For Artisans</h3>
                                             <ul>
                                                 <li><Link to="#">User Dashboard</Link></li>
                                                 <li><Link to="#">CV Packages</Link></li>
@@ -502,7 +486,7 @@ const LandingPage = () => {
                                     <div className="col-lg-4 col-md-6 col-12">
 
                                         <div className="single-footer f-link">
-                                            <h3>For Employers</h3>
+                                            <h3>For Instant Service Seekers</h3>
                                             <ul>
                                                 <li><Link to="#">Post New</Link></li>
                                                 <li><Link to="#">Employer List</Link></li>
