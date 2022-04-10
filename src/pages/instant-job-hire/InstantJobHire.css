@@ -139,6 +139,12 @@
 .applicants-display {
     padding: 1em;
 }
+.map-address {
+    position: 'absolute' !important;
+    top: '40px';
+    box-shadow: '1px 3px 2px #eee';
+    width: '100%';
+}
 
 
 /* Media Query Section */
@@ -181,6 +187,7 @@
         margin: auto;
         padding-top: 30px;
     }
+
 }
 
 @media only screen and (min-width: 768px) {}

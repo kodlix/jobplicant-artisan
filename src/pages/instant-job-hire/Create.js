@@ -11,6 +11,7 @@ import { createInstantJob } from 'store/modules/instantJob';
 import { Calendar } from 'primereact/calendar';
 import RecentInstantJobs from 'pages/instant-jobs/Recent_instant_Jobs';
 import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng, } from 'react-places-autocomplete';
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 
 import './InstantJobHire.css'
@@ -217,7 +218,7 @@ const New = ({ mode }) => {
                                                     onSelect={handleSelect}
                                                 >
                                                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                                                        <div>
+                                                        <div style={{ position: 'relative' }}>
                                                             <InputText
                                                                 {...getInputProps({
                                                                     placeholder: 'Enter Location ...',
@@ -226,7 +227,7 @@ const New = ({ mode }) => {
                                                                 })}
 
                                                             />
-                                                            <div className="autocomplete-dropdown-container">
+                                                            <div className="autocomplete-dropdown-container" style={{ position: 'absolute', top: '40px', boxShadow: '1px 3px 2px #eee', width: '100%' }}>
                                                                 {loading && <div>Loading...</div>}
                                                                 {suggestions.map(suggestion => {
                                                                     const className = suggestion.active
@@ -234,8 +235,8 @@ const New = ({ mode }) => {
                                                                         : 'suggestion-item';
                                                                     // inline style for demonstration purpose
                                                                     const style = suggestion.active
-                                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer', padding: '4px', }
+                                                                        : { backgroundColor: '#ffffff', cursor: 'pointer', padding: '4px', };
                                                                     return (
                                                                         <div
                                                                             {...getSuggestionItemProps(suggestion, {
@@ -243,7 +244,7 @@ const New = ({ mode }) => {
                                                                                 style,
                                                                             })}
                                                                         >
-                                                                            <span>{suggestion.description}</span>
+                                                                            <FaMapMarkerAlt /> <span>{suggestion.description}</span>
                                                                         </div>
                                                                     );
                                                                 })}
@@ -273,7 +274,7 @@ const New = ({ mode }) => {
                                                     onSelect={handleSelectAddress}
                                                 >
                                                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                                                        <div>
+                                                        <div style={{ position: 'relative' }}>
                                                             <InputText
                                                                 {...getInputProps({
                                                                     placeholder: 'Meet up Place ...',
@@ -282,7 +283,7 @@ const New = ({ mode }) => {
                                                                 })}
 
                                                             />
-                                                            <div className="autocomplete-dropdown-container">
+                                                            <div className="autocomplete-dropdown-container" style={{ position: 'absolute', top: '40px', boxShadow: '1px 3px 2px #eee', width: '100%', zIndex: 1 }}>
                                                                 {loading && <div>Loading...</div>}
                                                                 {suggestions.map(suggestion => {
                                                                     const className = suggestion.active
@@ -290,8 +291,8 @@ const New = ({ mode }) => {
                                                                         : 'suggestion-item';
                                                                     // inline style for demonstration purpose
                                                                     const style = suggestion.active
-                                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                                                        : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                                                        ? { backgroundColor: '#fafafa', cursor: 'pointer', padding: '4px' }
+                                                                        : { backgroundColor: '#ffffff', cursor: 'pointer', padding: '4px' };
                                                                     return (
                                                                         <div
                                                                             {...getSuggestionItemProps(suggestion, {
@@ -299,7 +300,7 @@ const New = ({ mode }) => {
                                                                                 style,
                                                                             })}
                                                                         >
-                                                                            <span>{suggestion.description}</span>
+                                                                            <FaMapMarkerAlt /> <span>{suggestion.description}</span>
                                                                         </div>
                                                                     );
                                                                 })}
