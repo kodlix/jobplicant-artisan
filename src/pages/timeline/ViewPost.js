@@ -77,12 +77,12 @@ const ViewPost = () => {
                 <div className="p-p-5 d-flex justify-content-center">
                   <i
                     className="pi pi-spin pi-spinner"
-                    style={{ 'fontSize': '2em', color: "var(--app-primary-color)" }} />
+                    style={{ 'fontSize': '2em', color: "#5A2846" }} />
                 </div>
               }
               {
                 error?.statusCode === 404 &&
-                <div className="p-card p-py-3 p-py-sm-5 p-pl-3 p-pl-sm-5 p-pr-4 p-pr-sm-6 timeline-posts timeline-postsContainer--empty" style={{ borderRadius: "1.5rem" }}>
+                <div className="p-card p-py-3 p-py-sm-5 p-pl-3 p-pl-sm-5 p-pr-4 p-pr-sm-6 timeline-posts timeline-postsContainer--empty">
                   <h1>
                     <u>
                       404
@@ -103,7 +103,7 @@ const ViewPost = () => {
                     profileInfo={profileInfo}
                     isAuthenticated={isAuthenticated}
                     expandProfileImage={expandProfileImage}
-                    viewPage={true}
+                    viewPage ={true}
                   />
                 </div>
               }

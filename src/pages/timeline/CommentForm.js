@@ -110,7 +110,7 @@ const CommentForm = ({ postId, imageUrl, expandProfileImage }) => {
         width="40"
         height="40"
         className="rounded-circle profile-picture-timeline align-self-center"
-      // onClick={expandProfileImage}
+        // onClick={expandProfileImage}
       />
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -154,7 +154,7 @@ const CommentForm = ({ postId, imageUrl, expandProfileImage }) => {
             type="submit"
             label="Comment"
             disabled={loadingTypeCommentModule === "createComment"}
-            className="p-px-1 p-ml-2 timeline-commentButton rounded-pill"
+            className="p-px-1 p-ml-2 timeline-commentButton"
           />
         </span>
       </form>

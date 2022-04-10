@@ -83,11 +83,11 @@ const Timeline = () => {
             <div className={`p-col-12 p-px-0 ${isAuthenticated ? "p-md-6" : "p-md-9"}`}>
               {
                 isAuthenticated &&
-                <div className="p-card p-grid p-mb-2 p-mt-0 p-mx-0 p-p-3 align-items-center" style={{ borderRadius: "1.5rem" }}>
+                <div className="p-card p-grid p-mb-2 p-mt-0 p-mx-0 p-p-3 align-items-center">
                   <div className="p-col-10">
                     <Button
                       label="Start a Post"
-                      className="postInputButton rounded-pill"
+                      className="postInputButton"
                       onClick={() => onShow()}
                     />
                     <ModalMode
@@ -104,14 +104,14 @@ const Timeline = () => {
                 <div className="p-p-5 d-flex justify-content-center">
                   <i
                     className="pi pi-spin pi-spinner"
-                    style={{ 'fontSize': '2em', color: "var(--app-primary-color)" }} />
+                    style={{ 'fontSize': '2em', color: "#5A2846" }} />
                 </div>
               }
               {
                 isAuthenticated &&
                 loading !== "loadPosts" &&
                 posts.ids.length === 0 &&
-                <div className="p-card p-p-3 p-mb-1 timeline-posts" style={{ borderRadius: "1.5rem" }}>
+                <div className="p-card p-p-3 p-mb-1 timeline-posts">
                   <div className="p-mb-6 p-p-4 text-center">
                     <h3 className="p-card-title">
                       Create a post
@@ -151,7 +151,7 @@ const Timeline = () => {
                     loading !== "loadMore" &&
                     <Button
                       onClick={loadmorePosts}
-                      className="p-mr-2 w-100 rounded-pill"
+                      className="p-mr-2 w-100"
                       label='Load More'
                     />
                   }
@@ -160,7 +160,7 @@ const Timeline = () => {
                     posts.meta.total > posts.ids.length &&
                     loading === "loadMore" &&
                     <Button
-                      className="p-mr-2 w-100 rounded-pill"
+                      className="p-mr-2 w-100"
                       loading={loading === "loadMore"}
                       disabled={loading === "loadMore"}
                     />

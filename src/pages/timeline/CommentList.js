@@ -17,7 +17,7 @@ const CommentList = ({ postId, onViewComments, expandProfileImage, commentCount 
   }
 
   return (
-    <div className='p-card-body p-pt-1 p-px-0' style={{ borderRadius: "1.5rem" }}>
+    <div className='p-card-body p-pt-1 p-px-0'>
       {
         commentIds?.[postId]?.map((commentId) => {
           const comment = comments.data[commentId];
@@ -39,7 +39,7 @@ const CommentList = ({ postId, onViewComments, expandProfileImage, commentCount 
         <Button
           label="View comments"
           loading={loadingType === postId + "-loadingComments"}
-          className="timeline-commentListTitle rounded-pill"
+          className="timeline-commentListTitle"
           onClick={() => onViewComments(postId, 1, pageLimit, postId + "-loadingComments")}
         />
       }
@@ -49,7 +49,7 @@ const CommentList = ({ postId, onViewComments, expandProfileImage, commentCount 
         <Button
           label={`View more comments (${(comments.meta[postId].total) - (commentIds?.[postId]?.length)})`}
           loading={loadingType === postId + "-loadingMoreComments"}
-          className="timeline-commentListTitle rounded-pill"
+          className="timeline-commentListTitle"
           onClick={onViewMoreComments}
         />
       }
