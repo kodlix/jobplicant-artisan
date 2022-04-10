@@ -79,7 +79,7 @@ const SecurityVerification = () => {
                                                         <hr className="p-mb-3" />
                                                     </div>
 
-                                                    <Button type="submit" label="Submit" className="appcolor continue-btn" />
+                                                    <Button type="submit" label="Submit" className="appcolor continue-btn rounded-pill on-hover" />
                                                 </form>
                                             </div>
                                         </div>

@@ -10,7 +10,7 @@ const Experience = ({ openCreate, openEdit, profileInfo, formatDate, isViewAppli
   const dispatch = useDispatch();
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader
           icon="star-o"
           sectionTitle="Experience"

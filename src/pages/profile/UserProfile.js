@@ -25,7 +25,7 @@ import { loadProfileInfo } from "store/modules/account";
 
 
 const UserProfile = ({ match }) => {
-  
+
   const profileInfo = useSelector((state) => state.account.profileInfo);
 
   const dispatch = useDispatch();
@@ -57,45 +57,45 @@ const UserProfile = ({ match }) => {
     //     console.log('reset the app state')
     //   }}
     // >
-      <>
-        <div className="background">
-          <div className=""> 
-            <CustomBreadCrumb /> 
-          </div>
-          <div className="content-container" style={{ width: '87%'}}>
+    <>
+      <div className="background">
+        <div className="">
+          <CustomBreadCrumb />
+        </div>
+        <div className="content-container" style={{ width: '87%' }}>
 
-            {/* personal info */}
-            <PersonalInfo
-              openCreate={openCreate}
-              openEdit={openEdit}
-              data={profileInfo}
-            />
+          {/* personal info */}
+          <PersonalInfo
+            openCreate={openCreate}
+            openEdit={openEdit}
+            data={profileInfo}
+          />
 
-            <div className="p-grid">
-              <div className="p-col-12 p-md-9 content-smallscreen">
-                <div className="content-tab">
-                  {/* ProfileTab */}
-                  <ProfileTab />
-                </div>
-                <div className="content-body">
-                  {/* biography */}
-
-                  <Route path={`${match.path}/`} exact component={InfoTab} />
-                  <Route path={`${match.path}/info`} component={InfoTab} />
-                  <Route path={`${match.path}/jobs`} component={JobsTab} />
-                  <Route path={`${match.path}/contacts`} component={ContactsTab} />
-                  <Route path={`${match.path}/groups`} component={GroupsTab} />
-                  <Route path={`${match.path}/review`} component={ReviewTab} />
-                </div>
+          <div className="p-grid">
+            <div className="p-col-12 p-md-9 content-smallscreen">
+              <div className="content-tab" style={{ borderRadius: "1rem" }}>
+                {/* ProfileTab */}
+                <ProfileTab />
               </div>
-              {/* portfolio */}
-              {accountType === ACCOUNT_TYPE.ARTISAN && <Portfolio openCreate={openCreate} openEdit={openEdit} />}
+              <div className="content-body">
+                {/* biography */}
+
+                <Route path={`${match.path}/`} exact component={InfoTab} />
+                <Route path={`${match.path}/info`} component={InfoTab} />
+                <Route path={`${match.path}/jobs`} component={JobsTab} />
+                <Route path={`${match.path}/contacts`} component={ContactsTab} />
+                <Route path={`${match.path}/groups`} component={GroupsTab} />
+                <Route path={`${match.path}/review`} component={ReviewTab} />
+              </div>
             </div>
+            {/* portfolio */}
+            {accountType === ACCOUNT_TYPE.ARTISAN && <Portfolio openCreate={openCreate} openEdit={openEdit} />}
           </div>
-          
         </div>
 
-      </>
+      </div>
+
+    </>
     // </ErrorBoundary>
   );
 };

@@ -104,8 +104,8 @@ export default function reducer(state = contact, action = {}) {
         ...state,
         contacts: {
           ...state.contacts,
-          ids: [action.payload.data.id, ...state.contacts.ids],
-          data: { [action.payload.data.id]: action.payload.data, ...state.contacts.data }
+          ids: [action.payload.data?.id, ...state.contacts?.ids],
+          data: { [action.payload.data?.id]: action.payload.data, ...state.contacts.data }
         }
       };
     case REQUEST_SENT:

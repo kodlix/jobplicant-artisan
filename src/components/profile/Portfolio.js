@@ -18,7 +18,7 @@ const Portfolio = ({ openCreate, openEdit, isViewApplicant }) => {
   return (
     <>
       <div className="p-col-12 p-md-3 p-pt-2 portfolio-panel">
-        <div className="p-card">
+        <div className="p-card" style={{ borderRadius: "1rem" }}>
           <SectionHeader
             icon="images"
             sectionTitle="Work samples"

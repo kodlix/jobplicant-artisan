@@ -81,7 +81,7 @@ const List = () => {
             <div className={`contacts-container ${contactContainerClassName}`}>
                 <div className="p-grid contacts-content">
                     <div className="p-col-12">
-                        <div className="p-card">
+                        <div className="p-card" >
                             <div className="p-card-title d-flex justify-content-between align-items-center">
                                 <span className="contact-cardtitle">
                                     <i className="pi pi-book p-pr-2" />
@@ -125,7 +125,7 @@ const List = () => {
                             {allNotis && allNotis.length > 0 && allNotis.map((noti) => {
 
                                 return (
-                                    <div className={`p-card contact-individualContainer noti ${markAsRead ? 'bg-light' : ''}`} key={noti?.id}>
+                                    <div className={`p-card contact-individualContainer noti ${markAsRead ? 'bg-light' : ''}`} key={noti?.id} style={{ borderRadius: "1.5rem" }}>
                                         <div className="text-secondary" onClick={() => handleSeen(noti)}><span className="d-flex ">
                                             {
                                                 noti.imageUrl &&
@@ -142,7 +142,7 @@ const List = () => {
                                                 <i className="pi pi-user contact-emptyProfilePic p-mr-3" style={{ 'fontSize': '1.5em' }}></i>
                                             }
                                             <span className="">
-                                                <span className="p-card-title contacts-contactHeader p-mb-0">
+                                                <span className="p-card-title contacts-contactHeader p-mb-0" >
                                                     <span className="p-mr-2">
                                                         <p> {noti.message}</p>
                                                     </span>

@@ -9,7 +9,7 @@ const Hobbies = ({ openCreate, openEdit, profileInfo, isViewApplicant }) => {
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader
           icon="heart"
           sectionTitle="Hobbies"

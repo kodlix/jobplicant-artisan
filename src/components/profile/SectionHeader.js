@@ -17,7 +17,7 @@ const SectionHeader = ({
 
   return (
     <div className="sectionHeader">
-      <div className="p-card-title">
+      <div className="p-card-title" style={{ borderRadius: "1rem" }}>
         <span>
           <i className={`pi pi-${icon}`}></i>
           {sectionTitle}

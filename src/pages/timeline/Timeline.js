@@ -104,7 +104,7 @@ const Timeline = () => {
                 <div className="p-p-5 d-flex justify-content-center">
                   <i
                     className="pi pi-spin pi-spinner"
-                    style={{ 'fontSize': '2em', color: "var(--app-primary-color)" }} />
+                    style={{ 'fontSize': '2em', color: "#5A2846" }} />
                 </div>
               }
               {

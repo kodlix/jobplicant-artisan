@@ -8,7 +8,7 @@ const CompanyDetails = (props) => {
   }
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader icon="chart-bar" sectionTitle="Company Information" id="companyDetailsEdit" addButton="true" editButton="true" onClick={mode} />
         <div className="p-ml-3 p-pb-3 p-grid">
           <div className="p-col-12 p-md-6"><b>Industry: </b>Web Development</div>

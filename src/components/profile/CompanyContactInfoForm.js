@@ -105,7 +105,7 @@ const ContactInfoForm = ({ closeEditMode, data }) => {
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader icon="phone" sectionTitle="Contact Information" />
         <div className="p-card-body">
           <form onSubmit={handleSubmit(contactInfoSubmit)}>

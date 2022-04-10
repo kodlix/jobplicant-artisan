@@ -80,10 +80,11 @@ const RegisterStep = ({ goto, accountType }) => {
         <>
             <div className="p-fluid">
                 <div className="p-grid p-px-4">
-                    <div className="login-pane-right p-md-4 my-4 mx-auto p-px-4">
+                    <div className="login-pane-right p-md-4 my-4 mx-auto p-px-4" style={{ borderRadius: "2rem" }}>
                         <div className="logo-container finger" onClick={handleGoto}>
                             {/* <Link to="/"> */}
-                            <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" />
+                            {/* <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" /> */}
+                            <h3 className='app-pri-text-color' style={{ fontFamily: "cursive" }}>Hand-Job</h3>
                             {/* </Link> */}
                         </div>
                         <div className="">
@@ -256,7 +257,7 @@ const RegisterStep = ({ goto, accountType }) => {
                                                 &nbsp; and <Link to="/"> <span className="app-color font-weight-bold">Cookie Policy.</span></Link>.</p>
 
                                         </div>
-                                        <Button type="submit" label="Sign up" className="form-group" />
+                                        <Button type="submit" label="Sign up" className="form-group rounded-pill on-hover" />
                                     </div>
 
                                 </form>

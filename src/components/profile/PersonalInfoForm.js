@@ -198,7 +198,7 @@ const PersonalInfoForm = ({ data, closeEditMode }) => {
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader
           id="personal"
           icon="person"

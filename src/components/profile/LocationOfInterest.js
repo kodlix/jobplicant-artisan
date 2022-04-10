@@ -6,7 +6,7 @@ import { Tag } from "primereact/tag";
 
 
 const LocationOfInterest = ({ openCreate, openEdit, profileInfo, isViewApplicant }) => {
-  
+
 
   const formatLocation = (profileLocation) => {
     console.log('profile location', profileLocation?.locations)
@@ -16,7 +16,7 @@ const LocationOfInterest = ({ openCreate, openEdit, profileInfo, isViewApplicant
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader
           icon="map-marker"
           sectionTitle="Location of Interest"

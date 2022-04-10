@@ -7,7 +7,7 @@ import { OnLogout } from '../store/modules/auth';
 import { Link } from 'react-router-dom';
 
 // import './AppSideBar.css';
-import agentService, {isArtisanApp} from 'services/agent.service';
+import agentService, { isArtisanApp } from 'services/agent.service';
 import { ACCOUNT_TYPE } from 'constants/accountType';
 
 const AppSideBar = (props) => {
@@ -47,7 +47,7 @@ const AppSideBar = (props) => {
 
     return (
         <>
-            <Button icon="pi pi-arrow-right" onClick={() => setVisibleLeft(true)} className="p-mr-2 sideBar-button" />
+            <Button icon="pi pi-arrow-right" onClick={() => setVisibleLeft(true)} className="p-mr-2 sideBar-button on-hover" />
             <Sidebar visible={visibleLeft} onHide={() => setVisibleLeft(false)}>
                 <div className="col-12">
                     <div className="dashbord-sidebar">

@@ -24,7 +24,7 @@ const CompanyEditMode = (props) => {
   return (
     <>
       {componentStatus.biographyEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="bookmark" sectionTitle="Biography" deleteButton="true" onDelete={handleDelete} />
           <div className="p-card-body">
             <label htmlFor="biographyInput" className="inputLabel p-mb-2">Give a short descripiton of your company</label>
@@ -34,7 +34,7 @@ const CompanyEditMode = (props) => {
         </div>
       }
       {componentStatus.companyDetailsEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="chart-bar" sectionTitle="Company Information" />
           <div className="p-card-body">
             <div className="p-fluid p-formgrid p-grid">
@@ -64,7 +64,7 @@ const CompanyEditMode = (props) => {
         </div>
       }
       {componentStatus.contactInfoEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="phone" sectionTitle="Contact Information" />
           <div className="p-card-body">
             <form>
@@ -106,7 +106,7 @@ const CompanyEditMode = (props) => {
         </div>
       }
       {componentStatus.personalInfoEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="user" sectionTitle="Personal Information" />
           <div className="p-card-body">
             <form>
@@ -160,8 +160,8 @@ const ModeFooter = (props) => {
   return (
     <>
       <div className="editMode-footer">
-        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" />
-        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" />
+        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" className="on-hover" />
+        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" className="on-hover" />
       </div>
     </>
   );

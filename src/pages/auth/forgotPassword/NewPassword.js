@@ -106,7 +106,7 @@ const NewPassword = (props) => {
                                             </span>}
                                         </label>
                                     </div>
-                                    <Button label={loading ? "Saving..." : "Save password"} type="submit" className="form-group" />
+                                    <Button label={loading ? "Saving..." : "Save password"} type="submit" className="form-group on-hover" />
                                     <div className="form-group">
                                         <Link to="/Login" className="p-mt-2 p-text-secondary back-button">Back to Login</Link>
                                     </div>

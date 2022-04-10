@@ -133,7 +133,7 @@ const EditMode = (props) => {
   return (
     <>
       {componentStatus.biographyEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="bookmark" sectionTitle="Biography" deleteButton="true" onDelete={handleDelete} />
           <div className="p-card-body">
             <label htmlFor="biographyInput" className="inputLabel">Give a short descripiton of your career history</label>
@@ -143,7 +143,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.experienceEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="star-o" sectionTitle="Experience" />
           <div className="p-card-body">
             <div className="p-fluid p-formgrid p-grid">
@@ -177,7 +177,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.educationEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="book" sectionTitle="Education" />
           <div className="p-card-body">
             <div className="p-fluid p-formgrid p-grid">
@@ -191,7 +191,7 @@ const EditMode = (props) => {
               </div>
               <div className="p-field p-col-12">
                 year of graduation
-                  <Calendar selectionMode="range" value={dates} onChange={(e) => setDates(e.value)} dateFormat="dd/mm/yy"></Calendar>
+                <Calendar selectionMode="range" value={dates} onChange={(e) => setDates(e.value)} dateFormat="dd/mm/yy"></Calendar>
               </div>
               <div className="p-field p-col-12 p-md-6">
                 <label className="inputLabel" htmlFor="firstname6">Institution Name</label>
@@ -211,7 +211,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.skillEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="tag" sectionTitle="Skills" />
           <div className="p-card-body">
             <label htmlFor="skillInput" className="inputLabel p-pr-3">Add up to 10 skills</label>
@@ -230,7 +230,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.hobbyEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="heart" sectionTitle="Hobbies / Likes" />
           <div className="p-card-body">
             <form>
@@ -253,7 +253,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.POIEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="briefcase" sectionTitle="Professions of Interest" />
           <div className="p-card-body">
             <form>
@@ -276,7 +276,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.LOIEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader deleteButton="true" onDelete={handleDelete} icon="map-marker" sectionTitle="Location of Interest" />
           <div className="p-card-body">
             <form>
@@ -294,7 +294,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.contactInfoEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="phone" sectionTitle="Contact Information" />
           <div className="p-card-body">
             <form>
@@ -336,7 +336,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.personalInfoEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="user" sectionTitle="Personal Information" />
           <div className="p-card-body">
             <form>
@@ -383,7 +383,7 @@ const EditMode = (props) => {
         </div>
       }
       {componentStatus.portfolioEdit &&
-        <div className="p-card p-mt-2">
+        <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
           <SectionHeader icon="images" sectionTitle="Portfolio" />
           <div className="p-card-body">
             <span className="width-100 p-mb-4">
@@ -409,7 +409,7 @@ const EditMode = (props) => {
                     <div className="p-mx-2">
                       <img src={item.imageURL} alt="Portfolio Item" />
                       <span className="portfolioItem-icons">
-                        <Button type="button" icon="pi pi-ellipsis-h" onClick={(e) => ref.current[item.id].toggle(e)} />
+                        <Button className="on-hover" type="button" icon="pi pi-ellipsis-h" onClick={(e) => ref.current[item.id].toggle(e)} />
                         <OverlayPanel ref={element => (ref.current[item.id] = element)} >
                           <div className="p-py-2 p-px-3" onClick={deletePortfolio} id={item.id}><i className="pi pi-trash p-pr-2"></i> Delete Image</div>
                         </OverlayPanel>
@@ -433,8 +433,8 @@ const ModeFooter = (props) => {
   return (
     <>
       <div className="editMode-footer">
-        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" />
-        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" />
+        <Button icon="pi pi-times" iconPos="left" label="Cancel" id={props.id} onClick={props.onCancel} type="button" className="on-hover" />
+        <Button icon="pi pi-check" iconPos="left" label="Save" id="saveButton" type="submit" className="on-hover" />
       </div>
     </>
   );

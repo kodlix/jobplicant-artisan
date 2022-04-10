@@ -4,12 +4,12 @@
 
 .background-top {
     background-color: rgb(35 38 45 / 15%);
-    color: var(--app-primary-color);
+    color: #5A2846;
     height: 13rem;
 }
 
 .background-bottom {
-    background-color: var(--app-primary-color)1f;
+    background-color: #5a28461f;
 }
 
 .dashboard-container {
@@ -20,7 +20,7 @@
 }
 
 .cardtitle {
-    border-bottom: 1px solid var(--app-primary-color)57;
+    border-bottom: 1px solid #5a284657;
     font-size: 1rem !important;
     padding: 1rem 1rem;
     background-color: white;
@@ -140,4 +140,9 @@ a.p-card-body-Activity {
 
 .p-card-body-Activity:hover {
   background-color: #eee !important;
+}
+
+.dashboard-item {
+    /* color: green; */
+    color: #00b4d8;
 }

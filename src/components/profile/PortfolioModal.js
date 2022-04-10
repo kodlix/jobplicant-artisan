@@ -34,13 +34,13 @@ const PortfolioModal = ({ data, closeEditMode }) => {
     return (
       <div className="product-item">
         <div className="product-item-content">
-          <div className="p-mb-3" style={{height: "340px"}}>
+          <div className="p-mb-3" style={{ height: "340px" }}>
             <img
               src={portfolio}
               onError={(e) => (e.target.src = `${portfolio}`)}
               alt="portfolio image"
               className="product-image"
-              style={{height: "100%", width: "100%"}}
+              style={{ height: "100%", width: "100%" }}
             />
           </div>
         </div>
@@ -50,7 +50,7 @@ const PortfolioModal = ({ data, closeEditMode }) => {
 
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <Toast ref={toast} />
         <SectionHeader icon="images" sectionTitle="Portfolio" />
         <div className="p-card-body">
@@ -61,7 +61,7 @@ const PortfolioModal = ({ data, closeEditMode }) => {
             orientation="horizontal"
             verticalViewPortHeight="352px"
             itemTemplate={imageTemplate}
-          
+
             style={{ maxWidth: "100%", height: "400px", }}
           />
 

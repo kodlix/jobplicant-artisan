@@ -65,6 +65,28 @@ const InstantJobs = () => {
     });
   };
 
+  const handleApply = (id, i) => {
+    let data = {
+      jobId: id,
+    };
+    confirmDialog({
+      message: "You are about to apply for this job?",
+      header: "Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      accept: () => {
+        dispatch(applyInstantJob(data));
+        const element = document.getElementById(i);
+        const element2 = document.getElementById(`${i}_int`);
+
+        element.hidden = false;
+        element2.hidden = true;
+      },
+      reject: () => {
+        return;
+      },
+    });
+  };
+
   return (
     <div className="background">
       <div className="instant">
@@ -73,7 +95,7 @@ const InstantJobs = () => {
             <div className="p-col-12 p-md-9">
               <div
                 className="card card-size-list"
-                style={{ borderRadius: "0.5rem" }}
+                style={{ borderRadius: "1rem" }}
               >
                 <InstantHeader
                   title="All Instant Jobs"
@@ -92,9 +114,9 @@ const InstantJobs = () => {
                           style={{ flexWrap: "nowrap !important" }}
                         >
                           <div className="col-2">
-                            {instantjob.poster.imageUrl ? (
+                            {instantjob?.poster?.imageUrl ? (
                               <img
-                                src={instantjob.poster?.imageUrl}
+                                src={instantjob?.poster?.imageUrl}
                                 className="img-fluid rounded-circle"
                                 alt="user-image"
                                 style={{ width: "70px", height: "70px" }}
@@ -194,7 +216,7 @@ const InstantJobs = () => {
                                     <Button
                                       label="Yes"
                                       id="saveButton"
-                                      className="p-button-sm"
+                                      className="p-button-sm rounded-pill"
                                       onClick={() =>
                                         handleApply(instantjob.id, i)
                                       }
@@ -209,7 +231,7 @@ const InstantJobs = () => {
                                     <Button
                                       label="View"
                                       id="reject"
-                                      className="p-button-sm"
+                                      className="p-button-sm rounded-pill on-hover"
                                     />{" "}
                                   </Link>
                                 </div>

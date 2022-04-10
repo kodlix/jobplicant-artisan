@@ -1,12 +1,12 @@
 .timeline-container {
-  background-color: var(--app-primary-color)1f;
+  background-color: #5a28461f;
   padding-top: 2rem;
   min-height: 100vh;
 }
 
 .timeline-postsContainer--empty h1,
 .timeline-postsContainer--empty h5 {
-  color: var(--app-primary-color);
+  color: #5A2846;
 }
 
 .timeline-content {
@@ -15,55 +15,55 @@
 }
 
 .profile-picture-timeline {
-  border: 3px var(--app-primary-color) solid;  
+  border: 3px #5A2846 solid;  
   object-fit: cover;
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
   color: white;
   cursor: pointer;
 }
 
 .timeline-profilePicture, .profilepic-startpost-timeline > img {
-  border: 4px var(--app-primary-color) solid; 
+  border: 4px #5A2846 solid; 
   color: white;
   object-fit: cover;
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
   cursor: pointer; 
 }
 
 .timeline-emptyProfilePic {
-  border: 5px var(--app-primary-color) solid;
+  border: 5px #5A2846 solid;
   width: fit-content;
   margin: auto;
   font-size: 3rem;
   border-radius: 50%;
   padding: 0.8rem;
-  color: var(--app-primary-color);
+  color: #5A2846;
   font-weight: 700;
   background-color: white;
   margin-bottom: 0.5rem;
 }
 
 .timeline-emptyProfilePic-medium {
-  border: 4px var(--app-primary-color) solid;
+  border: 4px #5A2846 solid;
   width: fit-content;
   margin: auto;
   font-size: 1.87rem;
   border-radius: 50%;
   padding: 1rem;
-  color: var(--app-primary-color);
+  color: #5A2846;
   font-weight: 700;
   background-color: white;
   margin-bottom: 0.5rem;
 }
 
 .timeline-emptyProfilePic-small {
-  border: 4px var(--app-primary-color) solid;
+  border: 4px #5A2846 solid;
   width: fit-content;
   margin: auto;
   font-size: 1.87rem;
   border-radius: 50%;
   padding: 1rem;
-  color: var(--app-primary-color);
+  color: #5A2846;
   font-weight: 700;
   background-color: white;
   margin-bottom: 0.5rem;
@@ -73,7 +73,7 @@
 :root {
   --star-size: 25px;
   --star-color: rgb(180, 175, 175);
-  --star-background: var(--app-secondary-color);
+  --star-background: #2ca55e;
 }
 
 .stars {
@@ -102,19 +102,19 @@
 }
 
 .timeline-dropdownItem:hover {
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
   color: white;
 }
 
 .postInputButton {
   width: 100%;
-  background-color: var(--app-primary-color)25;
+  background-color: #5a284625;
   border-radius: 15px;
-  border-color: var(--app-primary-color)25;
+  border-color: #5a284625;
 }
 
 .postInputButton:hover {
-  background-color: var(--app-primary-color)21 !important;
+  background-color: #5a284621 !important;
 }
 
 .postInputButton > .p-button-label {
@@ -146,13 +146,13 @@
 }
 
 .timeline-companyName {
-  color: var(--app-primary-color);
+  color: #5A2846;
   font-weight: 700;
 }
 
 .suggestion-button-timeline {
   color: #00000070;
-  background: var(--app-primary-color)00;
+  background: #5a284600;
   border: 2px #00000070 solid;
   width: 2rem !important;
   height: 2rem;
@@ -165,7 +165,7 @@
 /* left panel */
 
 .cardtitle-timeline {
-  border-bottom: 1px solid var(--app-primary-color)57;
+  border-bottom: 1px solid #5a284657;
   font-size: 1rem !important;
   padding: 0.7rem 1rem;
 }
@@ -205,7 +205,7 @@ a .cardsubtitle-timeline {
 
 /* Recent Jobs sidepanel on hover */
 .p-card-body-timeline:hover {
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
 }
 
  .p-card-body-timeline:hover > .jobDescription-timeline, .p-card-body-timeline:hover > .cardsubtitle-timeline, .p-card-body-timeline:hover .timeline-seemore {
@@ -213,7 +213,7 @@ a .cardsubtitle-timeline {
 }
 /* Recent Jobs sidepanel on hover */
 .timeline-seemore {
-  color: var(--app-primary-color);
+  color: #5A2846;
   font-weight: 600;
 }
 
@@ -232,7 +232,7 @@ a .cardsubtitle-timeline {
 }
 
 .skilltag-timeline {
-  background-color: var(--app-primary-color)3f;
+  background-color: #5a28463f;
   color: black;
   padding: 0.3rem 0.5rem;
   border-radius: 15px;
@@ -268,14 +268,14 @@ a .cardsubtitle-timeline {
 .timeline-postShare-button {
   background-color: white;
   border: none;
-  color: var(--app-primary-color);
+  color: #5A2846;
   font-weight: 600;
 }
 
 .timeline-copyModalAlert {
   z-index: 1;
   position: absolute;
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
   right: -25px;
   top: 45px;
   padding: 7px;
@@ -287,7 +287,7 @@ a .cardsubtitle-timeline {
 .timeline-copyModalAlert--active {
   z-index: 1;
   position: absolute;
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
   right: -25px;
   top: 45px;
   padding: 7px;
@@ -305,7 +305,7 @@ a .cardsubtitle-timeline {
 /* Modals */
 .viewerGroups-dropdown {
   margin-top: 0.5rem;
-  background-color: var(--app-primary-color)25;
+  background-color: #5a284625;
   border-radius: 7px;
 }
 
@@ -325,7 +325,7 @@ a .cardsubtitle-timeline {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
 }
 
 .postInputArea:hover {
@@ -336,13 +336,13 @@ a .cardsubtitle-timeline {
 .createPostModal-title {
   font-size: 14px;
   font-weight: 600;
-  color: var(--app-primary-color);
+  color: #5a2846;
   margin-bottom: 0.25rem;
 }
 
 .postTitle-container {
   margin-top: 1rem;
-  border: 1px solid var(--app-primary-color);
+  border: 1px solid #5a2846;
   width: fit-content;
 }
 
@@ -362,18 +362,18 @@ a .cardsubtitle-timeline {
 }
 
 .addToPost-icon {
-  border: 3px solid var(--app-primary-color);
+  border: 3px solid #5a2846;
   border-radius: 100%;
   padding: 0.25rem;
   background-color: white;
-  color: var(--app-primary-color);
+  color: #5a2846;
   font-weight: 700;
   cursor: pointer;
 }
 
 .timelineModal-Input {
-  background-color: var(--app-primary-color)26;
-  border: 1px solid var(--app-primary-color);
+  background-color: #5a284626;
+  border: 1px solid #5a2846;
   border-radius: 10px;
 }
 
@@ -409,7 +409,7 @@ a .cardsubtitle-timeline {
 }
 
 .timelineMediaItem-container {
-  background-color: var(--app-primary-color);
+  background-color: #5a2846;
   border-radius: 10px;
   height:10rem;
   display: flex;
@@ -440,7 +440,7 @@ a .cardsubtitle-timeline {
 .timeline-postImage {
   object-fit: contain;
   height: 17rem;
-  background-color: var(--app-primary-color);
+  background-color: #5A2846;
   cursor: pointer;
 }
 /* Modals */

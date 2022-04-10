@@ -42,7 +42,7 @@ const RecentInstantJobs = () => {
     return (
         <>
             <div className="p-col-12 p-md-3 p-pt-2">
-                <div className="p-card" style={{ borderRadius: "0.5rem" }}>
+                <div className="p-card" style={{ borderRadius: "1rem" }}>
                     <SectionHeader
                         icon="briefcase"
                         sectionTitle="Recent Instant Jobs"
@@ -56,8 +56,8 @@ const RecentInstantJobs = () => {
                                 <div className="highlight-card p-p-1">
                                     <div className="row " style={{ flexWrap: "nowrap !important" }} >
                                         <div className="col-3">
-                                            {instantjob.poster.imageUrl ? <img
-                                                src={instantjob.poster.imageUrl}
+                                            {instantjob?.poster?.imageUrl ? <img
+                                                src={instantjob?.poster?.imageUrl}
                                                 className="img-fluid rounded-circle"
                                                 alt="user-image" style={{ width: "50px", height: "50px" }}
                                             /> : <img

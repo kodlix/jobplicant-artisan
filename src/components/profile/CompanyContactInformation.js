@@ -8,7 +8,7 @@ const CompanyContactInformation = (props) => {
   }
   return (
     <>
-      <div className="p-card p-mt-2">
+      <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader icon="phone" sectionTitle="Contact Information" id="contactInfoEdit" addButton="true" editButton="true" onClick={mode} />
         <div className="p-card-body p-text-secondary">
           <div className="p-mb-2"><b>Phone Number:</b> +23463736373</div>

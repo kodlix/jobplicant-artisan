@@ -82,7 +82,7 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
    *  skeleton to show unnessarily, 
    * i am not if it's needed having it here...
    */
-  if (loading && !isViewApplicant) 
+  if (loading && !isViewApplicant)
     return <PersonalInfoSkeleton />
 
   return (

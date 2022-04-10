@@ -49,9 +49,10 @@ const Login = ({ props }) => {
             <div className="p-fluid">
                 <div className="p-grid p-m-6">
                     <Toast ref={toast} />
-                    <div className="login-pane-right p-md-4 mx-auto">
+                    <div className="login-pane-right p-md-4 mx-auto" style={{ borderRadius: "2rem" }}>
                         <div className="brand-logo text-center">
-                            <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" />
+                            {/* <img src="/assets/images/logo/applogo.jpeg" width="150" alt="brand-logo" /> */}
+                            <h3 className='app-pri-text-color' style={{ fontFamily: "cursive" }}>Hand-Job</h3>
                         </div>
                         <div className="">
                             <div className="">
@@ -110,7 +111,7 @@ const Login = ({ props }) => {
                                             <Button
                                                 label="Login"
                                                 type="submit"
-                                                className="form-group"
+                                                className="form-group rounded-pill on-hover"
                                                 loading={isRequestLoading}
                                             />
 

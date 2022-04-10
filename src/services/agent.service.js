@@ -10,11 +10,10 @@ const superagent = superagentPromise(_superagent, global.Promise);
 export const currentApp = process.env.REACT_APP_CURRENT_APP;
 export const isArtisanApp = process.env.REACT_APP_CURRENT_APP === "artisan";
 
-export const API_ROOT = "https://jobplicant-api.herokuapp.com";
+// export const API_ROOT = "https://jobplicant-api.herokuapp.com";
+export const API_ROOT = process.env.NODE_ENV === "development" ? process.env.REACT_APP_API_ROOT_LOCAL : process.env.REACT_APP_API_ROOT_PROD;
 // export const API_ROOT = "http://localhost:8080";
 
-console.log("API_ROOT", API_ROOT);
-console.log("environmental variables", process.env);
 export const IMAGE_URL = API_ROOT + "/account/uploads/";
 
 let accessToken = null;
@@ -35,6 +34,7 @@ export const tokenPlugin = (req) => {
   }
 
   req.on("response", function (res) {
+    console.log()
     if (res.status === 401) {
       //Always revert back here to change the production to the *CORRECT URL*
       // console.log("onResponse: This is called when Authorization is hit")
@@ -284,7 +284,7 @@ const Company = {
 
 const InstantJob = {
   save: (instantjob) => requests.post("/instant-job", instantjob),
-  apply: (data) => requests.post(`/instant-job/apply`, data),
+  apply: (jobid) => requests.post(`/instant-job/${jobid}/apply`, null),
   load: () => requests.get(`/instant-job`),
   loadApplicants: (jobId) => requests.get(`/instant-job/${jobId}/applicants`),
   loadAllInstantJobs: (page, take) =>
@@ -468,6 +468,26 @@ const Chat = {
   getConversationsWithPartnerId: (partnerId) =>
     requests.get(`/chat/conversation-messages/${partnerId}`),
 };
+
+const Dashboard = {
+  getCountByGroup: () =>
+    requests.get("/accounts/users-count-by-group"),
+  getAllPostCount: () =>
+    requests.get("/post/count"),
+  getAllJobCount: () =>
+    requests.get("/job/count"),
+  getUserPostCount: (userId) =>
+    requests.get(`/post/user/${userId}/count`),
+  loadUserContact: () =>
+    requests.get(`/contact/count`),
+  loadInstantService: () =>
+    requests.get(`/instant-job/applications/m/count`),
+  loadJobs: () =>
+    requests.get(`/job/applications/m/count`),
+  loadUserActivities: () =>
+    requests.get(`/accounts/user-activities`),
+}
+
 export default {
   Auth,
   User,
@@ -501,4 +521,5 @@ export default {
   Review,
   Cv,
   Chat,
+  Dashboard,
 };

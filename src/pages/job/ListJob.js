@@ -39,7 +39,7 @@ const CardSkeleton = () => (
 const formatValue = value => new Intl.NumberFormat('en-US', {}).format(value);
 
 const CardItem = ({ job }) => (
-    <div className="card mb-2 custom-skeleton p-p-4">
+    <div className="card mb-2 custom-skeleton p-p-4" style={{ borderRadius: "1.5rem" }}>
         <div className="p-d-flex p-mb-3">
             <Avatar shape="circle" size="large" className="p-mr-2" image="https://source.unsplash.com/random/60x60" />
             <div>

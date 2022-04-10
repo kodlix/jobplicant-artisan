@@ -54,8 +54,8 @@ const ListContacts = React.lazy(() => import('../pages/contacts/List'));
 const Notification = React.lazy(() => import('../pages/notification/List'));
 const AdminServicesAndServiceGroups = React.lazy(() => import('pages/admin/dashboard/AdminServicesAndServiceGroups'));
 
-const HOWTOSTART = React.lazy(() => import('../pages/generate-CV/HowToStart'));
-const CVTEMPLATE = React.lazy(() => import('../pages/generate-CV/CV-Template'));
+// const HOWTOSTART = React.lazy(() => import('../pages/generate-CV/HowToStart'));
+// const CVTEMPLATE = React.lazy(() => import('../pages/generate-CV/CV-Template'));
 
 const InstantMessaging = React.lazy(() => import('pages/instant-messaging/InstantMessaging'));
 
@@ -132,8 +132,8 @@ const AppRouter = () => {
         <ProtectedRoute path="/contacts" exact component={ListContacts} />
         <ProtectedRoute path="/contacts/create" exact component={CreateContacts} />
 
-        <ProtectedRoute path="/howtostart" exact component={HOWTOSTART} />
-        <ProtectedRoute path="/cv-template" component={CVTEMPLATE} />
+        {/* <ProtectedRoute path="/howtostart" exact component={HOWTOSTART} /> */}
+        {/* <ProtectedRoute path="/cv-template" component={CVTEMPLATE} /> */}
         {/* INSTANT MESSAGING */}
         <ProtectedRoute path="/instant-messaging" children={<InstantMessaging />} />
 
