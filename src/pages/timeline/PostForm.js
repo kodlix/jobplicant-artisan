@@ -414,13 +414,21 @@ const CreatePostModal = ({ post, clearModalInput }) => {
                       </li>
                     </ul>
                   </div>
-                  <img
+                  {mediaType == MEDIATYPES.IMAGE && <img
                     src={image.preview}
                     alt="Preview"
                     width="100%"
                     height="100%"
                     className="timelineMediaItem"
-                  />
+                  />}
+
+                  {mediaType == MEDIATYPES.VIDEO && <video width="100%"
+                  style={{width: '100%'}}
+                    height="100%" controls>
+                    <source src={image.preview} type="video/mp4" />
+                    <source src="movie.ogg" type="video/ogg" />
+                    Your browser does not support the video tag.
+                  </video>}
                 </div>
               }
             </div>
