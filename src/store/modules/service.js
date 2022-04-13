@@ -4,35 +4,43 @@ import { MESSAGE_TYPE } from "../constant";
 import { closeModal } from "./modal";
 
 // initial values
-const userSkill = {
+const initialState = {
   name: "",
   description: "",
   updatedOrDeleted: false,
   loading: false,
+  service: null,
+  services: [],
 };
 
 // Action types
-const UPDATE_USER_SKILL = "app/userSkill/UPDATE_USER_SKILL ";
-const LOAD_USER_SKILL = "app/userSkill/LOAD_USER_SKILL";
-const DELETE_USER_SKILL = "DELETE_USER_SKILL";
+const UPDATE_USER_SERVICE = "app/service/UPDATE_USER_SERVICE ";
+const LOAD_USER_SERVICE = "app/service/LOAD_USER_SERVICE";
+const DELETE_USER_SERVICE = "DELETE_USER_SERVICE";
 const LOADING = "LOADING";
-const USER_SKILL_ERROR = "USER_SKILL_ERROR";
+const USER_SERVICE_ERROR = "USER_SERVICE_ERROR";
+const GET_SERVICES = "app/services/GET_SERVICES";
 
 // Reducer
-export default function reducer(state = userSkill, action = {}) {
+export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case UPDATE_USER_SKILL:
+    case UPDATE_USER_SERVICE:
       return {
         ...state,
-        userSkill: action.payload,
+        service: action.payload,
         updatedOrDeleted: true,
       };
-    case LOAD_USER_SKILL:
+    case LOAD_USER_SERVICE:
       return {
         ...state,
-        userSkill: action.payload.data,
+        service: action.payload.data,
       };
-    case DELETE_USER_SKILL:
+    case GET_SERVICES:
+      return {
+        ...state,
+        services: action.payload.data,
+      };
+    case DELETE_USER_SERVICE:
       return {
         ...state,
         updatedOrDeleted: true,
@@ -44,7 +52,7 @@ export default function reducer(state = userSkill, action = {}) {
         updatedOrDeleted: false,
         loading: true,
       };
-    case USER_SKILL_ERROR:
+    case USER_SERVICE_ERROR:
       return {
         ...state,
         updatedOrDeleted: false,
@@ -59,77 +67,81 @@ export default function reducer(state = userSkill, action = {}) {
 export function loading() {
   return { type: LOADING };
 }
-export function userSkillLoaded(data) {
-  return { type: LOAD_USER_SKILL, payload: data };
+export function serviceLoaded(data) {
+  return { type: LOAD_USER_SERVICE, payload: data };
+}
+export function actionGetServices(payload) {
+  return { type: GET_SERVICES, payload };
 }
 
-export function createUserSkill(data) {
-  return { type: UPDATE_USER_SKILL, payload: data };
+export function actionCreateService(data) {
+  return { type: UPDATE_USER_SERVICE, payload: data };
 }
-export function deleteUserSkill() {
-  return { type: DELETE_USER_SKILL };
+export function actionDeleteService() {
+  return { type: DELETE_USER_SERVICE };
 }
-export function userSkillError() {
-  return { type: USER_SKILL_ERROR };
+export function serviceError() {
+  return { type: USER_SERVICE_ERROR };
 }
 // Actions
-export function loadUserSkills() {
+export function loadServices() {
   return (dispatch) => {
-    return agent.UserSkill.load().then((response) => {
-      dispatch(userSkillLoaded(response));
-      // dispatch(
-      //   showMessage({
-      //     type: MESSAGE_TYPE.SUCCESS,
-      //     title: "Profile Information",
-      //     message: "User skill loaded successfully",
-      //   })
-      // );
+    return agent.Service.load().then((response) => {
+      dispatch(serviceLoaded(response));
     });
   };
 }
 
-export function createSkill(userskill) {
+export function getServices() {
   return (dispatch) => {
-    dispatch(loading())
-    return agent.UserSkill.save(userskill).then(
+    return agent.Service.get().then((response) => {
+      dispatch(actionGetServices(response));
+    });
+  };
+}
+
+export function createService(service) {
+  return (dispatch) => {
+    dispatch(loading());
+    return agent.Service.save(service).then(
       (response) => {
-        dispatch(createUserSkill(response));
+        dispatch(actionCreateService(response));
         dispatch(closeModal());
         dispatch(
           showMessage({
             type: MESSAGE_TYPE.SUCCESS,
             title: "Update Profile Information",
-            message: "User skill created successfully",
+            message: "Service created successfully",
           })
         );
       },
       (error) => {
         // handle error
         dispatch(showMessage({ type: "error", message: error }));
-        dispatch(userSkillError());
+        dispatch(serviceError());
       }
     );
   };
 }
 
-export function deleteSkill(id) {
+export function deleteService(id) {
   return (dispatch) => {
     dispatch(loading());
-    return agent.UserSkill.delete(id).then(
+    return agent.Service.delete(id).then(
       (response) => {
-        dispatch(deleteUserSkill(response));
+        dispatch(actionDeleteService(response));
         dispatch(
           showMessage({
             type: MESSAGE_TYPE.SUCCESS,
             title: "Deleted Profile Information",
-            message: "User skill deleted successfully",
+            message: "Service deleted successfully",
           })
         );
       },
       (error) => {
         // handle error
         dispatch(showMessage({ type: "error", message: error }));
-        dispatch(userSkillError());
+        dispatch(serviceError());
       }
     );
   };
