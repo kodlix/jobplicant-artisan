@@ -126,43 +126,6 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
       </div>
     </div>
   </Card>
-
-  // return (
-  //   <div className="personal-profile p-d-flex p-jc-start  flex-column align-items-center">
-  //     <JobplicantAvatar
-  //       data={profileInfo}
-  //       selectedFile={selectedFile}
-  //       loading={loading}
-  //       preview={preview}
-  //       isViewApplicant={false}
-  //       handleClick={() => profilePicRef.current.click()}
-  //     />
-  //     <input
-  //       ref={profilePicRef}
-  //       type="file"
-  //       id="upload-button"
-  //       style={{ display: "none" }}
-  //       onChange={uploadProfilePicture}
-  //     />
-  //     <div className="ml-3">
-  //       <h3 className="username p-mr-2">
-  //         {profileInfo?.firstName || 'John'} {profileInfo?.lastName || 'Doe'}
-  //       </h3>
-  //       {!isViewApplicant && <span> <i
-  //         className="pi pi-pencil p-pr-3 personalInfo-edit"
-  //         id="personalInfoEdit"
-  //         onClick={() => openEdit(PROFILE.PERSONAL_INFO, profileInfo)}
-  //       ></i>
-  //         {/* <u>Edit Personal Info</u> */}
-  //       </span>}
-  //       <br />
-  //       {getCurrentJobExperience(profileInfo.experiences)}
-  //       {rating && accountType === ACCOUNT_TYPE.ARTISAN && <span>
-  //         <div className="stars" style={{ "--rating": rating }}></div>
-  //       </span>}
-  //     </div>
-  //   </div>
-  // );
 };
 
 export default PersonalInfo;
