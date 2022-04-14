@@ -86,7 +86,7 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
     return <PersonalInfoSkeleton />
 
   return (
-    <div className="personal-profile p-d-flex p-jc-start align-items-center">
+    <div className="personal-profile p-d-flex p-jc-start  flex-column align-items-center">
       <JobplicantAvatar
         data={profileInfo}
         selectedFile={selectedFile}

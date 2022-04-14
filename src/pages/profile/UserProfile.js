@@ -65,11 +65,14 @@ const UserProfile = ({ match }) => {
         <div className="content-container" style={{ width: '87%' }}>
 
           {/* personal info */}
-          <PersonalInfo
-            openCreate={openCreate}
-            openEdit={openEdit}
-            data={profileInfo}
-          />
+          <div className="d-flex justify-content-center">
+            <PersonalInfo
+              openCreate={openCreate}
+              openEdit={openEdit}
+              data={profileInfo}
+            />
+
+          </div>
 
           <div className="p-grid">
             <div className="p-col-12 p-md-9 content-smallscreen">
