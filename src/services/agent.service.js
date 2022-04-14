@@ -165,6 +165,7 @@ const Account = {
     requests.put("/accounts/job-experience", experience),
   updateContactInfo: (contactInfo) =>
     requests.put("/accounts/contact-info", contactInfo),
+  updateServices: (services) => requests.put("/accounts/services", services),
   updateLOI: (loi) => requests.put("/accounts/location", loi),
   updateHobies: (hobbies) => requests.put("/accounts/hobbies", { hobbies }),
   updateProfessionOfInterest: (interests) =>
@@ -362,7 +363,7 @@ const ServiceGroup = {
 };
 
 const Service = {
-  save: (data) => requests.post("/service", data),
+  save: (data) => requests.put("/service", data),
   load: (page, limit, search) =>
     requests.get(
       `/service?${new URLSearchParams({

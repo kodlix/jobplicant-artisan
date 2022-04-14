@@ -54,7 +54,7 @@ const ServicesForm = ({ data, closeEditMode }) => {
 
     if (currentService) {
       if (searchObjectArrayValues(services, currentService)) {
-        setServices([...services, currentService]);
+        setServices([...services, currentService.name]);
         setValue("services", services);
         setCurrentService("");
         setDuplicateError(false);
@@ -76,7 +76,7 @@ const ServicesForm = ({ data, closeEditMode }) => {
   const serviceSubmit = (data) => {
     console.log("services", services, "data", data);
 
-    dispatch(createService(services));
+    dispatch(createService({ services }));
   };
 
   const componentStatus = { services: "add" };
@@ -111,11 +111,7 @@ const ServicesForm = ({ data, closeEditMode }) => {
                 ) : (
                   <span></span>
                 )}
-                <Tag
-                  value={service?.name}
-                  icon="pi pi-times"
-                  className="p-p-2"
-                ></Tag>
+                <Tag value={service} icon="pi pi-times" className="p-p-2"></Tag>
               </button>
             ))}
             <span className="serviceInput">

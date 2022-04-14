@@ -103,7 +103,7 @@ export function getServices() {
 export function createService(service) {
   return (dispatch) => {
     dispatch(loading());
-    return agent.Service.save(service).then(
+    return agent.Account.updateServices(service).then(
       (response) => {
         dispatch(actionCreateService(response));
         dispatch(closeModal());
