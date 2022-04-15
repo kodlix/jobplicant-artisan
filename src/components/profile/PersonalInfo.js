@@ -10,6 +10,7 @@ import { Card } from 'primereact/card';
 import { Skeleton } from 'primereact/skeleton'
 import PersonalInfoSkeleton from "components/skeletons/PersonalInfoSkeleton";
 
+
 const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
   const rating = 4.5;
   const dispatch = useDispatch();
@@ -87,7 +88,7 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
     return <PersonalInfoSkeleton />
 
 
-  return <Card className="personal-profile w-100 mb-2" style={{ borderRadius: '1rem' }}>
+  return <Card className="personal-profile w-100 mb-2 bg-image" style={{ borderRadius: '1rem' }}>
     <div className="p-d-flex p-jc-end">
       {!isViewApplicant && <span> <i
         className="pi pi-pencil p-pr-3 personalInfo-edit"
