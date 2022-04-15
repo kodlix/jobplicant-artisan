@@ -284,7 +284,8 @@ const Company = {
 
 const InstantJob = {
   save: (instantjob) => requests.post("/instant-job", instantjob),
-  apply: (jobid) => requests.post(`/instant-job/${jobid}/apply`, null),
+  // apply: (jobid) => requests.post(`/instant-job/${jobid}/apply`, null),
+  apply: (jobid) => requests.post(`/instant-job/apply`, jobid),
   load: () => requests.get(`/instant-job`),
   loadApplicants: (jobId) => requests.get(`/instant-job/${jobId}/applicants`),
   loadAllInstantJobs: (page, take) =>
