@@ -89,8 +89,8 @@ const JobsTab = () => {
 
                         <div className='row'>
                           <div className='row'>
-                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-5'> <p className='font-weight-bold '>{jobApplied.service}</p> </div>
-                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Status : </p></div>  <div className='col-md-3'> <p>{jobApplied.accepted ? <Tag className='app-sec-color'> Accepted</Tag> : <Tag className='bg-warning'>Waiting to be accepted</Tag>}  </p> </div>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-7'> <p className='font-weight-bold '>{jobApplied.service}</p> </div>
+                            <div className='col-md-3'> <p>{jobApplied.accepted ? <Tag className='app-sec-color'> Accepted</Tag> : <Tag className='bg-warning'>Waiting to be accepted</Tag>}  </p> </div>
                           </div>
                           <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{jobApplied.location} </p> </div>
                           <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize"> Description: </p></div>  <div className='col-md-10'> <p>{jobApplied.description} </p> </div>
