@@ -5,6 +5,7 @@ import io from "socket.io-client";
 
 import agent, { API_ROOT } from "./services/agent.service";
 import { UserNotifications } from './store/modules/appNotification';
+import { getConversationWithPartnerId } from './store/modules/chat'
 
 import './styles/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -30,7 +31,6 @@ function App() {
   const user = agent.Auth.current();
   useEffect(() => {
     const notificationSocket = io(`${API_ROOT}/notigateway`);
-
     notificationSocket.on('connect', () => {
       if (user && user.id) {
         notificationSocket.emit('notification_msg_to_server', {
@@ -45,10 +45,28 @@ function App() {
         }
       });
     })
-
-
     return () => notificationSocket.disconnect();
   }, []);
+
+  useEffect(() => {
+    const chatSocket = io(`${API_ROOT}/chatgateway`);
+    chatSocket.on('connect to', () => {
+      if (user && user.id) {
+        chatSocket.emit('chat_msg_to_server', {
+          socketId: user.id,
+        })
+      }
+
+      chatSocket.on("chat_msg_to_client", (data) => {
+        console.log("chat message sent to clients");
+        if (data && data?.recieverId === user?.id) {
+          dispatch(getConversationWithPartnerId(user?.recieverId));
+        }
+      });
+    })
+    return () => chatSocket.disconnect();
+  }, []);
+
 
   return (
     <React.Suspense fallback={<AppLoading />}>

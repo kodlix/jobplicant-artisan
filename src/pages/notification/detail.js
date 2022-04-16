@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-// import Swal from 'sweetalert2';
-import AdminSideBar from '../AdminSidebar';
 import { updateNotification, ViewNotification } from '../../../store/modules/appNotification';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import AdminMainHeader from '../AdminMainHeader';
-import AdminPageHeader from '../AdminPageHeader';
-import { IMAGE_URL } from '../../../agent';
-import { useForm } from 'react-hook-form';
 
 const Detail = (props) => {
     const dispatch = useDispatch();
