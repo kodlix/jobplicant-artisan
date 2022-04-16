@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import agentService from "services/agent.service";
 import { updateProfilePicture } from "store/modules/account";
 import JobplicantAvatar from "./jobplicant-avatar";
+import { Card } from 'primereact/card';
 
 import { Skeleton } from 'primereact/skeleton'
 import PersonalInfoSkeleton from "components/skeletons/PersonalInfoSkeleton";
+
 
 const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
   const rating = 4.5;
@@ -85,8 +87,18 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
   if (loading && !isViewApplicant)
     return <PersonalInfoSkeleton />
 
-  return (
-    <div className="personal-profile p-d-flex p-jc-start align-items-center">
+
+  return <Card className="personal-profile w-100 mb-2 bg-image" style={{ borderRadius: '1rem' }}>
+    <div className="p-d-flex p-jc-end">
+      {!isViewApplicant && <span> <i
+        className="pi pi-pencil p-pr-3 personalInfo-edit"
+        id="personalInfoEdit"
+        onClick={() => openEdit(PROFILE.PERSONAL_INFO, profileInfo)}
+      ></i>
+        {/* <u>Edit Personal Info</u> */}
+      </span>}
+    </div>
+    <div className="p-d-flex p-jc-start flex-column align-items-center">
       <JobplicantAvatar
         data={profileInfo}
         selectedFile={selectedFile}
@@ -94,33 +106,27 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
         preview={preview}
         isViewApplicant={false}
         handleClick={() => profilePicRef.current.click()}
+
       />
-      <input
-        ref={profilePicRef}
-        type="file"
-        id="upload-button"
-        style={{ display: "none" }}
-        onChange={uploadProfilePicture}
-      />
-      <div className="ml-3">
+      <div className=" p-d-flex p-jc-center flex-column text-center">
         <h3 className="username p-mr-2">
           {profileInfo?.firstName || 'John'} {profileInfo?.lastName || 'Doe'}
         </h3>
-        {!isViewApplicant && <span> <i
+        {/* {!isViewApplicant && <span> <i
           className="pi pi-pencil p-pr-3 personalInfo-edit"
           id="personalInfoEdit"
           onClick={() => openEdit(PROFILE.PERSONAL_INFO, profileInfo)}
-        ></i>
-          {/* <u>Edit Personal Info</u> */}
-        </span>}
-        <br />
+        ></i
+         <u>Edit Personal Info</u> 
+        </span>} */}
+
         {getCurrentJobExperience(profileInfo.experiences)}
         {rating && accountType === ACCOUNT_TYPE.ARTISAN && <span>
           <div className="stars" style={{ "--rating": rating }}></div>
         </span>}
       </div>
     </div>
-  );
+  </Card>
 };
 
 export default PersonalInfo;

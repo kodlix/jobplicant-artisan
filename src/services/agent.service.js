@@ -11,7 +11,10 @@ export const currentApp = process.env.REACT_APP_CURRENT_APP;
 export const isArtisanApp = process.env.REACT_APP_CURRENT_APP === "artisan";
 
 // export const API_ROOT = "https://jobplicant-api.herokuapp.com";
-export const API_ROOT = process.env.NODE_ENV === "development" ? process.env.REACT_APP_API_ROOT_LOCAL : process.env.REACT_APP_API_ROOT_PROD;
+export const API_ROOT =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_API_ROOT_LOCAL
+    : process.env.REACT_APP_API_ROOT_PROD;
 // export const API_ROOT = "http://localhost:8080";
 
 export const IMAGE_URL = API_ROOT + "/account/uploads/";
@@ -34,7 +37,7 @@ export const tokenPlugin = (req) => {
   }
 
   req.on("response", function (res) {
-    console.log()
+    console.log();
     if (res.status === 401) {
       //Always revert back here to change the production to the *CORRECT URL*
       // console.log("onResponse: This is called when Authorization is hit")
@@ -162,6 +165,7 @@ const Account = {
     requests.put("/accounts/job-experience", experience),
   updateContactInfo: (contactInfo) =>
     requests.put("/accounts/contact-info", contactInfo),
+  updateServices: (services) => requests.put("/accounts/services", services),
   updateLOI: (loi) => requests.put("/accounts/location", loi),
   updateHobies: (hobbies) => requests.put("/accounts/hobbies", { hobbies }),
   updateProfessionOfInterest: (interests) =>
@@ -284,7 +288,8 @@ const Company = {
 
 const InstantJob = {
   save: (instantjob) => requests.post("/instant-job", instantjob),
-  apply: (jobid) => requests.post(`/instant-job/${jobid}/apply`, null),
+  // apply: (jobid) => requests.post(`/instant-job/${jobid}/apply`, null),
+  apply: (jobid) => requests.post(`/instant-job/apply`, jobid),
   load: () => requests.get(`/instant-job`),
   loadApplicants: (jobId) => requests.get(`/instant-job/${jobId}/applicants`),
   loadAllInstantJobs: (page, take) =>
@@ -359,7 +364,7 @@ const ServiceGroup = {
 };
 
 const Service = {
-  save: (data) => requests.post("/service", data),
+  save: (data) => requests.put("/service", data),
   load: (page, limit, search) =>
     requests.get(
       `/service?${new URLSearchParams({
@@ -368,6 +373,7 @@ const Service = {
         search: search,
       }).toString()}`
     ),
+  get: () => requests.get("/service"),
   view: (id) => requests.get(`/service/${id}`),
   edit: (id, data) => requests.put(`/service/${id}`, data),
   delete: (id) => requests.del(`/service/${id}`),
@@ -470,23 +476,15 @@ const Chat = {
 };
 
 const Dashboard = {
-  getCountByGroup: () =>
-    requests.get("/accounts/users-count-by-group"),
-  getAllPostCount: () =>
-    requests.get("/post/count"),
-  getAllJobCount: () =>
-    requests.get("/job/count"),
-  getUserPostCount: (userId) =>
-    requests.get(`/post/user/${userId}/count`),
-  loadUserContact: () =>
-    requests.get(`/contact/count`),
-  loadInstantService: () =>
-    requests.get(`/instant-job/applications/m/count`),
-  loadJobs: () =>
-    requests.get(`/job/applications/m/count`),
-  loadUserActivities: () =>
-    requests.get(`/accounts/user-activities`),
-}
+  getCountByGroup: () => requests.get("/accounts/users-count-by-group"),
+  getAllPostCount: () => requests.get("/post/count"),
+  getAllJobCount: () => requests.get("/job/count"),
+  getUserPostCount: (userId) => requests.get(`/post/user/${userId}/count`),
+  loadUserContact: () => requests.get(`/contact/count`),
+  loadInstantService: () => requests.get(`/instant-job/applications/m/count`),
+  loadJobs: () => requests.get(`/job/applications/m/count`),
+  loadUserActivities: () => requests.get(`/accounts/user-activities`),
+};
 
 export default {
   Auth,

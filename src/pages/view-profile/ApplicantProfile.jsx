@@ -4,7 +4,7 @@ import { openModal } from "store/modules/modal";
 import Biography from "components/profile/Biography";
 import Experience from "components/profile/Experience";
 import Education from "components/profile/Education";
-import Skills from "components/profile/Skills";
+import Skills from "components/profile/Services";
 import Hobbies from "components/profile/Hobbies";
 import ProfessionsOfInterest from "components/profile/ProfessionsOfInterest";
 import LocationOfInterest from "components/profile/LocationOfInterest";
@@ -147,8 +147,9 @@ const ApplicantProfile = () => {
                   className="text-center pointer"
                 >
                   <i
-                    className={`pi pi-info-circle ${activeTab === "info" && "pi-active"
-                      }`}
+                    className={`pi pi-info-circle ${
+                      activeTab === "info" && "pi-active"
+                    }`}
                   ></i>
                   <div className="tab-titles pi-active">Info</div>
                 </div>
@@ -161,8 +162,9 @@ const ApplicantProfile = () => {
                   className="text-center pointer"
                 >
                   <i
-                    className={`pi pi-star ${activeTab === "review" && "pi-active"
-                      }`}
+                    className={`pi pi-star ${
+                      activeTab === "review" && "pi-active"
+                    }`}
                   ></i>
                   <div className={`tab-titles`}>Reviews</div>
                 </div>
@@ -296,7 +298,7 @@ const ApplicantProfile = () => {
                               {review?.title}
                             </li>
                             <li className="d-flex flex-column">
-                              <p className="p-1">{ }</p>
+                              <p className="p-1">{}</p>
                               <span>
                                 <div
                                   className="stars"

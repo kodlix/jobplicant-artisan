@@ -21,7 +21,8 @@ const JobplicantAvatar = ({
     loading,
     preview,
     isProfileView,
-    handleClick
+    handleClick,
+    styles
 }) => {
     const profileInfo = data;
     const currentUserInfo = useSelector((state) => state.account.profileInfo); //currently logged in user
@@ -64,6 +65,7 @@ const JobplicantAvatar = ({
                             width="130"
                             height="130"
                             className="profile-picture"
+                            style={{ borderRadius: '1rem' }}
                         />
                         : fullname ? avatarContainer(fullname) : ''}
                     {/* {fullname ? avatarContainer(fullname) : ''} */}

@@ -18,13 +18,15 @@ const JobsTab = () => {
   const dispatch = useDispatch();
 
   const instantJobs = useSelector(state => state.instantJob.instantjobs);
-  const appliedJobs = useSelector(state => state.instantJob.appliedJobs);
+  const appliedJobs = useSelector(state => state.instantJob.appliedJobs)?.data;
   const allJobs = useSelector(state => state.job.allJobs);
 
-  const [limit, setLimit] = useState("")
-  const [page, setPage] = useState("")
-  const [search, setSearch] = useState("")
-  const [sort, setSort] = useState("")
+  const [limit, setLimit] = useState("");
+  const [page, setPage] = useState("");
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("");
+
+  console.log(appliedJobs, "appliedJobs");
 
 
   // const [appliedJobs, setAppliedJobs] = useState([]);
@@ -69,7 +71,7 @@ const JobsTab = () => {
                     <div>
                       {/* <Link to=""> */}
                       <small className="p-text-secondary">
-                        <div className="d-flex justify-content-between w-100">
+                        {/* <div className="d-flex justify-content-between w-100">
                           <div className='w-50'>
                             <p className="font-weight-bold app-color text-capitalize">Service : {jobApplied.service} </p>
                           </div>
@@ -83,6 +85,17 @@ const JobsTab = () => {
                         <div className="p-grid">
                           <div className="p-col-4"><span className="font-weight-bold app-color">Start Date: </span> {moment(jobApplied.startDate).format('MMMM DD, YYYY')} </div>
                           <div className="p-col-6"><span className="font-weight-bold app-color">End Date: </span> {moment(jobApplied.endDate).format('MMMM DD, YYYY')}</div>
+                        </div> */}
+
+                        <div className='row'>
+                          <div className='row'>
+                            <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Service : </p></div>  <div className='col-md-7'> <p className='font-weight-bold '>{jobApplied.service}</p> </div>
+                            <div className='col-md-3'> <p>{jobApplied.accepted ? <Tag className='app-sec-color'> Accepted</Tag> : <Tag className='bg-warning'>Waiting to be accepted</Tag>}  </p> </div>
+                          </div>
+                          <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Location : </p></div>  <div className='col-md-10'> <p>{jobApplied.location} </p> </div>
+                          <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize"> Description: </p></div>  <div className='col-md-10'> <p>{jobApplied.description} </p> </div>
+                          <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">Start Date  : </p></div>  <div className='col-md-3'> <p>{moment(jobApplied.startDate).format('MMMM DD, YYYY')} </p> </div>
+                          <div className='col-md-2'> <p className="font-weight-bold app-color text-capitalize">End Date  : </p></div>  <div className='col-md-3'> <p>{moment(jobApplied.endDate).format('MMMM DD, YYYY')} </p> </div>
                         </div>
                       </small>
                       {/* </Link> */}
