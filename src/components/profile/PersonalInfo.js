@@ -6,9 +6,8 @@ import agentService from "services/agent.service";
 import { updateProfilePicture } from "store/modules/account";
 import JobplicantAvatar from "./jobplicant-avatar";
 import { Card } from 'primereact/card';
-
-import { Skeleton } from 'primereact/skeleton'
 import PersonalInfoSkeleton from "components/skeletons/PersonalInfoSkeleton";
+import BackgroundImage from '../../../src/assets/bg.png'
 
 
 const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
@@ -88,7 +87,7 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
     return <PersonalInfoSkeleton />
 
 
-  return <Card className="personal-profile w-100 mb-2 bg-image" style={{ borderRadius: '1rem' }}>
+  return <Card className="personal-profile w-100 mb-2 bg-image" style={styles.container}>
     <div className="p-d-flex p-jc-end">
       {!isViewApplicant && <span> <i
         className="pi pi-pencil p-pr-3 personalInfo-edit"
@@ -128,5 +127,18 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
     </div>
   </Card>
 };
+
+const styles = {
+  container: {
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    width: "100%",
+    height: '310px',
+    position: "relative",
+    borderRadius: "1rem",
+
+  }
+}
 
 export default PersonalInfo;
