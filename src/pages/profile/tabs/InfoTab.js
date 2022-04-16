@@ -30,6 +30,7 @@ import HobbiesSkeleton from "components/skeletons/HobbiesSkeleton";
 import ProfessionOfInterestSkeleton from "components/skeletons/ProfessionOfInterestSkeleton";
 import LocationOfInterestSkeleton from "components/skeletons/LocationOfInterestSkeleton";
 import BiographySkeleton from "components/skeletons/BiographySkeleton";
+import Services from "components/profile/Services";
 
 const InfoTab = () => {
   const dispatch = useDispatch();
@@ -126,7 +127,7 @@ const InfoTab = () => {
             {loading ? (
               <ExperienceSkeleton />
             ) : (
-              <Skills
+              <Services
                 openCreate={openCreate}
                 openEdit={openEdit}
                 profileInfo={profileInfo}
