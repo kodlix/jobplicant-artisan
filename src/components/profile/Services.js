@@ -11,10 +11,10 @@ const Services = ({ openEdit, openCreate, profileInfo, isViewApplicant }) => {
     const serviceTemp =
       services.length > 0
         ? services.map((service, i) => (
-            <span key={i}>
-              <Tag>{service}</Tag>&nbsp;&nbsp;
-            </span>
-          ))
+          <span key={i}>
+            <Tag>{service}</Tag>&nbsp;&nbsp;
+          </span>
+        ))
         : "";
     return serviceTemp;
   };
@@ -31,7 +31,7 @@ const Services = ({ openEdit, openCreate, profileInfo, isViewApplicant }) => {
           openModalOnCreate={() => openEdit(PROFILE.SERVICE)}
           openModalOnEdit={() => openCreate(PROFILE.SERVICE)}
           isViewApplicant={isViewApplicant}
-          // onClick={mode}
+        // onClick={mode}
         />
         <div className="p-card-body">
           <strong>{formatServices(profileInfo?.services)}</strong>

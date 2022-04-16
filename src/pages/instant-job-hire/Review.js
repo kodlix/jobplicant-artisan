@@ -16,26 +16,30 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { useForm } from 'react-hook-form';
 import { InputText } from 'primereact/inputtext';
 import { createReview } from 'store/modules/review';
+import moment from 'moment';
 
 const Review = (props) => {
     const dispatch = useDispatch()
     const history = useHistory();
 
-    const [rating, setRating] = useState(0);
+    const loading = useSelector(state => state.review.loading);
+    const instantJob = useSelector(state => state.instantJob.instantjob);
+    const applicants = useSelector(state => state.instantJob.applicants).data;
+
     const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
         mode: "onChange",
         reValidateMode: "onChange"
     });
+
+    const [rating, setRating] = useState(0);
     const [review, setReview] = useState("")
-    const loading = useSelector(state => state.review.loading);
+    const [currentApplicant, setCurrentApplicant] = useState({});
+    const [appliedApplciants, setAppliedApplciants] = useState([]);
 
-
-    // const instantJob = useSelector(state => state.instantJob.instantjob);
-    // const applicants = useSelector(state => state.instantJob.applicants);
-    // console.log("Applicant => ", applicants);
-    // console.log("instant-job => ", instantJob)
+    console.log("instant-job => ", instantJob);
 
     const applicant = useParams();
+    const applicantId = applicant.applicantId;
 
     useEffect(() => {
         register("rating")
@@ -44,8 +48,22 @@ const Review = (props) => {
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
     // };
+    useEffect(() => {
+        dispatch(loadApplicants(applicant.jobId));
+        dispatch(loadInstantJob(applicant.jobId));
+    }, [applicant.jobId])
+
+    useEffect(() => {
+        if (applicants) return setAppliedApplciants(applicants)
+    }, [applicants])
 
 
+    useEffect(() => {
+        if (appliedApplciants.length > 0) {
+            const result = appliedApplciants.filter(x => x.applicantId === applicantId);
+            setCurrentApplicant(result)
+        }
+    }, [appliedApplciants])
 
     const onSubmit = (data) => {
         data.applicantId = applicant.applicantId;
@@ -53,7 +71,6 @@ const Review = (props) => {
         data.rating = rating;
         dispatch(createReview(data))
     }
-
 
 
     return (
@@ -78,8 +95,8 @@ const Review = (props) => {
 
                                 <div className="d-flex d-row p-mt-3">
                                     <p className="p-mr-5"> <span className="font-weight-bold" >Job Id : </span> {applicant.jobId}</p>
-                                    <p className="p-mr-5"> <span className="font-weight-bold">Job Closed : </span><span>31 July, 2001</span></p>
-                                    <p className="p-mr-5">  <span className="font-weight-bold">Applicant :</span> <span>Mr Jonathan Ebele</span></p>
+                                    <p className="p-mr-5"> <span className="font-weight-bold">Job Closed : </span><span>{moment(instantJob.endDate).format('MMMM DD, YYYY')}</span></p>
+                                    <p className="p-mr-5">  <span className="font-weight-bold">Applicant :</span> <span>{currentApplicant[0]?.name}</span></p>
                                 </div>
 
                                 {/* <hr className="appcolor" /> */}
@@ -97,11 +114,15 @@ const Review = (props) => {
 
                                 <div className="row p-mt-4">
                                     <div className="col-2 rounded-circle">
-                                        <img
-                                            src="https://source.unsplash.com/random/100x100" style={{ borderRadius: "50%" }}
+                                        {currentApplicant[0]?.imageUrl ? <img
+                                            src={currentApplicant[0]?.imageUrl} style={{ borderRadius: "50%" }}
                                             className="img-fluid"
                                             alt="user-image" height="100" width="100"
-                                        />
+                                        /> : <img
+                                            src="/assets/images/logo/applogo.jpeg" style={{ borderRadius: "50%" }}
+                                            className="img-fluid"
+                                            alt="user-image" height="100" width="100"
+                                        />}
                                     </div>
 
                                     <div className="col-10">

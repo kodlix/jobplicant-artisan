@@ -33,12 +33,12 @@ export default function reducer(state = initialState, action = {}) {
     case LOAD_USER_SERVICE:
       return {
         ...state,
-        service: action.payload.data,
+        service: action?.payload?.data,
       };
     case GET_SERVICES:
       return {
         ...state,
-        services: action.payload.data,
+        services: action?.payload?.data,
       };
     case DELETE_USER_SERVICE:
       return {
