@@ -26,7 +26,6 @@ const JobsTab = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("");
 
-  console.log(appliedJobs, "appliedJobs");
 
 
   // const [appliedJobs, setAppliedJobs] = useState([]);
