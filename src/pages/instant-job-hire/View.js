@@ -63,7 +63,7 @@ const View = () => {
                 <div className="row mt-4 mb-5">
                     <div className="col-md-9">
                         <div className="d-flex justify-content-end">
-                            <button onClick={() => history.goBack()} className="btn btn-primary" style={{ backgroundColor: '#00b4d8', border: 'none', padding: '8px 24px' }}><i className="pi pi-arrow-left"></i></button>
+                            <button onClick={() => history.goBack()} className="btn btn-primary on-hover" style={{ backgroundColor: '#00b4d8', border: 'none', padding: '8px 24px' }}><i className="pi pi-arrow-left"></i></button>
                         </div>
                         <div className="p-card p-4 mt-2" style={{ borderRadius: "1rem" }}>
                             <h5 className="p-title">Job Description</h5>
@@ -85,7 +85,7 @@ const View = () => {
                             </div>
                         </div>
 
-                        <button onClick={() => handleApply(instantJobDetail.id)} className="btn btn-block" style={styles.btnApply}>{jobApplicationRequest ? <span><i className="pi pi-spin pi-spinner"></i> Please wait...</span> : `Apply`}</button>
+                        <button onClick={() => handleApply(instantJobDetail.id)} className="btn btn-block on-hover" style={styles.btnApply}>{jobApplicationRequest ? <span><i className="pi pi-spin pi-spinner"></i> Please wait...</span> : `Apply`}</button>
                     </div>
                     <div className="col-md-3">
                         {/* <div className="p-card p-4 mt-3">
