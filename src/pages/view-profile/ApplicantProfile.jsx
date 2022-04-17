@@ -31,6 +31,8 @@ import LocationOfInterestSkeleton from "components/skeletons/LocationOfInterestS
 import BiographySkeleton from "components/skeletons/BiographySkeleton";
 import { loadUserProfileById } from "store/modules/profile";
 import ConnectionConfirm from "./components/ConnectionConfirm";
+import Services from "components/profile/Services";
+import Spinner from "components/spinner/spinner.component";
 
 // const ApplicantContext  = useContext(false);
 
@@ -104,7 +106,8 @@ const ApplicantProfile = () => {
 
   // const isProfile = currentUserInfo.id === profileInfo.id;
   // console.log('connection reqeust', isRequestConnection, typeof isRequestConnection)
-
+  if (loading || !profileInfo) return <Spinner />;
+  // return <h3>Hello</h3>;
   return (
     <div className="container">
       <div className="pt-5">
@@ -185,6 +188,18 @@ const ApplicantProfile = () => {
 
               <div className="p-grid">
                 <div className="p-col-12 p-md-8 content-leftPanel">
+                  {/* Services */}
+                  {loading ? (
+                    <ExperienceSkeleton />
+                  ) : (
+                    <Services
+                      openCreate={openCreate}
+                      openEdit={openEdit}
+                      profileInfo={profileInfo}
+                      isViewApplicant={true}
+                    />
+                  )}
+                  {/* Experiences */}
                   {loading ? (
                     <ExperienceSkeleton />
                   ) : (
