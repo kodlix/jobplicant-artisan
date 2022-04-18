@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_CHAT:
       return {
         ...state,
-        conversations: [...state.conversations, action.payload],
+        conversations: [...state.conversations?.conversation, action.payload],
       };
     case CONVERSATION_WITH_PARTNER_ID:
       return {
@@ -75,6 +75,7 @@ export const createChat = (conversation) => async (dispatch) => {
   dispatch(actionCreateChat(conversation));
   return agent.Chat.createChat(conversation).then(
     (response) => {
+      dispatch(getConversationWithPartnerId(conversation.recieverId));
       console.log("create chat response", response);
     },
     (error) => {

@@ -19,7 +19,7 @@ const sentStyle = {
   fontSize: "13px",
   fontWeight: 400,
   boxShadow: "2px 1px 2px #eee",
-  backgroundColor: "#fff",
+  backgroundColor: "#00b4d840",
   color: "black",
 };
 const receivedStyle = {
@@ -38,22 +38,85 @@ const receivedStyle = {
   color: "black",
 };
 
-const ChatContentItem = ({ conversation, contact }) => {
+const dayStyle = {
+  display: "block",
+  borderRadius: "4px",
+  padding: "6px",
+  margin: "4px",
+  maxWidth: "70%",
+  margin: "auto",
+  textAlign: "center",
+  fontSize: "13px",
+  fontWeight: 400,
+  boxShadow: "2px 1px 2px #eee",
+  backgroundColor: "#dee2e6",
+  color: "black",
+}
+
+const ChatContentItem = ({ conversation, contact, previousConversation }) => {
+  console.log("realConveration ", previousConversation);
   if (contact.id === conversation.senderId) {
     return (
       <div style={receivedStyle}>
         <p>{conversation.message}</p>
+        <time style={{ float: 'right', fontStyle: 'italic' }}>{moment(conversation.createdAt).format("h:mm a")}</time>
       </div>
     );
   } else if (contact.id === conversation.recieverId) {
     return (
       <div style={sentStyle}>
         <p>{conversation.message}</p>
+        <time style={{ float: 'right', fontStyle: 'italic' }}>{moment(conversation.createdAt).format("h:mm a")}</time>
       </div>
     );
   }
   return <div></div>;
 };
+
+const sameDay = (d1, d2) => {
+  const firstDate = new Date(d1);
+  const secondDate = new Date(d2);
+  const same = firstDate.getFullYear() === secondDate.getFullYear() &&
+    firstDate.getMonth() === secondDate.getMonth() &&
+    firstDate.getDate() === secondDate.getDate();
+  return same;
+}
+
+const isToday = (currDate) => {
+  if (!currDate) {
+    return false;
+  }
+  var todaysDate = new Date();
+  var currentDate = new Date(currDate);
+
+  // call setHours to take the time out of the comparison
+  return currentDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0);
+}
+
+const showDate = (currDate, previousDate) => {
+  if (!currDate && !previousDate) {
+    return;
+  }
+
+  let result = "";
+  let today = isToday(currDate);
+  let isSameDay = sameDay(currDate, previousDate);
+
+  if (previousDate && isSameDay) {
+    result = "";
+  }
+  else if (!previousDate && !today) {
+    result = moment(currDate).format("LL");
+  }
+  else if (!isSameDay && today) {
+    result = "Today"
+  }
+  else if (!isSameDay) {
+    result = moment(currDate).format("LL");
+  }
+
+  return result;
+}
 
 const ChatContent = () => {
   const history = useHistory();
@@ -67,6 +130,8 @@ const ChatContent = () => {
   const [message, setMessage] = React.useState("");
   //   const [conversations, setConversations] = React.useState([]);
   const conversations = useSelector((state) => state.chat.conversations);
+  console.log("con=", conversations);
+
 
   useEffect(() => {
     dispatch(getConversationWithPartnerId(contact.id));
@@ -78,7 +143,7 @@ const ChatContent = () => {
   };
   const handleSendChat = () => {
     const newConversation = {
-      title: "Chat",
+      title: getName + "-" + (new Date()).toISOString(),
       recieverId: contact.id,
       message,
       imageUrl: "",
@@ -136,18 +201,21 @@ const ChatContent = () => {
       </div>
       <div className="chat-content-body">
         <div className="chat-content-messages" style={{ display: "flex" }}>
-          {conversations
-            .sort((a, b) =>
-              moment(b.createdAt) < moment(a.createdAt) ? 1 : -1
-            )
-            .map((conversation, index) => (
+          {conversations?.conversation?.map((conversation, index) => (
+            <>
+              {showDate(conversation.createdAt, conversations?.conversation[index - 1]?.createdAt)
+                ? <div style={{ ...dayStyle }}>{showDate(conversation.createdAt, conversations?.conversation[index - 1]?.createdAt)}</div>
+                : <></>
+              }
+
               <ChatContentItem
                 key={index}
                 contact={contact}
                 conversation={conversation}
+                previousConversation={conversations?.conversation[index - 1]}
               />
-            ))}
-
+            </>
+          ))}
           <div ref={chatMessageRef}></div>
         </div>
       </div>

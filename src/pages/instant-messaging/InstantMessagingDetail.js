@@ -20,8 +20,8 @@ const sentStyle = {
   fontSize: "13px",
   fontWeight: 400,
   boxShadow: "2px 1px 2px #eee",
-  backgroundColor: "#fff",
-  color: "black",
+  backgroundColor: "#00b4d84a",
+  color: "#000"
 };
 const receivedStyle = {
   justifyContent: "flex-start",
@@ -40,19 +40,19 @@ const receivedStyle = {
 };
 
 const ChatContentItem = ({ conversation, contact }) => {
-  if (contact.id === conversation.senderId) {
-    return (
-      <div style={receivedStyle}>
-        <p>{conversation.message}</p>
-      </div>
-    );
-  } else if (contact.id === conversation.recieverId) {
-    return (
-      <div style={sentStyle}>
-        <p>{conversation.message}</p>
-      </div>
-    );
-  }
+  // if (contact.id === conversation.senderId) {
+  //   return (
+  //     <div style={receivedStyle}>
+  //       <p>{conversation.message}</p>
+  //     </div>
+  //   );
+  // } else if (contact.id === conversation.recieverId) {
+  //   return (
+  //     <div style={sentStyle}>
+  //       <p>{conversation.message}</p>
+  //     </div>
+  //   );
+  // }
   return <div></div>;
 };
 
