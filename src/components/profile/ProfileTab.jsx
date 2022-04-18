@@ -21,13 +21,13 @@ const ProfileTab = () => {
           <i
             className={`pi pi-briefcase ${activeTab === "jobs" && "pi-active"}`}
           ></i>
-          <div className="tab-titles">Jobs</div>
+          <div className="tab-titles">My Jobs</div>
         </Link>
         <Link to={`${match.path}/contacts`} onClick={() => setActiveTab("contacts")}>
           <i
             className={`pi pi-user ${activeTab === "contacts" && "pi-active"}`}
           ></i>
-          <div className={`tab-titles`}>Contacts</div>
+          <div className={`tab-titles px-2`}>My Contacts</div>
         </Link>
         {/* <Link to={`${match.path}/groups`} onClick={() => setActiveTab("groups")}>
           <i
@@ -39,7 +39,7 @@ const ProfileTab = () => {
           <i
             className={`pi pi-star ${activeTab === "review" && "pi-active"}`}
           ></i>
-          <div className={`tab-titles`}>Reviews</div>
+          <div className={`tab-titles px-2`}>My Reviews</div>
         </Link>
       </div>
     </>

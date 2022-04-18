@@ -13,7 +13,7 @@ const Education = ({ openCreate, openEdit, profileInfo, formatDate, isViewApplic
       <div className="p-card p-mt-2" style={{ borderRadius: "1rem" }}>
         <SectionHeader
           icon="book"
-          sectionTitle="Education"
+          sectionTitle="Education / Apprenticeship"
           id="educationEdit"
           showAddButton="true"
           showEditButton="true"

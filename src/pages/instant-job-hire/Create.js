@@ -180,7 +180,7 @@ const New = ({ mode }) => {
                             <div className="card card-size-list" style={{ borderRadius: "1rem" }}>
                                 <div className="card-body"></div>
                                 <InstantHeader
-                                    title="Create new instant hire"
+                                    title="Request Instant Service"
                                     showBack={true}
                                 />
 
@@ -188,7 +188,7 @@ const New = ({ mode }) => {
                                     <div className="row">
                                         <div className="p-fluid p-md-6 p-sm-12">
                                             <div className="p-field">
-                                                <label htmlFor="service"> Job Service *</label>
+                                                <label htmlFor="service"> Select Type of Service Needed *</label>
 
                                                 <Dropdown
                                                     options={services}
@@ -211,7 +211,7 @@ const New = ({ mode }) => {
                                         </div>
                                         <div className="p-fluid p-md-6 p-sm-12">
                                             <div className="p-field">
-                                                <label htmlFor="location">Location * </label>
+                                                <label htmlFor="location">Service Location * </label>
                                                 <PlacesAutocomplete
                                                     value={location}
                                                     onChange={setLocation}
@@ -221,7 +221,7 @@ const New = ({ mode }) => {
                                                         <div style={{ position: 'relative' }}>
                                                             <InputText
                                                                 {...getInputProps({
-                                                                    placeholder: 'Enter Location ...',
+                                                                    // placeholder: 'Enter Location ...',
                                                                     className: 'location-search-input',
                                                                     name: "location"
                                                                 })}
@@ -267,7 +267,7 @@ const New = ({ mode }) => {
 
                                         <div className="p-fluid p-md-6 p-sm-12">
                                             <div className="p-field">
-                                                <label htmlFor="address">Address/Meet Up Location * </label>
+                                                <label htmlFor="address">Meet-up Location (if different from service location) </label>
                                                 <PlacesAutocomplete
                                                     value={address}
                                                     onChange={setAddress}
@@ -277,7 +277,7 @@ const New = ({ mode }) => {
                                                         <div style={{ position: 'relative' }}>
                                                             <InputText
                                                                 {...getInputProps({
-                                                                    placeholder: 'Meet up Place ...',
+                                                                    // placeholder: 'Enter meet-up location ...',
                                                                     className: 'location-search-input',
                                                                     name: "address"
                                                                 })}
@@ -327,7 +327,7 @@ const New = ({ mode }) => {
                                                 <label htmlFor="phoneNumber">Phone Number * </label>
                                                 <InputText
                                                     type="number"
-                                                    placeholder="Phone Number"
+                                                    // placeholder="Phone Number"
                                                     name="phoneNumber"
                                                     {...register("phoneNumber", { required: "Phone Number is required" })}
 
@@ -414,13 +414,13 @@ const New = ({ mode }) => {
                                         </div>} */}
                                         <div className="p-fluid p-md-12 p-sm-12">
                                             <div className="p-field">
-                                                <label htmlFor="lastname"> Description *</label>
+                                                <label htmlFor="lastname">Describe Service Needed *</label>
                                                 <InputTextarea
                                                     defaultValue={desc}
                                                     onChange={(e) => setDesc(e.target.value)}
                                                     rows={3}
                                                     cols={30}
-                                                    placeholder="Job Description"
+                                                    // placeholder="Job Description"
                                                     name="description"
                                                     {...register("description", { required: "Description is required" })}
                                                 />

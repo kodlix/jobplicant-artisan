@@ -1,6 +1,11 @@
-:root {
+/* :root {
     --app-primary-color: #00b4d8; 
     --app-secondary-color: #03045E;
+} */
+
+:root {
+    --app-primary-color: #0f0e0e; 
+    --app-secondary-color: #357C3C;
 }
 
 .App {

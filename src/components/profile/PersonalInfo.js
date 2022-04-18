@@ -130,7 +130,8 @@ const PersonalInfo = ({ openCreate, openEdit, data, isViewApplicant }) => {
 
 const styles = {
   container: {
-    backgroundImage: `url(${BackgroundImage})`,
+    // backgroundImage: `url(${BackgroundImage})`,
+    backgroundColor: "#357C3C",
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     width: "100%",

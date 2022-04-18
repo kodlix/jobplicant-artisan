@@ -146,6 +146,10 @@
     width: '100%';
 }
 
+.btn-bg-color {
+    background-color: "#357C3C" !important;
+}
+
 
 /* Media Query Section */
 
@@ -181,6 +185,7 @@
     .instant .create-btn {
         margin-left: 9em;
         margin-top: 0.5em;
+        background-color: "#357C3C" !important;
     }
     .content-container {
         width: 95%;

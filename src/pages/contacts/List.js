@@ -9,6 +9,7 @@ import "./Contacts.css";
 import ConnectionRequestPanel from "./ConnectionRequestPanel";
 import { ACCOUNT_TYPE } from "constants/accountType";
 import { actionSetSelectedContact } from "store/modules/chat";
+import { BsFillChatDotsFill, BsFillCameraVideoFill, BsFillTrashFill, BsFillTelephoneFill } from "react-icons/bs";
 
 // import './SkeletonDemo.css';
 
@@ -191,20 +192,33 @@ const List = () => {
                       </small>
                     </span>
                   </span>
-                  <div className="contacts-actionIcons">
+                  <div className="contacts-actionIcons d-flex">
                     {/* <i className="pi pi-phone p-pr-2" /> */}
-                    <i className="pi pi-video p-pr-2" />
-                    <i
+                    <div>
+                      <BsFillTelephoneFill fontSize={25} />
+                    </div>
+                    {/* <i className="pi pi-video p-pr-2 text-success" /> */}
+                    <div className="px-2">
+                      <BsFillCameraVideoFill fontSize={30} />
+                    </div>
+                    {/* <i
                       className="pi pi-comments p-pr-2"
                       onClick={() => handleOpenChatRoom(contact)}
-                    />
-                    <i
-                      data-id={contact.id}
-                      onClick={confirmRemove}
-                      className="pi pi-trash p-pr-2"
-                      data-last-name={contact.lastName}
-                      data-first-name={contact.firstName}
-                    />
+                    /> */}
+                    <div>
+                      <BsFillChatDotsFill fontSize={30} onClick={() => handleOpenChatRoom(contact)} />
+                    </div>
+                    <div>
+
+                      <i
+                        data-id={contact.id}
+                        onClick={confirmRemove}
+                        className="pi pi-trash p-pr-2 text-danger"
+                        data-last-name={contact.lastName}
+                        data-first-name={contact.firstName}
+                      />
+                    </div>
+
                   </div>
                 </div>
               );

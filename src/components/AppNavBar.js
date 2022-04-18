@@ -143,7 +143,7 @@ const AppNavBar = ({ displaySearBar = false, instantJobAlert = false }) => {
                     </div>
                     <div className="d-flex">
                         <div>
-                            <Link to={"/create-instant-hire"} className="button btn bg-light text-muted request-instant-job d-none d-lg-block" style={{ width: "14vw", display: 'block' }}>
+                            <Link to={"/create-instant-hire"} className="button btn  text-white request-instant-job d-none d-lg-block" style={{ width: "14vw", display: 'block', backgroundColor: "#357C3C" }}>
                                 <small>Request Instant Service</small>
                             </Link>
                         </div>

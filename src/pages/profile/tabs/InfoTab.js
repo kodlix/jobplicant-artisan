@@ -73,7 +73,7 @@ const InfoTab = () => {
     dispatch(getQualifications());
   }, []);
 
-  const expandImage = () => {};
+  const expandImage = () => { };
 
   const openCreate = (name) => {
     setMode("create");
@@ -112,7 +112,7 @@ const InfoTab = () => {
       }}
     >
       <>
-        {loading ? (
+        {/* {loading ? (
           <BiographySkeleton />
         ) : (
           <Biography
@@ -120,7 +120,7 @@ const InfoTab = () => {
             openEdit={openEdit}
             profileInfo={profileInfo}
           />
-        )}
+        )} */}
         <div className="p-grid">
           <div className="p-col-12 p-md-8 content-leftPanel">
             {/* Services */}
@@ -144,20 +144,11 @@ const InfoTab = () => {
                 formatDate={formatDate}
               />
             )}
-            {loading ? (
-              <EducationSkeleton />
-            ) : (
-              <Education
-                openCreate={openCreate}
-                openEdit={openEdit}
-                profileInfo={profileInfo}
-                formatDate={formatDate}
-              />
-            )}
+
           </div>
           <div className="p-col-12 content-rightPanel p-md-4">
             {/* contact information */}
-            {loading ? (
+            {/* {loading ? (
               <ContactInfoSkeleton />
             ) : (
               <ContactInformation
@@ -165,7 +156,8 @@ const InfoTab = () => {
                 openEdit={openEdit}
                 profileInfo={profileInfo}
               />
-            )}
+            )} */}
+
             {/* skills */}
             {/* {loading ? <SkillSkeleton /> : <Skills
               openCreate={openCreate}
@@ -204,6 +196,17 @@ const InfoTab = () => {
                 openCreate={openCreate}
                 openEdit={openEdit}
                 profileInfo={profileInfo}
+              />
+            )}
+
+            {loading ? (
+              <EducationSkeleton />
+            ) : (
+              <Education
+                openCreate={openCreate}
+                openEdit={openEdit}
+                profileInfo={profileInfo}
+                formatDate={formatDate}
               />
             )}
           </div>
