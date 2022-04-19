@@ -109,33 +109,33 @@ const New = ({ mode }) => {
         }
     }
 
-    const locateUserHandler = () => {
-        if (!navigator.geolocation) {
-            alert('location feature is not available in your browser, please use another browser');
-            return;
-        }
-        navigator.geolocation.getCurrentPosition(successResult => {
-            const coordinates = {
-                lat: successResult.coords.latitude,
-                lng: successResult.coords.longitude,
-            }
-            console.log("user location -", coordinates)
+    // const locateUserHandler = () => {
+    //     if (!navigator.geolocation) {
+    //         alert('location feature is not available in your browser, please use another browser');
+    //         return;
+    //     }
+    //     navigator.geolocation.getCurrentPosition(successResult => {
+    //         const coordinates = {
+    //             lat: successResult.coords.latitude,
+    //             lng: successResult.coords.longitude, 
+    //         }
+    //         console.log("user location -", coordinates)
 
-            fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.lat},${coordinates.lng}&key=${API_KEY}`)
+    //         fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${coordinates.lat},${coordinates.lng}&key=${API_KEY}`)
 
-                .then(response => response.json())
-                .then(data => {
-                    let requester_location = data.results[0].formatted_address;
-                    console.log("requester's location => ", requester_location)
-                    return requester_location;
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 let requester_location = data.results[0].formatted_address;
+    //                 console.log("requester's location => ", requester_location)
+    //                 return requester_location;
 
-                })
-        },
-            error => {
-                alert('Could not locate your address unforturnately')
-            })
+    //             })
+    //     },
+    //         error => {
+    //             alert('Could not locate your address unforturnately')
+    //         })
 
-    }
+    // }
 
 
     useEffect(() => {
@@ -157,7 +157,7 @@ const New = ({ mode }) => {
                     data.now = false;
                 }
                 data.service = data.service.name;
-                data.requesterLocation = locateUserHandler();
+                // data.requesterLocation = locateUserHandler();
                 data.requesterLocation = { lat: coordinates.lat, long: coordinates.lng };
                 data.location = location;
                 data.address = address;
