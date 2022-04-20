@@ -29,12 +29,12 @@ const ProfileTab = () => {
           ></i>
           <div className={`tab-titles`}>Contacts</div>
         </Link>
-        <Link to={`${match.path}/groups`} onClick={() => setActiveTab("groups")}>
+        {/* <Link to={`${match.path}/groups`} onClick={() => setActiveTab("groups")}>
           <i
             className={`pi pi-users ${activeTab === "groups" && "pi-active"}`}
           ></i>
           <div className={`tab-titles`}>Groups</div>
-        </Link>
+        </Link> */}
         <Link to={`${match.path}/review`} onClick={() => setActiveTab("review")}>
           <i
             className={`pi pi-star ${activeTab === "review" && "pi-active"}`}

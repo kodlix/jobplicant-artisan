@@ -209,7 +209,7 @@ const InstantJobs = () => {
                                     <Button
                                       label="View"
                                       id="reject"
-                                      className="p-button-sm"
+                                      className="p-button-sm on-hover"
                                     />{" "}
                                   </Link>
                                 </div>
