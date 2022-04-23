@@ -4,12 +4,15 @@ import {
   actionSetSelectedContact,
   createChat,
   getConversationWithPartnerId,
+  markAsRead,
 } from "../../store/modules/chat";
 import "./ChatContent.css";
 import moment from "moment";
 import { useHistory } from "react-router";
+import agent from "../../services/agent.service";
 
-const sentStyle = {
+
+const ownerStyle = {
   borderRadius: "4px",
   padding: "6px",
   margin: "4px",
@@ -22,7 +25,7 @@ const sentStyle = {
   backgroundColor: "#00b4d840",
   color: "black",
 };
-const receivedStyle = {
+const partnerStyle = {
   justifyContent: "flex-start",
   display: "inline",
   borderRadius: "4px",
@@ -53,18 +56,18 @@ const dayStyle = {
   color: "black",
 }
 
-const ChatContentItem = ({ conversation, contact, previousConversation }) => {
-  console.log("realConveration ", previousConversation);
-  if (contact.id === conversation.senderId) {
+const ChatContentItem = ({ conversation, partner, owner }) => {
+  console.log("realConveration ", conversation);
+  if (partner?.id === conversation.senderId) {
     return (
-      <div style={receivedStyle}>
+      <div style={partnerStyle}>
         <p>{conversation.message}</p>
         <time style={{ float: 'right', fontStyle: 'italic' }}>{moment(conversation.createdAt).format("h:mm a")}</time>
       </div>
     );
-  } else if (contact.id === conversation.recieverId) {
+  } else if (owner?.id === conversation.senderId) {
     return (
-      <div style={sentStyle}>
+      <div style={ownerStyle}>
         <p>{conversation.message}</p>
         <time style={{ float: 'right', fontStyle: 'italic' }}>{moment(conversation.createdAt).format("h:mm a")}</time>
       </div>
@@ -121,24 +124,30 @@ const showDate = (currDate, previousDate) => {
 const ChatContent = () => {
   const history = useHistory();
   const chatMessageRef = useRef(null);
+  const user = agent.Auth.current();
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.chat.selectedContact);
   const handleClose = () => dispatch(actionSetSelectedContact(null));
 
-  const getName = (contact) => `${contact.firstName} ${contact.lastName}`;
+  const getName = (contact) => {
+    console.log("contact me", contact);
+    return `${contact.firstName} ${contact.lastName}`;
+  }
 
   const [message, setMessage] = React.useState("");
   //   const [conversations, setConversations] = React.useState([]);
   const conversations = useSelector((state) => state.chat.conversations);
-  console.log("con=", conversations);
+  // console.log("con=", conversations);
 
 
   useEffect(() => {
     dispatch(getConversationWithPartnerId(contact.id));
   }, [contact.id]);
 
+
+
   const handleRefreshConversation = () => {
-    console.log("refresh");
+    // console.log("refresh");
     dispatch(getConversationWithPartnerId(contact.id));
   };
   const handleSendChat = () => {
@@ -161,20 +170,25 @@ const ChatContent = () => {
     // };
     dispatch(createChat(newConversation));
     // setConversations([...conversations, newConversation, reply]);
+    chatMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     setMessage("");
   };
 
-  console.log("contact to mess", contact);
+  // console.log("contact to mess", contact);
 
   React.useEffect(() => {
     chatMessageRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [contact]);
   React.useEffect(() => {
-    if (conversations.length) {
-      console.log(conversations);
+    if (conversations?.conversation) {
+      // console.log(conversations);
+      const hasUnreadMessges = conversations?.conversation?.some(x => x.read == false);
+      if (hasUnreadMessges) {
+        dispatch(markAsRead(conversations?.partner.id));
+      }
       chatMessageRef.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [conversations.length]);
+  }, [conversations]);
 
   return (
     <div className={`chat-content-container`}>
@@ -210,13 +224,12 @@ const ChatContent = () => {
 
               <ChatContentItem
                 key={index}
-                contact={contact}
                 conversation={conversation}
-                previousConversation={conversations?.conversation[index - 1]}
+                partner={conversations?.partner}
+                owner={conversations?.owner}
               />
-            </>
+              <div ref={chatMessageRef}></div>            </>
           ))}
-          <div ref={chatMessageRef}></div>
         </div>
       </div>
       <div className="chat-content-input">
@@ -226,7 +239,7 @@ const ChatContent = () => {
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
-        <button className="btn-primary" onClick={handleSendChat}>
+        <button disabled={!message} className="btn-primary" onClick={handleSendChat}>
           Send
         </button>
       </div>

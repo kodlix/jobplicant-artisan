@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Avatar } from "primereact/avatar";
 import chatJSON from "./chat.json";
-import { actionSetSelectedContact } from "../../store/modules/chat";
+import { actionSetSelectedContact, actionSetTotalUnread, markAsRead } from "../../store/modules/chat";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import ChatAvatar from "../../assets/avatar-chat.png";
@@ -12,13 +12,8 @@ const ChatList = () => {
   const contact = useSelector((state) => state.contact.contacts);
   const [contacts, setContacts] = React.useState([]);
   const conversationList = useSelector((state) => state.chat.conversationList);
-  // console.log("[CHATLIST] trans:", transformObjToList(contact));
-  const [recentConversationList, setRecentConversationList] = React.useState(
-    []
-  );
-
+  const [conversations, setConversations] = React.useState([]);
   const [filteredContacts, setFilteredContact] = React.useState([]);
-  const [filteredConversation, setFilteredConversation] = React.useState([]);
 
   useEffect(() => {
     if (contact) {
@@ -28,36 +23,25 @@ const ChatList = () => {
     }
   }, [contact]);
 
-  // console.log("converstaion list", conversationList);
   useEffect(() => {
-    console.log("conversation list in a useEffect");
-    if (conversationList.data && contacts.length) {
-      console.log("conversation list data");
-      const result = conversationList.data.reduce(function (acc, item) {
-        (acc[item["recieverId"]] = acc[item["recieverId"]] || []).push(item);
-        return acc;
-      }, {});
-      console.log("this is a goood place to start");
-      const groupedRecentConversations = Object.keys(result).map((key) => {
-        let contact = contacts.find((contact) => contact.id === key);
-        let messages = result[key];
-        if (contact != undefined) {
-          return { ...contact, messages };
-        }
-        return { id: key, messages, firstName: "", lastName: "" };
-      });
-
-      setRecentConversationList(groupedRecentConversations);
-      setFilteredConversation(groupedRecentConversations);
-      // console.log("conversation list loaded", conversationList.data);
+    if (conversationList) {
+      setConversations(conversationList);
+      const totalUnread = conversationList.filter(x => x.unReadCount > 0).length;
+      dispatch(actionSetTotalUnread(totalUnread));
     }
-  }, [contacts.length, conversationList.data]);
+  }, [conversationList]);
+
+
 
   const transformObjToList = (contact) => {
     return contact.ids.map((id) => contact.data[id]);
   };
-  const handleSelected = (contact) =>
-    dispatch(actionSetSelectedContact(contact));
+  const handleSelected = (contact, unReadCount = 0) =>{
+   dispatch(actionSetSelectedContact(contact));
+    if (unReadCount > 0) {
+      dispatch(markAsRead(contact.id));
+    }
+  }
 
   const [toggleContact, setToggleContact] = React.useState(false);
 
@@ -80,14 +64,6 @@ const ChatList = () => {
 
   const handleSearchConversationInList = (e) => {
     const query = e.target.value;
-    if (query.length) {
-      let newRecentConversationList = recentConversationList.filter(
-        (conversation) => conversation.firstName.toLowerCase().includes(query)
-      );
-      setFilteredConversation(newRecentConversationList);
-    } else {
-      setFilteredConversation(recentConversationList);
-    }
   };
 
   if (!toggleContact)
@@ -111,23 +87,22 @@ const ChatList = () => {
           </div>
         </div>
         <div className="contact-list">
-          {filteredConversation.length === 0 && (
+          {conversations.length === 0 && (
             <div className="p-d-flex p-jc-center p-ai-center">
               <p>No recent conversation</p>
             </div>
           )}
-          {filteredConversation.map((item) => (
+          {conversations.map((item) => (
             <div
               key={item.id}
               onClick={() => {
                 // console.log("item selected", item);
-                handleSelected(item);
+                handleSelected(item.partner, item.unReadCount);
               }}
-              className={`contact-item ${
-                selectedContact && item.id === selectedContact.id
+              className={`contact-item ${selectedContact && item?.partner.id === selectedContact.id
                   ? "selected"
                   : ""
-              }`}
+                }`}
             >
               <img
                 style={{ width: "30px", height: "30px" }}
@@ -135,13 +110,15 @@ const ChatList = () => {
               />
               <div className="contact-detail">
                 <h4>
-                  {item.firstName} {item.lastName}
+                  {item?.partner?.firstName} {item?.partner?.lastName}
+                  {item.unReadCount ? <span className="mx-1 px-1 py-1 text-white badge bg-danger">{item.unReadCount}</span>: <></>}
                 </h4>
-                <p>{item.messages[0].message}</p>
+                <p>{item.message}
+                </p>
               </div>
               <div className="last-seen">
                 <small>
-                  {moment(item.messages[0]?.createdAt).format("hh:mma")}
+                  {moment(item.createdAt).format("hh:mma")}
                 </small>{" "}
               </div>
             </div>
@@ -177,11 +154,10 @@ const ChatList = () => {
               console.log("item seleected", item);
               handleSelected({ ...item, messages: [] });
             }}
-            className={`contact-item ${
-              selectedContact && item.id === selectedContact.id
+            className={`contact-item ${selectedContact && item.id === selectedContact.id
                 ? "selected"
                 : ""
-            }`}
+              }`}
           >
             <img
               style={{ width: "40px", height: "40px" }}

@@ -6,6 +6,7 @@ const initialState = {
   selectedContact: null,
   conversations: [],
   conversationList: [],
+  totalUnread : 0,
 };
 
 const TOGGLE_CHAT_MODAL = "TOGGLE_CHAT_MODAL";
@@ -13,6 +14,8 @@ const SELECTED_CONTACT = "SELECTED_CONTACT";
 const CREATE_CHAT = "CREATE_CHAT";
 const CONVERSATION_WITH_PARTNER_ID = "CONVERSATION_WITH_PARTNER_ID";
 const CONVERSATION_LIST = "CONVERSATION_LIST";
+const TOTAL_UNREAD = "TOTAL_UNREAD";
+
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -35,13 +38,19 @@ export default function reducer(state = initialState, action) {
     case CONVERSATION_WITH_PARTNER_ID:
       return {
         ...state,
-        conversations: action.payload.data,
+        conversations: action.payload,
       };
     case CONVERSATION_LIST:
       return {
         ...state,
         conversationList: action.payload,
       };
+
+      case TOTAL_UNREAD:
+        return {
+          ...state,
+          totalUnread: action.payload,
+        };
     default:
       return state;
   }
@@ -56,17 +65,22 @@ export const actionSetSelectedContact = (contact) => ({
   payload: contact,
 });
 
+export const actionSetTotalUnread = (total) => ({
+  type: TOTAL_UNREAD,
+  payload: total,
+});
+
 export const actionCreateChat = (conversation) => ({
   type: CREATE_CHAT,
   payload: conversation,
 });
 
-export const actionGetConversationWithPartnerId = (data) => ({
+export const actionGetConversationWithPartnerId = ({data}) => ({
   type: CONVERSATION_WITH_PARTNER_ID,
   payload: data,
 });
 
-export const actionGetConversationList = (data) => ({
+export const actionGetConversationList = ({data}) => ({
   type: CONVERSATION_LIST,
   payload: data,
 });
@@ -76,7 +90,7 @@ export const createChat = (conversation) => async (dispatch) => {
   return agent.Chat.createChat(conversation).then(
     (response) => {
       dispatch(getConversationWithPartnerId(conversation.recieverId));
-      console.log("create chat response", response);
+      //console.log("create chat response", response);
     },
     (error) => {
       dispatch(showMessage({ type: "error", message: error }));
@@ -87,22 +101,33 @@ export const createChat = (conversation) => async (dispatch) => {
 export const getConversationWithPartnerId = (partnerId) => async (dispatch) => {
   return agent.Chat.getConversationsWithPartnerId(partnerId).then(
     (response) => {
-      console.log("get conversation chat response", response);
+      //console.log("get conversation chat response", response);
       dispatch(actionGetConversationWithPartnerId(response));
+      dispatch(getConversationList());
     },
     (error) => {
       dispatch(showMessage({ type: "error", message: error }));
     }
   );
 };
-export const getConversationList = (partnerId) => async (dispatch) => {
+export const getConversationList = () => async (dispatch) => {
   return agent.Chat.getConversationList().then(
     (response) => {
-      console.log("get conversation list", response);
+      //console.log("get conversation list", response);
       dispatch(actionGetConversationList(response));
     },
     (error) => {
       dispatch(showMessage({ type: "error", message: error }));
+    }
+  );
+};
+
+export const markAsRead = (partnerId) => async (dispatch) => {
+  return agent.Chat.markAsRead(partnerId).then(
+    (response) => {
+     dispatch(getConversationList());
+    },
+    (error) => {
     }
   );
 };
