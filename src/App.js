@@ -5,7 +5,7 @@ import io from "socket.io-client";
 
 import agent, { API_ROOT } from "./services/agent.service";
 import { UserNotifications } from './store/modules/appNotification';
-import { getConversationWithPartnerId } from './store/modules/chat'
+import { getConversationList, getConversationWithPartnerId } from './store/modules/chat'
 
 import './styles/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -18,6 +18,8 @@ import AppLoading from './components/AppLoading';
 import AppAlert from 'components/AppAlert';
 
 const AppRouter = React.lazy(() => import("./routes/app-router"));
+const notificationSocket = io(`${API_ROOT}/notigateway`);
+
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +32,6 @@ function App() {
 
   const user = agent.Auth.current();
   useEffect(() => {
-    const notificationSocket = io(`${API_ROOT}/notigateway`);
     notificationSocket.on('connect', () => {
       if (user && user.id) {
         notificationSocket.emit('notification_msg_to_server', {
@@ -44,28 +45,36 @@ function App() {
           dispatch(UserNotifications(user?.id));
         }
       });
-    })
-    return () => notificationSocket.disconnect();
-  }, []);
 
-  useEffect(() => {
-    const chatSocket = io(`${API_ROOT}/chatgateway`);
-    chatSocket.on('connect to', () => {
-      if (user && user.id) {
-        chatSocket.emit('chat_msg_to_server', {
-          socketId: user.id,
-        })
-      }
-
-      chatSocket.on("chat_msg_to_client", (data) => {
+      notificationSocket.on("chat_msg_to_client", (data) => {
         console.log("chat message sent to clients");
-        if (data && data?.recieverId === user?.id) {
-          dispatch(getConversationWithPartnerId(user?.recieverId));
-        }
+            if (data && data?.recieverId === user?.id) {
+              dispatch(getConversationWithPartnerId(data?.senderId));
+              dispatch(getConversationList());
+            }
       });
     })
-    return () => chatSocket.disconnect();
-  }, []);
+    return () => notificationSocket.disconnect();
+  }, [notificationSocket]);
+
+  // useEffect(() => {
+  //   const chatSocket = io(`${API_ROOT}/chatgateway`);
+  //   chatSocket.on('connect to', () => {
+  //     if (user && user.id) {
+  //       chatSocket.emit('chat_msg_to_server', {
+  //         socketId: user.id,
+  //       })
+  //     }
+
+  //     chatSocket.on("chat_msg_to_client", (data) => {
+  //       console.log("chat message sent to clients");
+  //       if (data && data?.recieverId === user?.id) {
+  //         dispatch(getConversationWithPartnerId(user?.recieverId));
+  //       }
+  //     });
+  //   })
+  //   return () => chatSocket.disconnect();
+  // }, []);
 
 
   return (
